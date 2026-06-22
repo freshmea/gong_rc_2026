@@ -22,3 +22,28 @@
 # 프로그램은 `main()` 함수 안에 작성하고, 파일이 직접 실행될 때만 `main()` 함수가 실행되도록 작성하세요.
 
 # AI 활용해서 코드를 작성하세요.
+def main():
+    product = input("상품명을 입력하세요> ")
+    price = input("상품 가격을 입력하세요> ")
+    discount = input("할인율을 입력하세요. 예: 10> ")
+
+    if price.isdigit() and discount.isdigit():
+        price = int(price)
+        discount = int(discount)
+
+        discount_price = price * discount / 100
+        final_price = price - discount_price
+
+        print("========== 할인 계산 결과 ==========")
+        print(f"상품명: {product}")
+        print(f"원래 가격: {price}원")
+        print(f"할인율: {discount}%")
+        print(f"할인 금액: {discount_price}원")
+        print(f"최종 가격: {final_price}원")
+        print("===================================")
+    else:
+        print("가격과 할인율은 숫자로 입력해야 합니다.")
+
+
+if __name__ == "__main__":
+    main()
