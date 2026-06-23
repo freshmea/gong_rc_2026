@@ -43,6 +43,17 @@
             margin: 0 auto;
         }
 
+        .top-right-photo {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            width: clamp(96px, 18vw, 180px);
+            border-radius: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 12px 28px rgba(2, 6, 23, 0.35);
+            z-index: 20;
+        }
+
         .hero {
             padding: 56px 36px;
             border-radius: 32px;
@@ -256,6 +267,13 @@
                 padding: 24px 14px;
             }
 
+            .top-right-photo {
+                top: 10px;
+                right: 10px;
+                width: 92px;
+                border-radius: 12px;
+            }
+
             .hero {
                 padding: 40px 24px;
                 border-radius: 26px;
@@ -282,6 +300,8 @@
 </head>
 
 <body>
+    <img class="top-right-photo" src="img/20231111_124825.jpg" alt="Autocar class photo" />
+
     <main class="page">
         <section class="hero">
             <div class="badge">🚗 Autocar Project Class</div>
