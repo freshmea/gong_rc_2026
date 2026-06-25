@@ -2,6 +2,16 @@ import json
 from pathlib import Path
 
 
+def create_student(name, korean, math, english, science):
+    return {
+        "name": name,
+        "korean": korean,
+        "math": math,
+        "english": english,
+        "science": science
+    }
+
+
 def main():
     student_path = Path(__file__).parent.parent / "data/student_info.json"
     with open(student_path, "r", encoding='utf-8') as f:
