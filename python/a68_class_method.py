@@ -25,9 +25,10 @@ class Student:
     def get_average(self):
         return self.get_sum() / 4
 
+    # 인스턴스변수를 하나씩 참조하지 않은상황, 클래스 변수를 써야만 되는상황
     @classmethod
     def print(cls):
-        print(f"현재 생성된 총 학생수는 {Student.count} 입니다")
+        print(f"현재 생성된 총 학생수는 {cls.count} 입니다")
         print()
         print("---------------학생목록---------------")
         print("이름\t총점\t평균")
