@@ -1,7 +1,6 @@
 # import test_package.module_a
 # import test_package.module_b
 # from test_package.module_a import Module_a, module_a_fuc, module_var_a
-# import test_package
 from test_package import *
 
 
