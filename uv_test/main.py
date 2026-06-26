@@ -5,9 +5,12 @@
 #   python3-gi-cairo \
 #   gir1.2-gtk-3.0 \
 #   gir1.2-webkit2-4.1
+import webview
+
 
 def main():
-    print("Hello from uv-test!")
+    webview.create_window("hello", html="<h1>hello pywebview</h1>")
+    webview.start()
 
 
 if __name__ == "__main__":
