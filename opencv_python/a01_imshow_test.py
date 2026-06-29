@@ -1,5 +1,6 @@
 # pip install opencv-python
 # pip install numpy
+# sudo apt install x11-apps
 import cv2
 import numpy as np
 
