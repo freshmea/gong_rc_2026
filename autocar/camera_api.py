@@ -3,11 +3,14 @@
 # cam = Util.gstrmer(width=640, height=480, fps=30, flip=0)
 # cap = cv2.VideoCapture(cam, cv2.CAP_GSTREAMER)
 
+import threading
 import time
 from threading import Thread
 
+# 카메라 열기
 import cv2
-from flask import Flask, Response
+from flask import Flask, Response, jsonify
+from pop import Util
 
 # for _ in range(120):
 #     ret, frame = cap.read()
@@ -23,26 +26,29 @@ from flask import Flask, Response
 # scp camera_api.py soda@192.168.0.34:/home/soda
 
 
-# 카메라 열기
+
+app = Flask("camera_api")
+
 cam = Util.gstrmer(width=640, height=480, fps=30, flip=0)
 cap = cv2.VideoCapture(cam, cv2.CAP_GSTREAMER)
 
 if not cap.isOpened():
     raise RuntimeError("Camera open failed")
 
-app = Flask(__name__)
-
 latest_frame = None
+stop_event = threading.Event()
+frame_lock = threading.Lock()
 
 
 def capture_loop():
     global latest_frame
 
-    while True:
+    while not stop_event.is_set():
         ret, frame = cap.read()
 
         if ret:
-            latest_frame = frame
+            with frame_lock:
+                latest_frame = frame.copy()
 
         time.sleep(0.01)
 
@@ -69,17 +75,10 @@ def index():
         </head>
         <body>
             <h2>Jetson Camera API</h2>
-
-            <p>실시간 영상</p>
             <img src="/video" width="640" height="480">
-
-            <hr>
-
-            <p>API 주소</p>
-            <ul>
-                <li><a href="/video">/video</a> : MJPEG 실시간 스트림</li>
-                <li><a href="/snapshot.jpg">/snapshot.jpg</a> : 현재 프레임 1장</li>
-            </ul>
+            <p><a href="/snapshot.jpg">snapshot</a></p>
+            <p><a href="/status">status</a></p>
+            <p><a href="/stop">stop camera</a></p>
         </body>
     </html>
     """
@@ -88,12 +87,15 @@ def index():
 @app.route("/video")
 def video():
     def generate():
-        while True:
-            if latest_frame is None:
+        while not stop_event.is_set():
+            with frame_lock:
+                frame = None if latest_frame is None else latest_frame.copy()
+
+            if frame is None:
                 time.sleep(0.05)
                 continue
 
-            jpg = encode_jpeg(latest_frame, quality=80)
+            jpg = encode_jpeg(frame, quality=75)
 
             if jpg is None:
                 continue
@@ -115,15 +117,50 @@ def video():
 
 @app.route("/snapshot.jpg")
 def snapshot():
-    if latest_frame is None:
+    with frame_lock:
+        frame = None if latest_frame is None else latest_frame.copy()
+
+    if frame is None:
         return "No frame", 503
 
-    jpg = encode_jpeg(latest_frame, quality=90)
+    jpg = encode_jpeg(frame, quality=90)
 
-    return Response(
-        jpg,
-        mimetype="image/jpeg"
-    )
+    return Response(jpg, mimetype="image/jpeg")
+
+
+@app.route("/status")
+def status():
+    with frame_lock:
+        frame = None if latest_frame is None else latest_frame.copy()
+
+    if frame is None:
+        return jsonify({
+            "camera": "not ready"
+        })
+
+    h, w = frame.shape[:2]
+
+    return jsonify({
+        "camera": "ok",
+        "width": w,
+        "height": h
+    })
+
+
+@app.route("/stop")
+def stop():
+    stop_camera()
+    return "camera stopped"
+
+
+def stop_camera():
+    stop_event.set()
+    time.sleep(0.2)
+
+    if cap.isOpened():
+        cap.release()
+
+    print("camera released")
 
 
 def run_server():
@@ -131,19 +168,16 @@ def run_server():
         host="0.0.0.0",
         port=5000,
         debug=False,
-        use_reloader=False
+        use_reloader=False,
+        threaded=True
     )
 
 
-# 카메라 캡처 스레드 시작
-capture_thread = Thread(target=capture_loop)
-capture_thread.daemon = True
+capture_thread = threading.Thread(target=capture_loop)
 capture_thread.start()
 
-# Flask 서버 스레드 시작
-server_thread = Thread(target=run_server)
-server_thread.daemon = True
+server_thread = threading.Thread(target=run_server)
 server_thread.start()
 
-print("Camera API server started")
-print("브라우저에서 http://젯슨IP:5000 으로 접속")
+print("Camera API started")
+print("Open: http://JETSON_IP:5000")
