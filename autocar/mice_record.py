@@ -41,3 +41,20 @@ with wave.open("out.wav", "rb") as w:
     stream.stop_stream()
     print("재생 끝")
     stream.close()
+
+
+import time
+
+from pop import SoundMeter
+
+sm = SoundMeter()
+
+def onSoundMeter(rms, inData):
+    if(rms>600):
+        print(rms)
+
+sm.setCallback(onSoundMeter)
+
+input("input something")
+
+sm.stop()
