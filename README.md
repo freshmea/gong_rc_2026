@@ -79,3 +79,33 @@
 - 6교시: flask server 구현 - click SSE 예제
 - 7교시: 미니 프로젝트(webview UI 구현)
 - 8교시: 미니 프로젝트(webview UI 구현)
+
+---
+
+2026-06-29
+
+---
+
+- 1교시: autocar 프로젝트 설명
+- 2교시: autocar 의 기본 구조 서보 led, motor, sensor, camera, lidar, imu
+- 3교시: RDIS ip 설정, wifi 네트워크
+- 4교시:
+- 5교시:
+- 6교시:
+- 7교시:
+- 8교시:
+
+---
+
+2026-06-30
+
+---
+
+- 1교시:
+- 2교시:
+- 3교시:
+- 4교시:
+- 5교시: 스피커 다루기 alsa mixer, speaker test
+- 6교시: Tone class,
+- 7교시:
+- 8교시:
