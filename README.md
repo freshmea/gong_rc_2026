@@ -117,10 +117,10 @@
 ---
 
 - 1교시: AudioPlay class, AudioRecord class
-- 2교시:
-- 3교시:
-- 4교시:
-- 5교시:
+- 2교시: TTS 설명, gTTS 설치 및 실습
+- 3교시: espeak 설치 및 실습, piper 설치 및 실습
+- 4교시: stt 설명, whisper 설치 및 실습
+- 5교시: numpy
 - 6교시:
 - 7교시:
 - 8교시:
