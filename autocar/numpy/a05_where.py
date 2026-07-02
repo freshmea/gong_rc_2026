@@ -9,7 +9,7 @@ def main():
     re = x > y
     print(re, type(re))
     s1 = np.where(x > y, x, y)  # 선택
-    re = x[x > y]   # 필터링
+    re = x[x > y]   # 필터링 bool indexing
     print(re, type(re))
     print(s1)
 
