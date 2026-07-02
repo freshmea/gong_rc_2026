@@ -13,6 +13,9 @@ def main():
     file.close()
     y = np.loadtxt(BASE / "randoms.txt", dtype=np.int8)
     print(y, type(y))
+    # np.concatenate()
+    # np.vstack()
+    # np.hstack()
 
 
 if __name__ == "__main__":
