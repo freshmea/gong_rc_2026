@@ -11,7 +11,7 @@ def main():
     # axes[0].plot(data1)
     # axes[1].plot(data2)
     fig = plt.figure(figsize=(8, 6))
-    ax1 = fig.add_subplot(2, 1, 1)
+    ax1 = fig.add_subplot(2, 1, 1)      #(가로 세로 격자), 인덱스(순서)
     ax1.plot(data1)
     ax1.set_title("sensor 1")
     ax1.set_xlabel("Index(cm)")
