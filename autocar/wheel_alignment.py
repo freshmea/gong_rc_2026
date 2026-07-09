@@ -12,8 +12,8 @@ Car = Pilot.AutoCar()
 # =========================
 
 SPEED = 70          # 기존 70보다 낮게 시작 권장
-MOVE_TIME = 0.35    # 앞으로 움직이는 시간
-BACK_TIME = 0.35    # 뒤로 복귀하는 시간
+MOVE_TIME = 0.70    # 앞으로 움직이는 시간
+BACK_TIME = 0.70    # 뒤로 복귀하는 시간
 STABLE_TIME = 0.15  # 정지 후 안정 시간
 
 GYRO_COUNT = 8
