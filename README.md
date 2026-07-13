@@ -3,6 +3,7 @@
 ---
 
 공주대에서 autocar 를 가지고 하는 프로젝트 수업
+[수업 필기 Figma](https://www.figma.com/board/gcbIjizU7fdSKyNdFJzIkR/gong_rc_2026?node-id=0-1&t=0DcRPDolUzhOXKyF-1)
 [구글 슬라이드](https://docs.google.com/presentation/d/1NwCyi3hQ3WKvkgapCUH2Z7pcHDgDb3h2Jr1VzPnHE7E/edit?usp=sharing)
 [사전 사후 평가](https://forms.gle/Va3KQj3Zg4qWtAeE8)
 [사전 사후 평가-사후](https://forms.gle/FjuQk5gpLthD9X8T7)
