@@ -232,5 +232,25 @@
 - 8교시: 목표물 추적 실습
 
 - 점검 사항
-- softmax 코드 예제가 없음
-- cartpole 예제에서 render 가 되지 않는다. glx 관련 버전 문제인듯? 해결 안됨
+  - softmax 코드 예제가 없음
+  - cartpole 예제에서 render 가 되지 않는다. glx 관련 버전 문제인듯? 해결 안됨
+
+- 안내할 내용
+  - tmux 사용법 - sesstion, window, pane 모니터링과 디버깅
+  - daemon process, background process 운용
+    - systemd service systemctl 사용법
+    - background process 관리
+    - nohup 사용법
+  - process 확인
+    - kill, killall, pkill 사용법
+    - ps, top, htop 사용법
+  - 리소스 확인
+    - free, df, du 사용법
+    - iotop, iftop 사용법
+    - netstat, ss 사용법
+  - 프로젝트 구성
+    - 발표 방식     : PPT(google slide) + 시연영상
+    - 제출 서류     : 프로젝트 계획서
+    - 완료 후 제출  : 프로젝트 기술서, 발표자료, 소스코드, 실행파일, 실행영상
+    - 진행 사항 공유:
+      - github repository - Readme.md 에 진행 사항 공유( 오전, 오후)
