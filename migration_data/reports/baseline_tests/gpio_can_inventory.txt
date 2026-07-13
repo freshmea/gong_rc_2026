@@ -1,0 +1,21 @@
+=== GPIO chips ===
+crw------- root:root /dev/gpiochip0
+crw------- root:root /dev/gpiochip1
+crw------- root:root /dev/gpiochip2
+=== CAN links ===
+9: can0: <NOARP,UP,LOWER_UP,ECHO> mtu 72 qdisc pfifo_fast state UNKNOWN mode DEFAULT group default qlen 10
+    link/can  promiscuity 0 
+    can <BERR-REPORTING,FD> state ERROR-ACTIVE (berr-counter tx 0 rx 0) restart-ms 0 
+	  bitrate 1010526 sample-point 0.736 
+	  tq 52 prop-seg 6 phase-seg1 7 phase-seg2 5 sjw 1
+	  mttcan: tseg1 2..255 tseg2 0..127 sjw 1..127 brp 1..511 brp-inc 1
+	  dbitrate 2021052 dsample-point 0.736 
+	  dtq 26 dprop-seg 6 dphase-seg1 7 dphase-seg2 5 dsjw 1
+	  mttcan: dtseg1 1..31 dtseg2 0..15 dsjw 1..15 dbrp 1..15 dbrp-inc 1
+	  clock 38400000numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 
+can0 -> ../../devices/c310000.mttcan/net/can0
+=== Board support ===
+PASS: Hanback board_config.py present
+PASS: Hanback can_enable.sh present
+PASS: import Jetson.GPIO unknown
+PASS: import RPi.GPIO unknown

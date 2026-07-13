@@ -1,0 +1,85 @@
+# 현재 시스템 기준선
+
+수집 시각: 2026-07-13 KST  
+대상: `soda@192.168.0.34`
+
+## 플랫폼
+
+| 항목 | 확인값 |
+|---|---|
+| 보드 | NVIDIA Jetson Xavier NX Developer Kit |
+| OS | Ubuntu 18.04.4 LTS |
+| Jetson Linux | L4T R32.4.3 |
+| 커널 | 4.9.140-tegra |
+| 아키텍처 | aarch64 |
+| glibc | 2.27 |
+| CUDA | 10.2.89 |
+| Python | 3.6.9 |
+| ROS | ROS 1 Melodic 패키지 및 catkin workspace |
+| OpenCV / NumPy | 4.3.0 / 1.19.0 |
+| TensorFlow | 2.2.0 NVIDIA aarch64 wheel |
+| JupyterLab / Notebook | 2.0.0 / 6.0.3 |
+| tmux / zsh | next-3.3 / 5.8.0.2-dev |
+
+원본 근거는 `raw/reports/system_inventory.txt`에 있다.
+
+## 확인된 하드웨어
+
+- USB 직렬: Silicon Labs CP2102, VID:PID `10c4:ea60`
+- LiDAR: `/dev/ttyUSB0`, udev 별칭 `/dev/rplidar`
+- LiDAR 응답: model 40, firmware 1.28, hardware 7, health `Good`
+- ALSA card 0: `tegra-hda-xnx` HDMI
+- ALSA card 1: `jetson-xaviernx-ape`, ADMAIF playback/capture
+- I2C 어댑터: 0~10 중 여러 Tegra/BPMP/mux 버스
+- 기준 주소:
+  - bus 0: `0x50`, `0x57`
+  - bus 1: `0x5c`, `0x5e`, `0x70`
+  - bus 8: `0x0d(UU)`, `0x57`, `0x68`, `0x70`
+
+I2C의 `UU`는 커널 드라이버가 해당 주소를 점유 중이라는 뜻이며 고장이 아니다. 새 이미지에서 버스 번호가 달라질 수 있으므로 주소와 실제 배선을 함께 비교한다.
+
+## 사용자 설정
+
+- `.bashrc`: 거의 Ubuntu 기본 설정이며 사용자 ROS/CUDA 추가는 없음
+- `.zshrc`: Oh My Zsh, git, zsh-autosuggestions, fast-syntax-highlighting, zsh-peco-history, tmux 자동 진입, `/opt/ros/melodic/setup.zsh`
+- `.tmux.conf`: mouse on, TPM, tmux-themepack, `powerline/soda`
+- Jupyter: `0.0.0.0`, notebook dir `/home/soda/Project/python/notebook`, 인증 해시는 마스킹됨
+- Jupyter service: `/lib/systemd/system/jupyter.service`, User/Group `soda`, WorkingDirectory는 노트북 폴더, 재시작 정책 `always`
+- RPLidar udev: `KERNEL=="ttyUSB*", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", MODE:="0777", SYMLINK+="rplidar"`
+
+보안을 위해 새 환경에서는 udev mode `0777` 대신 `0660`, group `dialout`을 권장한다.
+
+## 패키지 무결성 이상
+
+`/usr/bin/tail`은 ELF가 아니라 `data`로 식별되며 앞부분이 0 바이트로 손상되어 있다. `dpkg --verify coreutils`도 다수 파일 변경을 보고했다. 이 때문에 `.bashrc`의 alert alias와 일부 진단 파이프라인이 실패할 수 있다.
+
+현재 이미지를 계속 쓸 경우 먼저 다음을 수행한다.
+
+```bash
+sudo apt-get update
+sudo apt-get install --reinstall coreutils
+file /usr/bin/tail
+dpkg --verify coreutils
+```
+
+마이그레이션은 손상된 rootfs 위의 일반 `do-release-upgrade`가 아니라 깨끗한 JetPack 플래시가 더 안전하다.
+
+## 2026-07-13 실측 테스트
+
+| 테스트 | 결과 |
+|---|---|
+| 원격 health | PASS 25, WARN 0, FAIL 0 |
+| 필수 Python import | numpy, cv2, pyaudio, rplidar, RPi.GPIO, pop PASS |
+| Jupyter | 임시 127.0.0.1:18888 HTTP 응답 PASS |
+| tmux | 임시 detached session 생성/삭제 PASS |
+| I2C | 기준 bus 0/1/8 주소 재현 |
+| ALSA | playback/capture 장치 열거 PASS, 실제 소리 재생은 미실행 |
+| 카메라/Argus | nvargus-daemon, OpenCV/GStreamer 인벤토리 PASS; frame capture는 미실행 |
+| GPIO/CAN | GPIO library와 Hanback 설정 PASS; 출력/CAN state 변경은 미실행 |
+| LiDAR | serial info 및 health 응답 PASS |
+| 노트북 | 46개 JSON/구문 검사 PASS, 하드웨어 관련 25개 |
+| Python 소스 | 19개 구문 검사, 경고 0 |
+
+## 수집 규모
+
+전체 약 364 MiB. 수업/노트북 아카이브 163개 파일, ROS/LiDAR 183개, Hanback 설정 9개, vendor Python 소스 27개 파일이 추출되어 있다.

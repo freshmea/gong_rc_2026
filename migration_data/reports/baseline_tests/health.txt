@@ -1,0 +1,36 @@
+Jetson migration health check: 2026-07-13T16:49:59+09:00
+PASS  /etc/os-release readable
+PASS  Jetson L4T release present
+PASS  architecture aarch64
+PASS  command: bash
+PASS  command: zsh
+PASS  command: python3
+PASS  command: pip3
+PASS  command: jupyter
+PASS  command: tmux
+PASS  command: tar
+PASS  command: curl
+PASS  command: wget
+PASS  command: i2cdetect
+PASS  command: aplay
+PASS  command: arecord
+PASS  /dev/i2c-0 present
+PASS  /dev/i2c-1 present
+PASS  /dev/i2c-8 present
+PASS  ALSA playback device enumerated
+PASS  ALSA capture device enumerated
+PASS  camera or serial/LiDAR device node present
+PASS  RPLidar udev rule present
+PASS  RPLidar/Hector source present
+PASS  2026 class notebooks present
+PYTHON_IMPORT_PASS numpy 1.19.0
+PYTHON_IMPORT_PASS cv2 4.3.0
+PYTHON_IMPORT_PASS pyaudio 0.2.11
+PYTHON_IMPORT_PASS rplidar unknown
+PYTHON_IMPORT_PASS RPi.GPIO unknown
+PYTHON_IMPORT_PASS pop unknown
+Exiting... 
+Cleaning up pins
+PASS  required Python hardware modules import
+
+SUMMARY pass=25 warn=0 fail=0

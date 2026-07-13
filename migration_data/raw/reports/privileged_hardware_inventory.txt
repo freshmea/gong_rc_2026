@@ -1,0 +1,530 @@
+[    0.000000] OF: fdt:memory scan node memory, reg size 48,
+[    0.000000] Kernel command line: console=ttyTCU0,115200 video=tegrafb no_console_suspend=1 earlycon=tegra_comb_uart,mmio32,0x0c168000 gpt usbcore.old_scheme_first=1 tegraid=19.1.2.0.0 maxcpus=6 boot.slot_suffix= boot.ratchetvalues=0.4.2 vpr_resize sdhci_tegra.en_boot_part_access=1    quiet root=/dev/mmcblk0p1 rw rootwait rootfstype=ext4 console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0
+[    0.000682] console [tty0] enabled
+[    0.706613] iommu: Adding device 3210000.spi to group 7
+[    0.707039] iommu: Adding device 3230000.spi to group 8
+[    0.707417] iommu: Adding device 3270000.spi to group 9
+[    0.708282] iommu: Adding device 3160000.i2c to group 10
+[    0.708643] iommu: Adding device c240000.i2c to group 11
+[    0.708954] iommu: Adding device 3180000.i2c to group 12
+[    0.709275] iommu: Adding device 3190000.i2c to group 13
+[    0.709713] iommu: Adding device 31b0000.i2c to group 14
+[    0.710022] iommu: Adding device 31c0000.i2c to group 15
+[    0.710343] iommu: Adding device c250000.i2c to group 16
+[    0.710659] iommu: Adding device 31e0000.i2c to group 17
+[    0.751094] gpio gpiochip0: gpio-line-names specifies 240 line names but there are 224 lines on the chip
+[    0.752537] GPIO line 339 (wifi-enable) hogged as output/high
+[    0.752583] GPIO line 412 (camera-control-output-low) hogged as output/low
+[    0.752652] GPIO line 413 (camera-control-output-low) hogged as output/low
+[    0.752944] gpiochip_setup_dev: registered GPIOs 288 to 511 on device: gpiochip0 (tegra-gpio)
+[    0.758277] gpio gpiochip1: gpio-line-names specifies 21 line names but there are 40 lines on the chip
+[    0.758363] GPIO line 253 (pex-refclk-sel-low) hogged as output/low
+[    0.758405] GPIO line 266 (w-disable1) hogged as output/high
+[    0.758444] GPIO line 264 (w-disable2) hogged as output/high
+[    0.758688] gpiochip_setup_dev: registered GPIOs 248 to 287 on device: gpiochip1 (tegra-gpio-aon)
+[    0.806849] usbcore: registered new interface driver usbfs
+[    0.806918] usbcore: registered new interface driver hub
+[    0.807014] usbcore: registered new device driver usb
+[    0.817925] tegra-i2c 31e0000.i2c: could not find pctldev for node /host1x/dpaux@155F0000/pinmux@0, deferring probe
+[    0.869417] vdd-usb-3v3: at 3300 mV 
+[    0.887810] GPIO line 246 (gpio_default) hogged as output/high
+[    0.889226] GPIO line 247 (gpio_default) hogged as output/high
+[    0.889525] gpiochip_setup_dev: registered GPIOs 240 to 247 on device: gpiochip2 (max77620-gpio)
+[    0.890337] Linux video capture interface: v2.00
+[    0.899045] gpio tegra-gpio wake61 for gpio=201(Z:1)
+[    0.899140] extcon-gpio-states external-connection:extcon@1: Cable state:0, cable id:0
+[    1.333277] iommu: Adding device aconnect@2a41000:adsp_audio to group 57
+[    1.346953] tegra-pwm 3280000.pwm: PWM clk can sleep in ops
+[    1.347394] tegra-pwm c340000.pwm: PWM clk can sleep in ops
+[    1.347972] tegra-pwm 32c0000.pwm: PWM clk can sleep in ops
+[    1.348351] tegra-pwm 32d0000.pwm: PWM clk can sleep in ops
+[    1.348712] tegra-pwm 32f0000.pwm: PWM clk can sleep in ops
+[    1.351594] tegra_camera_platform tegra-camera-platform: tegra_camera_probe:camera_platform_driver probe
+[    1.351814] misc tegra_camera_ctrl: tegra_camera_isomgr_register isp_iso_bw=1500000, vi_iso_bw=1500000, max_bw=1500000
+[    1.433797] gpio tegra-gpio wake63 for gpio=97(M:1)
+[    1.443474] 3100000.serial: ttyTHS0 at MMIO 0x3100000 (irq = 47, base_baud = 0) is a TEGRA_UART
+[    1.444506] 3110000.serial: ttyTHS1 at MMIO 0x3110000 (irq = 48, base_baud = 0) is a TEGRA_UART
+[    1.445195] 3140000.serial: ttyTHS4 at MMIO 0x3140000 (irq = 49, base_baud = 0) is a TEGRA_UART
+[    1.446056] console [ttyTCU0] enabled
+[    1.470413] qspi_mtd spi6.0: s25fs256s SSG 8 0 1000 2000000
+[    1.470422] qspi_mtd spi6.0: s25fs256s (32768 Kbytes)
+[    1.470432] qspi_mtd spi6.0: mtd .name = spi6.0, .size = 0x2000000 (32MiB) .erasesize = 0x00010000 (64KiB) .numeraseregions = 0
+[    1.470696] 1 ofpart partitions found on MTD device spi6.0
+[    1.470703] Creating 1 MTD partitions on "spi6.0":
+[    1.722210] usbcore: registered new interface driver r8152
+[    1.722309] usbcore: registered new interface driver asix
+[    1.722382] usbcore: registered new interface driver ax88179_178a
+[    1.722476] usbcore: registered new interface driver cdc_ether
+[    1.722584] usbcore: registered new interface driver net1080
+[    1.722658] usbcore: registered new interface driver cdc_subset
+[    1.722754] usbcore: registered new interface driver zaurus
+[    1.722842] usbcore: registered new interface driver cdc_ncm
+[    1.724198] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.724241] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.728894] tegra-xusb 3610000.xhci: USB2 port 0 has OTG_CAP
+[    1.730774] tegra-xusb 3610000.xhci: extcon 0: ffffffc1f4dcd000 id
+[    1.731367] usbcore: registered new interface driver uas
+[    1.731405] usbcore: registered new interface driver usb-storage
+[    1.731470] usbcore: registered new interface driver usbserial
+[    1.733188] tegra-xusb 3610000.xhci: Firmware timestamp: 2019-07-24 05:47:34 UTC, Version: 60.06 release
+[    1.733224] tegra-xusb 3610000.xhci: xHCI Host Controller
+[    1.733241] tegra-xusb 3610000.xhci: new USB bus registered, assigned bus number 1
+[    1.733938] tegra-xusb 3610000.xhci: hcc params 0x0184ff25 hci version 0x110 quirks 0x00050810
+[    1.733978] tegra-xusb 3610000.xhci: irq 463, io mem 0x03610000
+[    1.734252] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.734259] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.734266] usb usb1: Product: xHCI Host Controller
+[    1.734272] usb usb1: Manufacturer: Linux 4.9.140-tegra xhci-hcd
+[    1.734277] usb usb1: SerialNumber: 3610000.xhci
+[    1.734699] hub 1-0:1.0: USB hub found
+[    1.735302] tegra-xusb 3610000.xhci: xHCI Host Controller
+[    1.735314] tegra-xusb 3610000.xhci: new USB bus registered, assigned bus number 2
+[    1.735324] tegra-xusb 3610000.xhci: Host supports USB 3.1 Enhanced SuperSpeed
+[    1.735631] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003
+[    1.735638] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.735645] usb usb2: Product: xHCI Host Controller
+[    1.735652] usb usb2: Manufacturer: Linux 4.9.140-tegra xhci-hcd
+[    1.735657] usb usb2: SerialNumber: 3610000.xhci
+[    1.736082] hub 2-0:1.0: USB hub found
+[    1.738152] usbcore: registered new interface driver xpad
+[    1.873667] i2c /dev entries driver
+[    1.875578] i2c i2c-2: Added multiplexed i2c bus 9
+[    1.875935] i2c i2c-2: Added multiplexed i2c bus 10
+[    1.875945] i2c-mux-gpio cam_i2cmux: 2 port mux on 3180000.i2c adapter
+[    1.899987] tegra-i2c 3180000.i2c: no acknowledge from address 0x10
+[    1.900043] imx219 9-0010: imx219_board_setup: error during i2c read probe (-121)
+[    1.938985] FAN:gpio request success.
+[    1.938995] FAN: can't find tach_gpio
+[    1.947024] sdhci-tegra 3400000.sdhci: Got CD GPIO
+[    1.963170] usbcore: registered new interface driver usbhid
+[    1.963175] usbhid: USB HID core driver
+[    1.978774] usbcore: registered new interface driver snd-usb-audio
+[    1.999949] gpio tegra-gpio wake8 for gpio=55(G:7)
+[    2.067862] usb 1-2: new high-speed USB device number 2 using tegra-xusb
+[    2.079888] tegra-asoc: sound: snd_soc_register_card failed (-517)
+[    2.107082] usb 1-2: New USB device found, idVendor=0bda, idProduct=5489
+[    2.107088] usb 1-2: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[    2.107092] usb 1-2: Product: 4-Port USB 2.0 Hub
+[    2.107097] usb 1-2: Manufacturer: Generic
+[    2.108313] hub 1-2:1.0: USB hub found
+[    2.379872] usb 1-3: new full-speed USB device number 3 using tegra-xusb
+[    2.400979] usb 1-3: New USB device found, idVendor=13d3, idProduct=3549
+[    2.400986] usb 1-3: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    2.400990] usb 1-3: Product: Bluetooth Radio
+[    2.400994] usb 1-3: Manufacturer: Realtek
+[    2.400998] usb 1-3: SerialNumber: 00e04c000001
+[    2.447859] tegra_cec 3960000.tegra_cec: Can't find physical addresse.
+[    2.823881] usb 1-2.4: new full-speed USB device number 4 using tegra-xusb
+[    2.845675] usb 1-2.4: New USB device found, idVendor=10c4, idProduct=ea60
+[    2.845682] usb 1-2.4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    2.845687] usb 1-2.4: Product: CP2102 USB to UART Bridge Controller
+[    2.845691] usb 1-2.4: Manufacturer: Silicon Labs
+[    2.845694] usb 1-2.4: SerialNumber: 0001
+[    2.980566] gpio tegra-gpio wake67 for gpio=48(G:0)
+[    2.980640] gpio tegra-gpio-aon wake29 for gpio=36(EE:4)
+[    2.980782] input: gpio-keys as /devices/gpio-keys/input/input4
+[    4.873282] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[    5.899539] tegra-xusb 3610000.xhci: Upgrade port 0 to USB3.0
+[    5.899546] tegra-xusb 3610000.xhci: Upgrade port 1 to USB3.0
+[    6.224791] usb 2-3: new SuperSpeedPlus USB device number 2 using tegra-xusb
+[    6.261701] usb 2-3: New USB device found, idVendor=0bda, idProduct=0489
+[    6.261711] usb 2-3: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[    6.261716] usb 2-3: Product: 4-Port USB 3.0 Hub
+[    6.261720] usb 2-3: Manufacturer: Generic
+[    6.273212] hub 2-3:1.0: USB hub found
+[    6.859893] usb 2-3: usb_suspend_both: status 0
+[    6.860072] usb usb2: usb_suspend_both: status 0
+[    6.989650] usb0: HOST MAC 2a:b1:a1:ba:45:da
+[    6.989681] usb0: MAC 2a:b1:a1:ba:45:db
+[    7.027514] l4tbr0: port 2(usb0) entered blocking state
+[    7.027522] l4tbr0: port 2(usb0) entered disabled state
+[    7.027711] device usb0 entered promiscuous mode
+[    7.033924] IPv6: ADDRCONF(NETDEV_UP): usb0: link is not ready
+[    7.273862] usbcore: registered new interface driver btusb
+[    7.309150] rtk_btusb: Realtek Bluetooth USB driver ver 3.1
+[    7.311304] rtk_btusb: btusb_probe intf->cur_altsetting->desc.bInterfaceNumber 0
+[    7.311309] rtk_btusb: btusb_probe can_wakeup 1, may wakeup 0
+[    7.311313] rtk_btusb: patch_add
+[    7.311317] rtk_btusb: auto suspend is disabled
+[    7.311322] rtk_btusb: pid = 0x3549
+[    7.311326] rtk_btusb: patch_add: Reset gEVersion to 0xff
+[    7.311339] rtk_btusb: set_bit(HCI_QUIRK_RESET_ON_CLOSE, &hdev->quirks);
+[    7.312306] rtk_btusb: btusb_probe: done
+[    7.312331] rtk_btusb: btusb_open start
+[    7.312338] rtk_btusb: btusb_open hdev->promisc ==0
+[    7.312366] usbcore: registered new interface driver rtk_btusb
+[    7.312483] rtk_btusb: download_patch start
+[    7.312487] rtk_btusb: chip type value: 0x73
+[    7.312490] rtk_btusb: HCI reset.
+[    7.323589] rtk_btusb: read_ver_rsp->lmp_subver = 0x8822
+[    7.323599] rtk_btusb: read_ver_rsp->hci_rev = 0xc
+[    7.323605] rtk_btusb: patch_entry->lmp_sub = 0x8822
+[    7.323609] rtk_btusb: load_firmware start
+[    7.323612] rtk_btusb: lmp_version = 0x8822
+[    7.323634] rtk_btusb: config filename rtl8822cu_config
+[    7.339410] rtk_btusb: no bdaddr file /opt/bdaddr
+[    7.339420] rtk_btusb: 55 ab 23 87 00 00
+[    7.339433] rtk_btusb: Config file length 6, new length 6
+[    7.339437] rtk_btusb: fw name is  rtl8822cu_fw
+[    7.376849] rtk_btusb: This is not 8723a, use new patch style!
+[    7.377002] rtk_btusb: rtk_get_eversion: gEVersion 255
+[    7.377590] rtk_btusb: eversion->status = 0x0, eversion->version = 0x3
+[    7.377597] rtk_btusb: load_firmware: New gEVersion 3
+[    7.377602] rtk_btusb: rtk_get_fw_project_id: opcode 0, len 1, data 13
+[    7.377607] rtk_btusb: lmp_version is 8822, project_id is 8822, match!
+[    7.377610] rtk_btusb: fw_version = 0x98a42f7
+[    7.377614] rtk_btusb: number_of_total_patch = 3
+[    7.377617] rtk_btusb: chipID 4
+[    7.377621] rtk_btusb: patch_length 0x55f0
+[    7.377625] rtk_btusb: start_offset 0x00005d00
+[    7.377629] rtk_btusb: Svn version:    21761
+[    7.377633] rtk_btusb: Coexistence: BTCOEX_20190509-0d0d
+[    7.377637] rtk_btusb: buf_len = 0x55f6
+[    7.377651] rtk_btusb: fw: exists, config file: exists
+[    7.377654] rtk_btusb: load_firmware done
+[    7.377680] rtk_btusb: download_data start
+[    7.491594] rtk_btusb: download_data done
+[    7.491603] rtk_btusb: HCI reset.
+[    7.502599] rtk_btusb: read_ver_rsp->lmp_subver = 0x42f7
+[    7.502610] rtk_btusb: read_ver_rsp->hci_rev = 0x98a
+[    7.502614] rtk_btusb: patch_entry->lmp_sub = 0x8822
+[    7.502627] rtk_btusb: Rtk patch end 0
+[    7.502632] rtk_btusb: btusb_open set HCI_RUNNING
+[    7.502685] rtk_btusb: btusb_open end
+[    7.518935] usbcore: registered new interface driver cp210x
+[    7.518979] usbserial: USB Serial support registered for cp210x
+[    7.524591] rtk_btusb: btusb_notify: hci0 evt 3
+[    7.526661] usb 1-2.4: cp210x converter now attached to ttyUSB0
+[    7.600705] gpio tegra-gpio wake20 for gpio=52(G:4)
+[    9.583911] rtk_btusb: btusb_flush add delay 
+[    9.593938] rtk_btusb: btusb_close
+[   26.095952] can: controller area network core (rev 20120528 abi 9)
+[   26.122051] can: raw protocol (rev 20120528)
+[   26.147381] CAN device driver interface
+[   26.220635] net can0: mttcan device registered (regs=ffffff800bc3c000, irq=63)
+[   26.239661] mttcan c310000.mttcan can0: bitrate error 1.0%
+[   26.239801] mttcan c310000.mttcan can0: Bitrate set
+[   26.239815] mttcan c310000.mttcan can0: bitrate error 1.0%
+[   26.277562] mttcan_controller_config: ctrlmode 30
+[   26.277606] mttcan c310000.mttcan can0: Bitrate set
+[   28.855612] rtk_btusb: btusb_open start
+[   28.855620] rtk_btusb: btusb_open hdev->promisc ==0
+[   28.855747] rtk_btusb: download_patch start
+[   28.855754] rtk_btusb: chip type value: 0x73
+[   28.855784] rtk_btusb: HCI reset.
+[   28.866576] rtk_btusb: read_ver_rsp->lmp_subver = 0x42f7
+[   28.866615] rtk_btusb: read_ver_rsp->hci_rev = 0x98a
+[   28.866620] rtk_btusb: patch_entry->lmp_sub = 0x8822
+[   28.866625] rtk_btusb: Firmware already exists
+[   28.866632] rtk_btusb: Rtk patch end 1
+[   28.866638] rtk_btusb: btusb_open set HCI_RUNNING
+[   28.866703] rtk_btusb: btusb_open end
+[16681.134080] tegra-i2c 3160000.i2c: no acknowledge from address 0x5d
+[16681.134532] tegra-i2c 3160000.i2c: no acknowledge from address 0x40
+[16681.134845] tegra-i2c 3160000.i2c: no acknowledge from address 0x5c
+[16887.613510] tegra-i2c 3160000.i2c: no acknowledge from address 0x5d
+[16887.613996] tegra-i2c 3160000.i2c: no acknowledge from address 0x40
+[16887.614327] tegra-i2c 3160000.i2c: no acknowledge from address 0x5c
+[16888.386221] tegra-i2c 3160000.i2c: no acknowledge from address 0x5d
+[16888.386711] tegra-i2c 3160000.i2c: no acknowledge from address 0x40
+[16888.387020] tegra-i2c 3160000.i2c: no acknowledge from address 0x5c
+[16888.407921] tegra-i2c 3160000.i2c: no acknowledge from address 0x5d
+[16888.408398] tegra-i2c 3160000.i2c: no acknowledge from address 0x40
+[16888.408993] tegra-i2c 3160000.i2c: no acknowledge from address 0x5c
+[16888.551413] tegra-i2c 3160000.i2c: no acknowledge from address 0x5d
+[16888.551901] tegra-i2c 3160000.i2c: no acknowledge from address 0x40
+[16888.552317] tegra-i2c 3160000.i2c: no acknowledge from address 0x5c
+[16929.163477] tegra-i2c 3160000.i2c: no acknowledge from address 0x3
+[16929.163946] tegra-i2c 3160000.i2c: no acknowledge from address 0x4
+[16929.164248] tegra-i2c 3160000.i2c: no acknowledge from address 0x5
+[16929.164503] tegra-i2c 3160000.i2c: no acknowledge from address 0x6
+[16929.164735] tegra-i2c 3160000.i2c: no acknowledge from address 0x7
+[16929.164988] tegra-i2c 3160000.i2c: no acknowledge from address 0x8
+[16929.165219] tegra-i2c 3160000.i2c: no acknowledge from address 0x9
+[16929.165475] tegra-i2c 3160000.i2c: no acknowledge from address 0xa
+[16929.165712] tegra-i2c 3160000.i2c: no acknowledge from address 0xb
+[16929.165993] tegra-i2c 3160000.i2c: no acknowledge from address 0xc
+[16929.166263] tegra-i2c 3160000.i2c: no acknowledge from address 0xd
+[16929.166526] tegra-i2c 3160000.i2c: no acknowledge from address 0xe
+[16929.166785] tegra-i2c 3160000.i2c: no acknowledge from address 0xf
+[16929.167067] tegra-i2c 3160000.i2c: no acknowledge from address 0x10
+[16929.167309] tegra-i2c 3160000.i2c: no acknowledge from address 0x11
+[16929.167562] tegra-i2c 3160000.i2c: no acknowledge from address 0x12
+[16929.171922] tegra-i2c 3160000.i2c: no acknowledge from address 0x13
+[16929.178131] tegra-i2c 3160000.i2c: no acknowledge from address 0x14
+[16929.184420] tegra-i2c 3160000.i2c: no acknowledge from address 0x15
+[16929.190548] tegra-i2c 3160000.i2c: no acknowledge from address 0x16
+[16929.196765] tegra-i2c 3160000.i2c: no acknowledge from address 0x17
+[16929.202714] tegra-i2c 3160000.i2c: no acknowledge from address 0x18
+[16929.209194] tegra-i2c 3160000.i2c: no acknowledge from address 0x19
+[16929.215394] tegra-i2c 3160000.i2c: no acknowledge from address 0x1a
+[16929.221664] tegra-i2c 3160000.i2c: no acknowledge from address 0x1b
+[16929.227716] tegra-i2c 3160000.i2c: no acknowledge from address 0x1c
+[16929.234236] tegra-i2c 3160000.i2c: no acknowledge from address 0x1d
+[16929.240249] tegra-i2c 3160000.i2c: no acknowledge from address 0x1e
+[16929.246817] tegra-i2c 3160000.i2c: no acknowledge from address 0x1f
+[16929.253169] tegra-i2c 3160000.i2c: no acknowledge from address 0x20
+[16929.259408] tegra-i2c 3160000.i2c: no acknowledge from address 0x21
+[16929.265460] tegra-i2c 3160000.i2c: no acknowledge from address 0x22
+[16929.271810] tegra-i2c 3160000.i2c: no acknowledge from address 0x23
+[16929.278505] tegra-i2c 3160000.i2c: no acknowledge from address 0x24
+[16929.284626] tegra-i2c 3160000.i2c: no acknowledge from address 0x25
+[16929.290895] tegra-i2c 3160000.i2c: no acknowledge from address 0x26
+[16929.297203] tegra-i2c 3160000.i2c: no acknowledge from address 0x27
+[16929.303483] tegra-i2c 3160000.i2c: no acknowledge from address 0x28
+[16929.309803] tegra-i2c 3160000.i2c: no acknowledge from address 0x29
+[16929.316085] tegra-i2c 3160000.i2c: no acknowledge from address 0x2a
+[16929.322437] tegra-i2c 3160000.i2c: no acknowledge from address 0x2b
+[16929.328454] tegra-i2c 3160000.i2c: no acknowledge from address 0x2c
+[16929.334982] tegra-i2c 3160000.i2c: no acknowledge from address 0x2d
+[16929.341043] tegra-i2c 3160000.i2c: no acknowledge from address 0x2e
+[16929.347611] tegra-i2c 3160000.i2c: no acknowledge from address 0x2f
+[16929.353932] tegra-i2c 3160000.i2c: no acknowledge from address 0x30
+[16929.359945] tegra-i2c 3160000.i2c: no acknowledge from address 0x31
+[16929.366297] tegra-i2c 3160000.i2c: no acknowledge from address 0x32
+[16929.372605] tegra-i2c 3160000.i2c: no acknowledge from address 0x33
+[16929.379131] tegra-i2c 3160000.i2c: no acknowledge from address 0x34
+[16929.385413] tegra-i2c 3160000.i2c: no acknowledge from address 0x35
+[16929.391441] tegra-i2c 3160000.i2c: no acknowledge from address 0x36
+[16929.398012] tegra-i2c 3160000.i2c: no acknowledge from address 0x37
+[16929.404060] tegra-i2c 3160000.i2c: no acknowledge from address 0x38
+[16929.410354] tegra-i2c 3160000.i2c: no acknowledge from address 0x39
+[16929.416960] tegra-i2c 3160000.i2c: no acknowledge from address 0x3a
+[16929.423032] tegra-i2c 3160000.i2c: no acknowledge from address 0x3b
+[16929.429536] tegra-i2c 3160000.i2c: no acknowledge from address 0x3c
+[16929.435817] tegra-i2c 3160000.i2c: no acknowledge from address 0x3d
+[16929.441888] tegra-i2c 3160000.i2c: no acknowledge from address 0x3e
+[16929.448474] tegra-i2c 3160000.i2c: no acknowledge from address 0x3f
+[16929.454703] tegra-i2c 3160000.i2c: no acknowledge from address 0x40
+[16929.460987] tegra-i2c 3160000.i2c: no acknowledge from address 0x41
+[16929.467385] tegra-i2c 3160000.i2c: no acknowledge from address 0x42
+[16929.473646] tegra-i2c 3160000.i2c: no acknowledge from address 0x43
+[16929.479920] tegra-i2c 3160000.i2c: no acknowledge from address 0x44
+[16929.486198] tegra-i2c 3160000.i2c: no acknowledge from address 0x45
+[16929.492502] tegra-i2c 3160000.i2c: no acknowledge from address 0x46
+[16929.498805] tegra-i2c 3160000.i2c: no acknowledge from address 0x47
+[16929.505109] tegra-i2c 3160000.i2c: no acknowledge from address 0x48
+[16929.511203] tegra-i2c 3160000.i2c: no acknowledge from address 0x49
+[16929.517821] tegra-i2c 3160000.i2c: no acknowledge from address 0x4a
+[16929.524014] tegra-i2c 3160000.i2c: no acknowledge from address 0x4b
+[16929.530300] tegra-i2c 3160000.i2c: no acknowledge from address 0x4c
+[16929.536602] tegra-i2c 3160000.i2c: no acknowledge from address 0x4d
+[16929.542923] tegra-i2c 3160000.i2c: no acknowledge from address 0x4e
+[16929.549207] tegra-i2c 3160000.i2c: no acknowledge from address 0x4f
+[16929.555367] tegra-i2c 3160000.i2c: no acknowledge from address 0x51
+[16929.561622] tegra-i2c 3160000.i2c: no acknowledge from address 0x52
+[16929.567897] tegra-i2c 3160000.i2c: no acknowledge from address 0x53
+[16929.574182] tegra-i2c 3160000.i2c: no acknowledge from address 0x54
+[16929.580462] tegra-i2c 3160000.i2c: no acknowledge from address 0x55
+[16929.587002] tegra-i2c 3160000.i2c: no acknowledge from address 0x56
+[16929.593192] tegra-i2c 3160000.i2c: no acknowledge from address 0x58
+[16929.599599] tegra-i2c 3160000.i2c: no acknowledge from address 0x59
+[16929.605958] tegra-i2c 3160000.i2c: no acknowledge from address 0x5a
+[16929.612303] tegra-i2c 3160000.i2c: no acknowledge from address 0x5b
+[16929.618233] tegra-i2c 3160000.i2c: no acknowledge from address 0x5c
+[16929.624805] tegra-i2c 3160000.i2c: no acknowledge from address 0x5d
+[16929.630821] tegra-i2c 3160000.i2c: no acknowledge from address 0x5e
+[16929.637400] tegra-i2c 3160000.i2c: no acknowledge from address 0x5f
+[16929.643705] tegra-i2c 3160000.i2c: no acknowledge from address 0x60
+[16929.649982] tegra-i2c 3160000.i2c: no acknowledge from address 0x61
+[16929.656105] tegra-i2c 3160000.i2c: no acknowledge from address 0x62
+[16929.662623] tegra-i2c 3160000.i2c: no acknowledge from address 0x63
+[16929.668924] tegra-i2c 3160000.i2c: no acknowledge from address 0x64
+[16929.674943] tegra-i2c 3160000.i2c: no acknowledge from address 0x65
+[16929.681498] tegra-i2c 3160000.i2c: no acknowledge from address 0x66
+[16929.687856] tegra-i2c 3160000.i2c: no acknowledge from address 0x67
+[16929.694100] tegra-i2c 3160000.i2c: no acknowledge from address 0x68
+[16929.700468] tegra-i2c 3160000.i2c: no acknowledge from address 0x69
+[16929.706477] tegra-i2c 3160000.i2c: no acknowledge from address 0x6a
+[16929.713029] tegra-i2c 3160000.i2c: no acknowledge from address 0x6b
+[16929.719036] tegra-i2c 3160000.i2c: no acknowledge from address 0x6c
+[16929.725342] tegra-i2c 3160000.i2c: no acknowledge from address 0x6d
+[16929.731655] tegra-i2c 3160000.i2c: no acknowledge from address 0x6e
+[16929.738233] tegra-i2c 3160000.i2c: no acknowledge from address 0x6f
+[16929.744244] tegra-i2c 3160000.i2c: no acknowledge from address 0x70
+[16929.750611] tegra-i2c 3160000.i2c: no acknowledge from address 0x71
+[16929.757142] tegra-i2c 3160000.i2c: no acknowledge from address 0x72
+[16929.763412] tegra-i2c 3160000.i2c: no acknowledge from address 0x73
+[16929.769704] tegra-i2c 3160000.i2c: no acknowledge from address 0x74
+[16929.776016] tegra-i2c 3160000.i2c: no acknowledge from address 0x75
+[16929.782044] tegra-i2c 3160000.i2c: no acknowledge from address 0x76
+[16929.788345] tegra-i2c 3160000.i2c: no acknowledge from address 0x77
+[16929.797347] tegra-i2c c240000.i2c: no acknowledge from address 0x3
+[16929.801434] tegra-i2c c240000.i2c: no acknowledge from address 0x4
+[16929.807549] tegra-i2c c240000.i2c: no acknowledge from address 0x5
+[16929.813755] tegra-i2c c240000.i2c: no acknowledge from address 0x6
+[16929.820295] tegra-i2c c240000.i2c: no acknowledge from address 0x7
+[16929.826321] tegra-i2c c240000.i2c: no acknowledge from address 0x8
+[16929.832870] tegra-i2c c240000.i2c: no acknowledge from address 0x9
+[16929.839139] tegra-i2c c240000.i2c: no acknowledge from address 0xa
+[16929.845341] tegra-i2c c240000.i2c: no acknowledge from address 0xb
+[16929.852006] tegra-i2c c240000.i2c: no acknowledge from address 0xc
+[16929.858070] tegra-i2c c240000.i2c: no acknowledge from address 0xd
+[16929.864079] tegra-i2c c240000.i2c: no acknowledge from address 0xe
+[16929.870558] tegra-i2c c240000.i2c: no acknowledge from address 0xf
+[16929.876762] tegra-i2c c240000.i2c: no acknowledge from address 0x10
+[16929.882958] tegra-i2c c240000.i2c: no acknowledge from address 0x11
+[16929.888916] tegra-i2c c240000.i2c: no acknowledge from address 0x12
+[16929.895461] tegra-i2c c240000.i2c: no acknowledge from address 0x13
+[16929.901668] tegra-i2c c240000.i2c: no acknowledge from address 0x14
+[16929.907556] tegra-i2c c240000.i2c: no acknowledge from address 0x15
+[16929.914049] tegra-i2c c240000.i2c: no acknowledge from address 0x16
+[16929.920237] tegra-i2c c240000.i2c: no acknowledge from address 0x17
+[16929.926218] tegra-i2c c240000.i2c: no acknowledge from address 0x18
+[16929.932697] tegra-i2c c240000.i2c: no acknowledge from address 0x19
+[16929.938925] tegra-i2c c240000.i2c: no acknowledge from address 0x1a
+[16929.945180] tegra-i2c c240000.i2c: no acknowledge from address 0x1b
+[16929.951160] tegra-i2c c240000.i2c: no acknowledge from address 0x1c
+[16929.957719] tegra-i2c c240000.i2c: no acknowledge from address 0x1d
+[16929.964017] tegra-i2c c240000.i2c: no acknowledge from address 0x1e
+[16929.970295] tegra-i2c c240000.i2c: no acknowledge from address 0x1f
+[16929.976611] tegra-i2c c240000.i2c: no acknowledge from address 0x20
+[16929.982631] tegra-i2c c240000.i2c: no acknowledge from address 0x21
+[16929.989230] tegra-i2c c240000.i2c: no acknowledge from address 0x22
+[16929.995263] tegra-i2c c240000.i2c: no acknowledge from address 0x23
+[16930.001795] tegra-i2c c240000.i2c: no acknowledge from address 0x24
+[16930.008113] tegra-i2c c240000.i2c: no acknowledge from address 0x25
+[16930.014172] tegra-i2c c240000.i2c: no acknowledge from address 0x26
+[16930.020519] tegra-i2c c240000.i2c: no acknowledge from address 0x27
+[16930.027029] tegra-i2c c240000.i2c: no acknowledge from address 0x28
+[16930.033370] tegra-i2c c240000.i2c: no acknowledge from address 0x29
+[16930.039379] tegra-i2c c240000.i2c: no acknowledge from address 0x2a
+[16930.045659] tegra-i2c c240000.i2c: no acknowledge from address 0x2b
+[16930.052187] tegra-i2c c240000.i2c: no acknowledge from address 0x2c
+[16930.058217] tegra-i2c c240000.i2c: no acknowledge from address 0x2d
+[16930.064811] tegra-i2c c240000.i2c: no acknowledge from address 0x2e
+[16930.071105] tegra-i2c c240000.i2c: no acknowledge from address 0x2f
+[16930.077385] tegra-i2c c240000.i2c: no acknowledge from address 0x30
+[16930.083488] tegra-i2c c240000.i2c: no acknowledge from address 0x31
+[16930.089901] tegra-i2c c240000.i2c: no acknowledge from address 0x32
+[16930.096325] tegra-i2c c240000.i2c: no acknowledge from address 0x33
+[16930.102597] tegra-i2c c240000.i2c: no acknowledge from address 0x34
+[16930.108905] tegra-i2c c240000.i2c: no acknowledge from address 0x35
+[16930.115176] tegra-i2c c240000.i2c: no acknowledge from address 0x36
+[16930.121276] tegra-i2c c240000.i2c: no acknowledge from address 0x37
+[16930.127821] tegra-i2c c240000.i2c: no acknowledge from address 0x38
+[16930.133933] tegra-i2c c240000.i2c: no acknowledge from address 0x39
+[16930.140120] tegra-i2c c240000.i2c: no acknowledge from address 0x3a
+[16930.146439] tegra-i2c c240000.i2c: no acknowledge from address 0x3b
+[16930.152770] tegra-i2c c240000.i2c: no acknowledge from address 0x3c
+[16930.159056] tegra-i2c c240000.i2c: no acknowledge from address 0x3d
+[16930.165593] tegra-i2c c240000.i2c: no acknowledge from address 0x3e
+[16930.171937] tegra-i2c c240000.i2c: no acknowledge from address 0x3f
+[16930.178251] tegra-i2c c240000.i2c: no acknowledge from address 0x40
+[16930.184535] tegra-i2c c240000.i2c: no acknowledge from address 0x41
+[16930.190544] tegra-i2c c240000.i2c: no acknowledge from address 0x42
+[16930.196822] tegra-i2c c240000.i2c: no acknowledge from address 0x43
+[16930.203141] tegra-i2c c240000.i2c: no acknowledge from address 0x44
+[16930.209435] tegra-i2c c240000.i2c: no acknowledge from address 0x45
+[16930.215752] tegra-i2c c240000.i2c: no acknowledge from address 0x46
+[16930.222031] tegra-i2c c240000.i2c: no acknowledge from address 0x47
+[16930.228419] tegra-i2c c240000.i2c: no acknowledge from address 0x48
+[16930.234921] tegra-i2c c240000.i2c: no acknowledge from address 0x49
+[16930.240915] tegra-i2c c240000.i2c: no acknowledge from address 0x4a
+[16930.247231] tegra-i2c c240000.i2c: no acknowledge from address 0x4b
+[16930.253534] tegra-i2c c240000.i2c: no acknowledge from address 0x4c
+[16930.260123] tegra-i2c c240000.i2c: no acknowledge from address 0x4d
+[16930.266387] tegra-i2c c240000.i2c: no acknowledge from address 0x4e
+[16930.272516] tegra-i2c c240000.i2c: no acknowledge from address 0x4f
+[16930.278820] tegra-i2c c240000.i2c: no acknowledge from address 0x50
+[16930.285065] tegra-i2c c240000.i2c: no acknowledge from address 0x51
+[16930.291318] tegra-i2c c240000.i2c: no acknowledge from address 0x52
+[16930.297881] tegra-i2c c240000.i2c: no acknowledge from address 0x53
+[16930.304182] tegra-i2c c240000.i2c: no acknowledge from address 0x54
+[16930.310502] tegra-i2c c240000.i2c: no acknowledge from address 0x55
+[16930.316524] tegra-i2c c240000.i2c: no acknowledge from address 0x56
+[16930.322909] tegra-i2c c240000.i2c: no acknowledge from address 0x57
+[16930.329149] tegra-i2c c240000.i2c: no acknowledge from address 0x58
+[16930.335465] tegra-i2c c240000.i2c: no acknowledge from address 0x59
+[16930.341731] tegra-i2c c240000.i2c: no acknowledge from address 0x5a
+[16930.348035] tegra-i2c c240000.i2c: no acknowledge from address 0x5b
+[16930.354896] tegra-i2c c240000.i2c: no acknowledge from address 0x5d
+[16930.361153] tegra-i2c c240000.i2c: no acknowledge from address 0x5f
+[16930.366987] tegra-i2c c240000.i2c: no acknowledge from address 0x60
+[16930.373307] tegra-i2c c240000.i2c: no acknowledge from address 0x61
+[16930.379546] tegra-i2c c240000.i2c: no acknowledge from address 0x62
+[16930.386110] tegra-i2c c240000.i2c: no acknowledge from address 0x63
+[16930.392384] tegra-i2c c240000.i2c: no acknowledge from address 0x64
+[16930.398710] tegra-i2c c240000.i2c: no acknowledge from address 0x65
+[16930.404993] tegra-i2c c240000.i2c: no acknowledge from address 0x66
+[16930.411299] tegra-i2c c240000.i2c: no acknowledge from address 0x67
+[16930.417409] tegra-i2c c240000.i2c: no acknowledge from address 0x68
+[16930.423945] tegra-i2c c240000.i2c: no acknowledge from address 0x69
+[16930.429928] tegra-i2c c240000.i2c: no acknowledge from address 0x6a
+[16930.436212] tegra-i2c c240000.i2c: no acknowledge from address 0x6b
+[16930.442784] tegra-i2c c240000.i2c: no acknowledge from address 0x6c
+[16930.449090] tegra-i2c c240000.i2c: no acknowledge from address 0x6d
+[16930.455410] tegra-i2c c240000.i2c: no acknowledge from address 0x6e
+[16930.461476] tegra-i2c c240000.i2c: no acknowledge from address 0x6f
+[16930.468322] tegra-i2c c240000.i2c: no acknowledge from address 0x71
+[16930.474012] tegra-i2c c240000.i2c: no acknowledge from address 0x72
+[16930.480608] tegra-i2c c240000.i2c: no acknowledge from address 0x73
+[16930.486664] tegra-i2c c240000.i2c: no acknowledge from address 0x74
+[16930.492949] tegra-i2c c240000.i2c: no acknowledge from address 0x75
+[16930.499242] tegra-i2c c240000.i2c: no acknowledge from address 0x76
+[16930.505780] tegra-i2c c240000.i2c: no acknowledge from address 0x77
+[16930.515427] tegra-i2c 31e0000.i2c: no acknowledge from address 0x3
+[16930.518206] tegra-i2c 31e0000.i2c: no acknowledge from address 0x4
+[16930.524518] tegra-i2c 31e0000.i2c: no acknowledge from address 0x5
+[16930.530987] tegra-i2c 31e0000.i2c: no acknowledge from address 0x6
+[16930.537260] tegra-i2c 31e0000.i2c: no acknowledge from address 0x7
+[16930.543574] tegra-i2c 31e0000.i2c: no acknowledge from address 0x8
+[16930.549613] tegra-i2c 31e0000.i2c: no acknowledge from address 0x9
+[16930.556054] tegra-i2c 31e0000.i2c: no acknowledge from address 0xb
+[16930.562432] tegra-i2c 31e0000.i2c: no acknowledge from address 0xc
+[16930.568564] tegra-i2c 31e0000.i2c: no acknowledge from address 0xd
+[16930.575073] tegra-i2c 31e0000.i2c: no acknowledge from address 0xe
+[16930.581119] tegra-i2c 31e0000.i2c: no acknowledge from address 0xf
+[16930.587370] tegra-i2c 31e0000.i2c: no acknowledge from address 0x10
+[16930.593570] tegra-i2c 31e0000.i2c: no acknowledge from address 0x11
+[16930.599761] tegra-i2c 31e0000.i2c: no acknowledge from address 0x12
+[16930.606100] tegra-i2c 31e0000.i2c: no acknowledge from address 0x13
+[16930.612543] tegra-i2c 31e0000.i2c: no acknowledge from address 0x14
+[16930.618677] tegra-i2c 31e0000.i2c: no acknowledge from address 0x15
+[16930.624870] tegra-i2c 31e0000.i2c: no acknowledge from address 0x16
+[16930.631067] tegra-i2c 31e0000.i2c: no acknowledge from address 0x17
+[16930.637286] tegra-i2c 31e0000.i2c: no acknowledge from address 0x18
+[16930.643233] tegra-i2c 31e0000.i2c: no acknowledge from address 0x19
+[16930.649702] tegra-i2c 31e0000.i2c: no acknowledge from address 0x1a
+[16930.656003] tegra-i2c 31e0000.i2c: no acknowledge from address 0x1b
+[16930.662009] tegra-i2c 31e0000.i2c: no acknowledge from address 0x1c
+[16930.668553] tegra-i2c 31e0000.i2c: no acknowledge from address 0x1d
+[16930.674814] tegra-i2c 31e0000.i2c: no acknowledge from address 0x1e
+[16930.681133] tegra-i2c 31e0000.i2c: no acknowledge from address 0x1f
+[16930.687430] tegra-i2c 31e0000.i2c: no acknowledge from address 0x20
+[16930.693741] tegra-i2c 31e0000.i2c: no acknowledge from address 0x21
+[16930.700064] tegra-i2c 31e0000.i2c: no acknowledge from address 0x22
+[16930.706466] tegra-i2c 31e0000.i2c: no acknowledge from address 0x23
+[16930.712640] tegra-i2c 31e0000.i2c: no acknowledge from address 0x24
+[16930.718930] tegra-i2c 31e0000.i2c: no acknowledge from address 0x25
+[16930.724972] tegra-i2c 31e0000.i2c: no acknowledge from address 0x26
+===== I2C BUS 0 =====
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+50: 50 -- -- -- -- -- -- 57 -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+70: -- -- -- -- -- -- -- --                         
+===== I2C BUS 1 =====
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- -- -- -- -- -- 5c -- 5e -- 
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+70: 70 -- -- -- -- -- -- --                         
+===== I2C BUS 8 =====
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- -- -- UU -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- 57 -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- 68 -- -- -- -- -- -- -- 
+70: 70 -- -- -- -- -- -- --                         

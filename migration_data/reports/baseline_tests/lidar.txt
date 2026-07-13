@@ -1,0 +1,41 @@
+LiDAR device: /dev/rplidar
+lrwxrwxrwx 1 root root 7 Jul 10 17:26 /dev/rplidar -> ttyUSB0
+P: /devices/3610000.xhci/usb1/1-2/1-2.4/1-2.4:1.0/ttyUSB0/tty/ttyUSB0
+N: ttyUSB0
+S: gps0
+S: rplidar
+S: serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0
+S: serial/by-path/platform-3610000.xhci-usb-0:2.4:1.0-port0
+E: DEVLINKS=/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0 /dev/serial/by-path/platform-3610000.xhci-usb-0:2.4:1.0-port0 /dev/gps0 /dev/rplidar
+E: DEVNAME=/dev/ttyUSB0
+E: DEVPATH=/devices/3610000.xhci/usb1/1-2/1-2.4/1-2.4:1.0/ttyUSB0/tty/ttyUSB0
+E: ID_BUS=usb
+E: ID_MM_CANDIDATE=1
+E: ID_MODEL=CP2102_USB_to_UART_Bridge_Controller
+E: ID_MODEL_ENC=CP2102\x20USB\x20to\x20UART\x20Bridge\x20Controller
+E: ID_MODEL_FROM_DATABASE=CP2102/CP2109 UART Bridge Controller [CP210x family]
+E: ID_MODEL_ID=ea60
+E: ID_PATH=platform-3610000.xhci-usb-0:2.4:1.0
+E: ID_PATH_TAG=platform-3610000_xhci-usb-0_2_4_1_0
+E: ID_REVISION=0100
+E: ID_SERIAL=Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001
+E: ID_SERIAL_SHORT=0001
+E: ID_TYPE=generic
+E: ID_USB_DRIVER=cp210x
+E: ID_USB_INTERFACES=:ff0000:
+E: ID_USB_INTERFACE_NUM=00
+E: ID_VENDOR=Silicon_Labs
+E: ID_VENDOR_ENC=Silicon\x20Labs
+E: ID_VENDOR_FROM_DATABASE=Cygnal Integrated Products, Inc.
+E: ID_VENDOR_ID=10c4
+E: MAJOR=188
+E: MINOR=0
+E: SUBSYSTEM=tty
+E: SYSTEMD_WANTS=gpsdctl@ttyUSB0.service
+E: TAGS=:systemd:
+E: USEC_INITIALIZED=7551721
+E: net.ifnames=0
+
+INFO {'model': 40, 'firmware': (1, 28), 'hardware': 7, 'serialnumber': '80DD9A86C0E09CC7A2E09DF7120F3077'}
+HEALTH ('Good', 0)
+PASS: RPLidar serial protocol responded

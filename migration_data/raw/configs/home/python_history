@@ -1,0 +1,517 @@
+from notebook.auth import passwd
+passwd()
+import numpy
+numpy.version
+numpy.__version__
+import tensorflow 
+tensorflow.Version
+tensorflow.version.VERSION
+import torch
+import gtm
+import gym
+import opencv
+import cv2
+import can
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
+msg = can.Message(arbitration_id=0x7de,data=[0,2,2,2])
+bus.send(msg)
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 0, 1, 3, 1, 4, 1])
+bus.send(msg)
+msg = can.Message(arbitration_id=0x1,data=[0, 25, 0, 1, 3, 1, 4, 1])
+bus.send(msg)
+import can
+msg = can.Message(arbitration_id=0x1,data=[0, 25, 0, 1, 3, 1, 4, 1])
+bus.send(msg)
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
+bus.send(msg)
+import can
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
+msg = can.Message(arbitration_id=0x1,data=[0, 25, 0, 1, 3, 1, 4, 1])
+bus.send(msg)
+import can
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
+msg = can.Message(arbitration_id=0x1,data=[0, 25, 0, 1, 3, 1, 4, 1])
+bus.send(msg)
+import can 
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 19, 1, 3, 1, 4, 1])  
+bus.send(msg)
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 19, 1])  
+bus.send(msg)
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 19, 1, 3, 1, 4, 1])  
+bus.send(msg)
+bus.recv()
+a = bus.recv()
+print(a.data)
+a = bus.recv()
+print(a.data)
+a = bus.recv()
+print(a.data)
+while True:
+import time
+while True:
+	a = bus.recv()
+	print(a.data)
+	time.sleep(1)
+import can
+import time 
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message()
+while True:
+	msg = bus.recv()
+	print(msg.data)
+	time.sleep(1)
+import pop
+import pop.Ai
+import pop.AI
+import pop
+import pop.Util
+from pop import AI
+import pop
+import pop.Ai
+import pop.AI
+import pop.Util
+import pop
+import popo
+import pop
+import board
+import RPi.GPIO
+import board
+import pop
+import RPi.GPIO
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
+import pop
+import RPi.GPIO as GPIO 
+GPIO.setmode(GPIO.BCM
+(
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+import pop
+from pop import Mpu6050
+from pop import mpu6050
+from pop.Pilot import 6axis 
+from pop.Pilot import axis6
+from pop import PwmController
+pwm = PwmController(0x70)
+pwm.init()
+pwm.setChannel(-1)
+pwm.setFreq(50)
+pwm.setDuty(30)
+pwm.setDuty(100)
+import rpliar
+import Rplidar
+import sounddevice 
+import wave
+import time
+import pyaudio
+import wave
+CHUNK = 1024 
+RATE = 48000
+p = pyaudio.PyAudio()
+stream = p.open(format=pyaudio.paInt16, channels=1, rate=RATE, input=True, frames_per_buffer=CHUNK)
+w = wave.open("test.wav", "wb")
+w.setsampwidth(p.get_sample_size(pyaudio.paInt16))
+w.setnchannels(1)
+w.setframerate(RATE)
+print("Recording Start")
+for _ in range(int(RATE/CHUNK * 5)):
+    w.writeframes(stream.read(CHUNK))
+import smbus 
+bus = smbus.SMBUS(8)
+bus = smbus.SMBus(8)
+bus.write_byte_data(0x68,0x6b,0)
+h = bus.read_byte_data(0x68,0x43)
+l = bus.read_byte_data(0x68,0x44)
+val = (h<<8)+l
+print(val)
+h = bus.read_byte_data(0x68,0x43)
+l = bus.read_byte_data(0x68,0x44)
+val = (h<<8)+l
+print(val)
+h = bus.read_byte_data(0x68,0x3b)
+h = bus.read_byte_data(0x68,0x3c)
+h = bus.read_byte_data(0x68,0x3b)
+l = bus.read_byte_data(0x68,0x3c)
+val = (h<<8)+l
+print(val)
+import smbus
+smbus.SMBus(8)
+import pyaudio
+p=pyaudio.PyAudio()
+import pyaudio
+p=pyaudio.PyAudio()
+import pyaudio
+p=pyaudio.PyAudio()
+import pyaudio
+p=pyaudio.PyAudio()
+import pyaudio
+p=pyaudio.PyAudio()
+import traitlets 
+import traitlets
+import cv2
+cv2.__version__
+import rospy
+import tensorflow as tf 
+import cv2
+import tensorflow as tf 
+import can
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+import can
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+import can
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+msg = can.Message(arbitration_id=0x101,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+	
+bus.send(msg)
+import can
+	
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x101,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+import can
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x101,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+import can
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+import can
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+import can
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+import can 
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+import can 
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+bus.send(msg)
+import can 
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x7de,data=[0, 25, 0, 1, 3, 1, 4, 1])  
+print(type(msg.data))
+import can
+import time 
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message()
+while Ture:
+	msg = bus.recv()
+	print(msg.data)
+	time.sleep(1)
+while True:
+	msg = bus.recv()
+	print(msg.data)
+	time.sleep(1)
+import can
+import time 
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message()
+while Ture:
+    msg = bus.recv()
+    print(msg.data)
+    time.sleep(1)
+import can
+import time 
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message()
+while True:
+    msg = bus.recv()
+    print(msg.data)
+    time.sleep(1)
+import can
+import time 
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message()
+while True:
+    msg = bus.recv()
+    print(msg.data)
+    time.sleep(1)
+import can
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native') 
+msg = can.Message(arbitration_id=0x102,data=[0, 25, 0, 1, 3, 1, 4, 1])
+bus.send(msg)
+msg = can.Message(arbitration_id=0x102,is_extended_id=False,data=[0, 25, 0, 1, 3, 1, 4, 1])
+bus.send(msg)
+import can
+bus = can.interface.Bus(channel='can0
+bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
+msg = can.Message(arbitration_id=0x103, is_extended_id=False, data=[0x1])
+bus.send(msg)
+buf = bus.recv()
+while True:
+	buf = bus.recv()
+	print(buf.data)
+	
+import time
+while True:
+	buf = bus.recv()
+	print(buf.data)
+	print(buf.arbitration_id)
+	time.sleep(0.1)
+msg = can.Message(arbitration_id=0x103, is_extended_id=False, data=[0x1,0,0])
+bus.send(msg)
+while True:
+	buf = bus.recv()
+	print(buf.data)
+	print(buf.arbitration_id)
+	time.sleep(0.1)
+msg = can.Message(arbitration_id=0x103, is_extended_id=False, data=[0x1,0,0])
+bus.send(msg)
+while True:
+	buf = bus.recv()
+	print(buf.data)
+	print(buf.arbitration_id)
+	time.sleep(0.1)
+from pop.Can import 3WD
+from pop.Can
+import pop.Can
+:q
+from pop.Can import OmniWheel
+OmniWheel.forward([100,0,0])
+OmniWheel.forward(data=[100,0,0])
+from pop.Can import OmniWheel
+OmniWheel.forward(data=[100,0,0])
+from pop.Can import OmniWheel
+OmniWheel.forward(data=[100,0,0])
+from pop.Can import OmniWheel
+OmniWheel.forward(data=[100,0,0])
+from pop.Can import OmniWheel
+OmniWheel.forward(data=[100,0,0])
+OmniWheel.forward([100,0,0])
+from pop.Can import OmniWheel
+OmniWheel.forward([100,0,0])
+OmniWheel.forward(data=[100,0,0])
+from pop.Can import OmniWheel
+OmniWheel.forward(data=[100,0,0])
+OmniWheel.forward([100,0,0])
+from pop.Can import OmniWheel
+o = OmniWheel()
+from pop.Can import OmniWheel
+o = OmniWheel()
+from pop.Can import Can
+c = Can()
+from pop.Can import Can
+c = Can()
+import can
+can.bus(cahnnel='can0-
+can.bus(cahnnel='can0', bustype='socketcan_native')
+from pop.Can import Can
+c = Can()
+from pop.Can import Can
+c = Can()
+from pop.Can import OmniWheel
+o = OmniWheel()
+o.forward([100,0,0])
+o.forward([100,100,0])
+c.send(0x101,[100,0,0,0,0,0])
+c.send(257,[100,0,0,0,0,0])
+o.forward([100,0,0])
+o.forward([100,100,0])
+o.forward([0,0,0])
+from pop.Can import Can
+c = Can()
+c.send(0x103,[1,0,0,0,0,0])
+a = c.recv()
+print(int(a.data[0]))
+a = c.recv()
+print(int(a.data[0]))
+a = c.recv()
+print(int(a.data[0]))
+a = c.recv()
+print(int(a.data[0]))
+a = c.recv()
+print(int(a.data[0]))
+a = c.recv()
+print(int(a.data[0]))
+a = c.recv()
+print(int(a.data[0]))
+import time
+while True:
+	a = c.recv()
+	print(int(a.data[0]))
+	time.sleep(0.1)
+c.setFilter(0x135,0x7FF)
+while True:
+	a = c.recv()
+	print(int(a.data[0]))
+	time.sleep(0.1)
+c.send(0x103,[0,0,0,0,0,0])
+from pop.Can import Ultrasonic 
+u = Ultrasonic()
+u.setEnable([1,1,1,0,0,0])
+u.getEnable()
+u.setEnable([1,1,0,0,1,0])
+u.getEnable()
+u.setEnable([0,0,0,0,0,0])
+from pop.Can import Ultrasonic 
+u = Ultrasonic 
+u.setEnable([1,0,0,0,0,0])
+u = Ultrasonic()
+u.setEnable([1,0,0,0,0,0])
+u.read()
+from pop.Can import Ultrasonic 
+u = Ultrasonic()
+u.setEnable([1,0,0,0,0,0])
+u.read()
+from pop.Can import Ultrasonic 
+u = Ultrasonic()
+u.setEnable([1,0,0,0,0,0])
+u.read()
+u.setDisable()
+u.read()
+while Ture:
+	u.read()
+	time.
+import time
+while True:
+	u.read()
+	time.sleep(0.1)
+u.read()
+import can
+can.interface.Bus(channel='can0', bustype='socketcan_native')
+a = can.interface.Bus(channel='can0', bustype='socketcan_native')
+b = a.recv(timeout=2)
+print(b.data)
+b = a.recv(timeout=2)
+print(b.data)
+b = a.recv(timeout=2)
+print(b.data)
+bus.set_filters([{"can_id": 0x135, "can_mask": 0x7FF, "extended": False}])
+a.set_filters([{"can_id": 0x135, "can_mask": 0x7FF, "extended": False}])
+b = a.recv(timeout=2)
+print(b.data)
+while True:
+	b = a.recv(timeout=2)
+	print(
+)
+import time
+while True:
+	b = a.recv(timeout=2)
+	print(b.data)
+	time.sleep(0.1)
+b=a.recv(timeout=10)
+print(b)
+from pop.Can import Ultrasonic 
+u = Ultrasonic()
+u.setEnable([1,0,0,0,0,0])
+d = u.read()
+print(d)
+d = u.read()
+print(d)
+d = u.read()
+u.setDisable()
+d = u.read()
+from pop.Can import Ultrasonic 
+import time 
+u = Ultrasonic()
+u.setEnable([1,0,1,0,0,0])
+while True:
+	b = u.read()
+	print(b)
+	time.sleep(0.1)
+u.setDisable()
+import time 
+from pop.Can import Ultrasonic 
+u = Ultrasonic()
+u.setEnable([1,0,1,0,0,0])
+while True:
+	b = u.read()
+	print(b)
+	time.sleep(0.1)
+while True:
+	b = u.read()
+	print(b)
+	time.sleep(0.1)
+u.setDisable()
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(9,GPIO.OUT)
+GPIO.output(9,GPIO.LOW)
+GPIO.output(9,GPIO.HIGH)
+GPIO.setup(7,GPIO.OUT)
+GPIO.output(7,GPIO.HIGH)
+GPIO.output(9,GPIO.LOW)
+GPIO.output(9,GPIO.HIGH)
+GPIO.output(7,GPIO.HIGH)
+from pop import Led 
+from pop import PiezoBuzzer
+p = PizeoBuzzer(12)
+p = PiezoBuzzer(12)
+p.tone(4,4,4)
+p.tone(4,2,4)
+from pop import Led 
+l = Led(23)
+l.on()
+l.off()
+from pop import Dust
+d = Dust()
+d.read()
+import time 
+whiel True:
+while True:
+	dust.read()
+	print(dus.pm_1p0_grimm)
+	time.sleep(0.4)
+while True:
+	d.read()
+	print(dus.pm_1p0_grimm)
+	time.sleep(0.4)
+while True:
+	d.read()
+	print(d.pm_1p0_grimm)
+	time.sleep(0.4)
+from pop import PiezoBuzzer 
+p = PizeoBuzzer(12)
+p = PiezoBuzzer(12)
+p.tone(4,4,4)
+p.tone(4,8,4)
+from pop import Cds 
+c = Cds(7)
+c.read()
+from pop import PiezoBuzzer
+p = PiezoBuzzer(12)
+p.tone(4,4,4)
+from pop import PiezoBuzzer
+p = PiezoBuzzer(12)
+p.tone(4,4,4)
+from pop import PiezoBuzzer
+p = PiezoBuzzer(12)
+p.tone(4,4,4)
+from pop import Cds
+c = Cds(7)
+c.read()
+from pop import PiezoBuzzer
+p = PiezoBuzzer(12)
+p.tone(4,4,4)
+from pop import Cds
+c = Cds(7)
+c.read()
+from pop import PiezoBuzzer
+p = PiezoBuzzer(12)
+p.tone(4,4,4)
+from pop import Cds
+c = Cds(7)
+c.read()
+from pop import Piezobuzzer
+from pop import PiezoBuzzer
+p = PiezoBuzzer(12)
+p.tone(4,4,4)

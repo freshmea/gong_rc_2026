@@ -1,0 +1,389 @@
+: 1613701250:0;sudo i2cdetect -y -r 0
+: 1613701255:0;sudo i2cdetect -y -r 1
+: 1613701260:0;sudo i2cdetect -y -r 8
+: 1613701426:0;i2cdetect -l
+: 1613702552:0;ls /usr/local/lib/python3.6/dist-packages
+: 1613703027:0;sudo pip3 install yolov4=2.1.0
+: 1613703081:0;sudo pip3 install yolov4==2.1.0
+: 1613703281:0;sudo pip3 install yolov4-2.1.0.tar.gz
+: 1613703739:0;sudo pip3 uninstall yolov4
+: 1613703773:0;sudo pip3 install yolov4==2.1.0
+: 1613703927:0;sudo pip3 install yolov
+: 1613704012:0;sudo pip3 install yolov4
+: 1613704206:0;pip3 install yolov4
+: 1613704479:0;ping 8.8.8.8
+: 1613704729:0;sudo -H pip3 install yolov4==2.1.0
+: 1613704881:0;sudo -H pip3 install yolov4-2.1.0.tar.gz
+: 1613705094:0;python3 -mpip3 install -U yolov4
+: 1613705099:0;python3 -mpip install -U yolov4
+: 1613705231:0;python3 -mpip install -U yolov4-2.1.0.tar.gz
+: 1613705418:0;sudo pip3 install --upgrade setuptools
+: 1613705622:0;pip3 install --no-index --find-links yolov4-2.1.0.tar.gz yolov4
+: 1613705753:0;clear
+: 1613705776:0;ifconfig
+: 1613705780:0;history
+: 1613705809:0;sudo pip3 install yolov4-2.1.0.tar.gz
+: 1613706228:0;sudo nmcli device wifi connect HBE_RSP password hanback91
+: 1615795214:0;ping google.com
+: 1615795225:0;sudo pip3 install -U yolov4==2.1.0
+: 1615796624:0;i2cdetect -y -r
+: 1615796628:0;i2cdetect -y -r 8
+: 1615796717:0;i2cdetect -y -r 1
+: 1615796720:0;i2cdetect -y -r 0
+: 1615800264:0;jtop
+: 1729819887:0;ls /dev
+: 1729820471:0;ls /usr/share/sounds/alsa
+: 1729820640:0;/dev
+: 1729820642:0;ls
+: 1729820647:0;ls ~
+: 1729820652:0;cd /dev
+: 1729820653:0;ls
+: 1729821107:0;ls /usr/share/sounds/alsa
+: 1729821121:0;cd /usr/share/sounds/alsa
+: 1729821122:0;ls
+: 1729821134:0;exit
+: 1729821137:0;clear
+: 1731394876:0;lsblk
+: 1731395065:0;ls
+: 1731396438:0;ifconfig
+: 1731396651:0;nmcli device
+: 1731396663:0;nmcli device wifi list
+: 1731396686:0;sudo nmcli device wifi connect iptime5G  password 
+: [REDACTED] nmcli device wifi connect iptime5G
+: 1782356231:0;ping googole.com
+: 1782356236:0;ping 8.8.8.8
+: 1782458902:0;ls
+: 1782459425:0;ifconfig
+: 1782460029:0;clear
+: 1782460031:0;ls
+: 1782460054:0;cat /etc/os-release\
+uname -m\
+ldd --version
+: 1782460120:0;c
+: 1782460129:0;mkdir -p ~/vscode-cli\
+cd ~/vscode-cli\
+\
+wget -O vscode-cli.tar.gz "https://code.visualstudio.com/sha/download?build=stable&os=cli-linux-arm64"\
+\
+tar -xzf vscode-cli.tar.gz\
+./code --version
+: 1782460152:0;wget -O vscode-cli.tar.gz "https://code.visualstudio.com/sha/download?build=stable&os=cli-linux-arm64"
+: 1782460199:0;ls
+: 1782460203:0;rm vscode-cli.tar.gz
+: 1782460204:0;ls
+: 1782460216:0;wget -O vscode-cli.tar.gz "https://update.code.visualstudio.com/latest/cli-alpine-arm64/stable"
+: 1782460223:0;tar -xzf vscode-cli.tar.gz
+: 1782460228:0;./code --version
+: 1782460240:0;xeyes
+: 1782460260:0;./code tunnel
+: 1782460371:0;code
+: 1782460381:0;ps -al
+: 1782460507:0;tmux ls
+: 1782460516:0;tmux list-sessions
+: 1782460798:0;cat /etc/os-release\
+uname -a\
+uname -m\
+\
+cat /etc/nv_tegra_release\
+dpkg-query --show nvidia-l4t-core
+: 1782460808:0;cat /proc/device-tree/model
+: 1782460819:0;sudo /opt/nvidia/jetson-io/jetson-io.py
+: 1782460957:0;echo "===== OS ====="\
+cat /etc/os-release\
+uname -a\
+cat /proc/device-tree/model 2>/dev/null\
+cat /etc/nv_tegra_release 2>/dev/null\
+\
+echo "===== Devices ====="\
+lsusb\
+lsusb -t\
+lspci 2>/dev/null\
+lsblk\
+\
+echo "===== Dev nodes ====="\
+ls -l /dev/gpiochip* 2>/dev/null\
+ls -l /dev/i2c* 2>/dev/null\
+ls -l /dev/spidev* 2>/dev/null\
+ls -l /dev/ttyUSB* /dev/ttyACM* /dev/ttyTHS* 2>/dev/null\
+ls -l /dev/video* 2>/dev/null\
+\
+echo "===== Network / CAN ====="\
+ip link show\
+ip -details link show | grep -A 20 -i can\
+\
+echo "===== Kernel logs ====="\
+dmesg | grep -Ei "gpio|i2c|spi|tty|usb|can|mttcan|lidar|video|camera" | tail -n 100
+: 1782461297:0;exit
+: 1782462131:0;ls
+: 1782462145:0;cd vscode-cli
+: 1782462145:0;ls
+: 1782462151:0;cd ..
+: 1782462152:0;ls
+: 1782696281:0;ls -al
+: 1782696404:0;tmux list
+: 1782696410:0;tmux list-sessions
+: 1782696604:0;tmux
+: 1782696609:0;history
+: 1782696736:0;cat /etc/os-release\nuname -a\nuname -m\n\ncat /etc/nv_tegra_release\ndpkg-query --show nvidia-l4t-core
+: 1782696745:0;cat /etc/os-release\nuname -a \nuname -m \n\ncat /etc/nv_tegra_release\ndpkg-query --show nvidia-l4t-core
+: 1782696780:0;cat /etc/os-release\
+uname -a\
+uname -m\
+\
+cat /etc/nv_tegra_release\
+dpkg-query --show nvidia-l4t-core
+: 1782696906:0;echo "===== OS ====="\
+cat /etc/os-release\
+uname -a\
+cat /proc/device-tree/model 2>/dev/null\
+cat /etc/nv_tegra_release 2>/dev/null\
+\
+echo "===== Devices ====="\
+lsusb\
+lsusb -t\
+lspci 2>/dev/null\
+lsblk\
+\
+echo "===== Dev nodes ====="\
+ls -l /dev/gpiochip* 2>/dev/null\
+ls -l /dev/i2c* 2>/dev/null\
+ls -l /dev/spidev* 2>/dev/null\
+ls -l /dev/ttyUSB* /dev/ttyACM* /dev/ttyTHS* 2>/dev/null\
+ls -l /dev/video* 2>/dev/null\
+\
+echo "===== Network / CAN ====="\
+ip link show\
+ip -details link show | grep -A 20 -i can\
+\
+echo "===== Kernel logs ====="\
+dmesg | grep -Ei "gpio|i2c|spi|tty|usb|can|mttcan|lidar|video|camera" | tail -n 100
+: 1782697425:0;history
+: 1782697451:0;nmcli device wifi list
+: 1782697546:0;sudo nmcli device wifi connect iptime5G
+: 1782697903:0;ifconfig
+: 1782700119:0;ls
+: 1782702699:0;ls -al
+: 1782702742:0;cd ..
+: 1782702743:0;ls
+: 1782702746:0;cd ..
+: 1782702747:0;ls
+: 1782702752:0;cd boot
+: 1782702753:0;ls
+: 1782702755:0;cd ..
+: 1782702755:0;ls
+: 1782702792:0;echo $PYTHONPATH
+: 1782702817:0;sudo find / -iname "*pop*" 2>/dev/null
+: 1782702869:0;pip show pop
+: 1782702876:0;python3 -c "import pop; print(pop.__file__)"
+: 1782702981:0;cd /usr/local/lib/python3.6/dist-packages/pop
+: 1782702982:0;ls
+: 1782702994:0;cd model
+: 1782702995:0;ls
+: 1782703008:0;cd ..
+: 1782703013:0;cd LiDAR
+: 1782703014:0;ls
+: 1782703024:0;cd ..
+: 1782703024:0;ls
+: 1782703060:0;cat Pilot.py
+: 1782710746:0;ip link show can0
+: 1782710790:0;echo "===== OS ====="\
+cat /etc/os-release\
+uname -a\
+cat /proc/device-tree/model 2>/dev/null\
+cat /etc/nv_tegra_release 2>/dev/null\
+\
+echo "===== Devices ====="\
+lsusb\
+lsusb -t\
+lspci 2>/dev/null\
+lsblk\
+\
+echo "===== Dev nodes ====="\
+ls -l /dev/gpiochip* 2>/dev/null\
+ls -l /dev/i2c* 2>/dev/null\
+ls -l /dev/spidev* 2>/dev/null\
+ls -l /dev/ttyUSB* /dev/ttyACM* /dev/ttyTHS* 2>/dev/null\
+ls -l /dev/video* 2>/dev/null\
+\
+echo "===== Network / CAN ====="\
+ip link show\
+ip -details link show | grep -A 20 -i can\
+\
+echo "===== Kernel logs ====="\
+dmesg | grep -Ei "gpio|i2c|spi|tty|usb|can|mttcan|lidar|video|camera" | tail -n 100
+: 1782713004:0;pip list colorama
+: 1782713013:0;pip list | grep colorama
+: 1782713055:0;pip install colorama==0.3.8
+: 1782713078:0;pip install --upgrade colorama
+: 1782715114:0;pip list | grep pandas
+: 1782716948:0;ls
+: 1782716953:0;cd ~
+: 1782716954:0;ls
+: 1782716966:0;cd Project
+: 1782716967:0;ls
+: 1782716969:0;cd ..
+: 1782716976:0;cd Desktop
+: 1782716977:0;ls
+: 1782716979:0;cd ..
+: 1782716979:0;ls
+: 1782716985:0;ls -al
+: 1782716998:0;cd .jupyter
+: 1782716999:0;ls
+: 1782717003:0;cd lab
+: 1782717004:0;ls
+: 1782717006:0;cd workspaces
+: 1782717007:0;ls
+: 1782717012:0;cd ..
+: 1782717017:0;ls
+: 1782717020:0;cd ..
+: 1782717020:0;ls
+: 1782717022:0;cd custom
+: 1782717023:0;ls
+: 1782717025:0;cd ..
+: 1782717025:0;ls
+: 1782717031:0;cd ..
+: 1782717204:0;cd ~
+: 1782717212:0;cd Project/python/notebook/gong_rc_2026
+: 1782717214:0;ls
+: 1782717217:0;ls -al
+: 1782717297:0;file img.jpg
+: 1782717310:0;file img.bmp
+: 1782717317:0;file img_rgb.bmp
+: 1782719116:0;ls /dev
+: 1782719130:0;ls /dev | grep video
+: 1782719921:0;pip list | grep flask
+: 1782719937:0;pip install update
+: 1782719950:0;pip install flask
+: 1782720048:0;ls
+: 1782720056:0;cd ~
+: 1782720056:0;ls
+: 1782720132:0;cat camera_api.py
+: 1782720144:0;python3 camera_api.py
+: 1782782304:0;ls
+: 1782786859:0;cd /usr/local/share/opencv4/haarcascades/
+: 1782786861:0;ls
+: 1782795932:0;cd ~
+: 1782795935:0;ls
+: 1782795996:0;speaker-test 
+: 1782796068:0;aplay -l
+: 1782796190:0;speaker-test -c2 -D hw:1,0 -t wav
+: 1782796233:0;speaker-test -c 2 -D hw:1,0 -t wav
+: 1782796699:0;cd /usr/share/sounds/alsa/
+: 1782796700:0;ls
+: 1782868033:0;ls -l /dev/gpiochip* 2>/dev/null\
+ls -l /dev/i2c* 2>/dev/null\
+ls -l /dev/spidev* 2>/dev/null\
+ls -l /dev/ttyUSB* /dev/ttyACM* /dev/ttyTHS* 2>/dev/null\
+ls -l /dev/video* 2>/dev/null
+: 1782868642:0;clear
+: 1782868657:0;sudo pip3 install gTTS
+: 1782868754:0;gtts-cli "샵��냥��탵��샤�샺��" --lang=ko | play -t mp3 -
+: 1782868792:0;gtts-cli "방갃�샪�냫��냫�. 샀�냪�� IT 갃�사샽� 쵃�샨��길샾��냫��냫�" --lang=ko | play -t mp3 -
+: 1782868841:0;gtts-cli "방갃�샪�냫��냫�. 샀�냪�� IT 갃�사샽� 쵃�샨��길샾��냫��냫�" --lang=ko --output hello.mp3
+: 1782868893:0;play hello.mp3
+: 1782868899:0;cd gong_rc_2026
+: 1782868908:0;play hello.mp3
+: 1782869482:0;ffmpeg -y -i en_tts.mp3 en_tts.wav
+: 1782869914:0;sudo apt install espeak espeak-en
+: 1782869922:0;sudo apt update
+: 1782869944:0;sudo apt install espeak espeak-en
+: 1782869958:0;sudo apt install espeak espeak-ng
+: 1782870050:0;espeak -w hello.wav "Hello, this is text to speach"
+: 1782870067:0;aplay hello.wav
+: 1782870083:0;espeak -w hello.wav "샵��냥��탵��샤�샺��"
+: 1782870085:0;aplay hello.wav
+: 1782870273:0;./piper
+: 1782870316:0;pip install piper-tts
+: 1782873173:0;cd /usr/local/lib/python3.6/dist-packages/
+: 1782873174:0;ls
+: 1782873192:0;ls | grep pop
+: 1782880349:0;pip install faster-whisper
+: 1782979553:0;pip freeze
+: 1782979612:0;pip freeze >> freeze.txt
+: 1782979623:0;ls
+: 1783036325:0;sudo bash -c 'cat > /etc/rc.local << EOF\
+#!/bin/bash\
+echo 0 > /sys/class/pwm/pwmchip4/export\
+chmod 666 /sys/class/pwm/pwmchip4/pwm0/enable\
+chmod 666 /sys/class/pwm/pwmchip4/pwm0/period\
+chmod 666 /sys/class/pwm/pwmchip4/pwm0/duty_cycle\
+exit 0\
+EOF\
+chmod +x /etc/rc.local'
+: 1783036336:0;cat /etc/rc.local
+: 1783036353:0;echo 0 | sudo tee /sys/class/pwm/pwmchip4/export 2>/dev/null
+: 1783045227:0;ls
+: 1783046913:0;tegrastats
+: 1783046950:0;cat /sys/devices/virtual/thermal/thermal_zone*/temp
+: 1783046955:0;ls /sys/devices/pwm-fan/
+: 1783046961:0;sudo sh -c 'echo 255 > /sys/devices/pwm-fan/target_pwm'
+: 1783046970:0;sudo sh -c 'echo 128 > /sys/devices/pwm-fan/target_pwm'
+: 1783053190:0;sudo sh -c 'echo 255 > /sys/devices/pwm-fan/target_pwm'
+: 1783405283:0;sudo sh -c 'echo 0 > /sys/devices/pwm-fan/target_pwm'
+: 1783405296:0;sudo sh -c 'echo 255 > /sys/devices/pwm-fan/target_pwm'
+: 1783405337:0;sudo jetson_clocks --show
+: 1783405356:0;sudo systemctl restart nvfancontrol
+: 1783405365:0;systemctl status nvfancontrol
+: 1783405378:0;sudo nano /etc/rc.local
+: 1783405580:0;sudo reboot
+: 1783486978:0;python3 -c "import gym, pyglet; print('gym:', gym.__version__); print('pyglet:', pyglet.version)"
+: 1783487260:0;pip uninstall pyglet -y
+: 1783487268:0;sudo pip uninstall pyglet -y
+: 1783487283:0;pip install pyglet==1.5.27
+: 1783487316:0;python3 -c "import gym, pyglet; print('gym:', gym.__version__); print('pyglet:', pyglet.version)"
+: 1783487388:0;sudo pip uninstall pyglet -y
+: 1783487396:0;pip install pyglet==1.5.0
+: 1783487460:0;pip list | grep pyvirtualdisplay
+: 1783487535:0;sudo apt install -y xvfb
+: 1783487552:0;pip install pyvirtualdisplay
+: 1783487640:0;sudo pip uninstall pyglet -y
+: 1783487651:0;pip install pyglet==1.3.2
+: 1783487730:0;sudo pip uninstall pyglet -y
+: 1783487797:0;pip install pyglet==1.5.0
+: 1783488110:0;xdpyinfo
+: 1783488236:0;sudo apt install -y xvfb x11-utils mesa-utils libgl1-mesa-glx libglu1-mesa freeglut3-dev
+: 1783488331:0;ps -al aux | grep Xvfb
+: 1783488635:0;ps -al aux | grep Xvfb aux | grep Xvfb
+: 1783488669:0;ps -al aux | grep Xvfb aux | grep Xvfb aux | grep -Ei "xvfb|xvnc|xorg|xwayland|pyvirtualdisplay"
+: 1783488688:0;ls /sys/devices/pwm-fan/ -al /tmp/.X11-unix
+: 1783488720:0;ls -al /tmp | grep X
+: 1783488731:0;rm -f /tmp/.X*-lock
+: 1783488736:0;sudo rm -f /tmp/.X*-lock
+: 1783488750:0;sudo rm -f /tmp/.X11-unix/X*
+: 1783488777:0;glxinfo -B
+: 1783648477:0;ls /dev
+: 1783648709:0;v4l2-ctl --list-devices
+: 1783648945:0;sudo fuser -v /dev/video0
+: 1783648968:0;sudo systemctl status nvargus-daemon
+: 1783649018:0;sudo dmesg -w
+: 1783649103:0;sudo fuser -v /dev/video0
+: 1783649190:0;sudo systemctl status nvargus-daemon
+: 1783668348:0;ュ�ヤ�
+: 1783668349:0;ls
+: 1783668353:0;cd gong_rc_2026
+: 1783668353:0;ls
+: 1783668357:0;pwd
+: 1783669280:0;tmux list
+: 1783669288:0;tmux list-sessions
+: 1783669611:0;ls
+: 1783669682:0;exit
+: 1783669691:0;ls
+: 1783669829:0;tmux list-sessions
+: 1783669861:0;tmux select-window -t 1
+: 1783669863:0;tmux select-window -t 0
+: 1783669879:0;tmux select-window -t 1
+: 1783669891:0;tmux select-window -t 0
+: 1783669936:0;tmux rename-window abc
+: 1783669952:0;tmux select-window abc
+: 1783669958:0;tmux select-window -t abc
+: 1783669973:0;tmux select-window -t 0
+: 1783669975:0;tmux select-window -t 1
+: 1783669998:0;tmux --help
+: 1783670018:0;exit
+: 1783670034:0;tmux list-sessions
+: 1783670038:0;exit
+: 1783670041:0;ls
+: 1783670047:0;tmux list-sessions
+: 1783670054:0;exit
+: 1783670063:0;tmux list-sessions
+: 1783670066:0;exit

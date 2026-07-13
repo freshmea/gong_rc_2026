@@ -1,0 +1,260 @@
+<html>
+	<head>
+		<title>Wi-Fi Setting</title>
+	</head>
+	<body>
+		<style>
+			body {
+				font-family: 'Lato', sans-serif;
+				background: #8c8ec6;
+				color: #FFF;
+			}
+			
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:20px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        overflow: hidden;
+        letter-spacing: .08em;
+        border-radius: 0;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+    a.animated-button:link:after, a.animated-button:visited:after {
+        content: "";
+        position: absolute;
+        height: 0%;
+        left: 50%;
+        top: 50%;
+        width: 150%;
+        z-index: -1;
+        -webkit-transition: all 0.75s ease 0s;
+        -moz-transition: all 0.75s ease 0s;
+        -o-transition: all 0.75s ease 0s;
+        transition: all 0.75s ease 0s;
+    }
+    a.animated-button:link:hover, a.animated-button:visited:hover {
+        color: #FFF;
+        text-shadow: none;
+    }
+    a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+        height: 450%;
+    }
+    a.animated-button:link, a.animated-button:visited {
+        position: relative;
+        display: block;
+        margin: 30px auto 0;
+        padding: 14px 15px;
+        color: #fff;
+        font-size:20px;
+        border-radius: 0;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        overflow: hidden;
+        letter-spacing: .08em;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+    a.animated-button.thar-four {
+        color: #fff;
+        cursor: pointer;
+        display: block;
+        position: relative;
+        border: 2px solid #F7CA18;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    }
+    a.animated-button.thar-four:hover {
+        color: #000 !important;
+        background-color: transparent;
+        text-shadow: nfour;
+    }
+    a.animated-button.thar-four:hover:before {
+        right: 0%;
+        left: auto;
+        width: 100%;
+    }
+    a.animated-button.thar-four:before {
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 0px;
+        z-index: -1;
+        content: '';
+        color: #000 !important;
+        background: #F7CA18;
+        transition: all 0.4s cubic-bezier(0.42, 0, 0.58, 1);
+    }
+
+    @media only screen and (max-width: 720px){
+        .panel  {
+            width: 45%;
+            display: inline-block;
+        }
+
+        a.animated-button:link, a.animated-button:visited {
+            font-size:14px;
+        }
+    }
+
+    @media only screen and (min-width: 721px){
+        .panel {
+            width: 30%;
+            display: inline-block;
+        }
+
+        a.animated-button:link, a.animated-button:visited {
+            font-size:20px;
+        }
+    }
+
+		</style>
+<div><a href="/"><img src="/images/back.png" style="
+    width: 5em;
+    position: fixed;
+    cursor: pointer;
+    "></a></div>
+<center><h1 class="title">Wi-Fi Setting</h1><br>
+	<div style="display: inline-flex;">
+    <div style="margin-right: 3em;min-width: 20em;">
+				<h2>Wi-Fi List</h2><br>
+				<div style="
+					width: 100%;
+					height: -webkit-fill-available;
+					background: #fff;
+					min-height: 50px;
+				">
+					<table style="
+						color: #000;
+					">
+						<tbody id="wifilist" style="
+							text-align-last: left;
+						"></tbody></table>
+				</div>
+			</div><div style="margin-left: 3em;">
+				<h2>Connection</h2><br>
+				<div id="connection">
+					<table>
+						<tbody style="text-align: right;">
+						<!--<tr>
+							<td><a style="cursor: pointer;" onclick="document.getElementById('wifimode').checked=true; document.getElementById('conbtn').innerText='Connect'; mode=true;">Wi-Fi</a><input type="radio" name="mode" id="wifimode" checked style="margin-right: 1em;margin-bottom: 2em;" onclick="document.getElementById('conbtn').innerText='Connect'; mode=true;"><a style="cursor: pointer;" onclick="document.getElementById('apmode').checked=true; document.getElementById('conbtn').innerText='Activate'; mode=false;">AP mode</a><input type="radio" name="mode" id="apmode" onclick="document.getElementById('conbtn').innerText='Activate'; mode=false;"></td>
+						</tr>-->
+						<tr>
+							<td>SSID <input id="SSID"></td>
+						</tr>
+						<tr>
+							<td>Password <input id="Passphrase" type="password"></td>
+						</tr>
+						<tr>
+							<td>
+								<div class="button col-md-3 col-sm-3 col-xs-6" onclick="connect();"> 
+									<a href="#" class="btn btn-sm animated-button thar-four" id="conbtn">Connect</a> 
+                                </div>
+                                <div id="MSG" style="max-width: fit-content;"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+    
+				</div>
+			</div>
+    </div>
+	
+
+</center>
+
+	</body>
+</html>
+
+<script>
+    mode=true;
+
+    ssid_list=[];
+
+    function status(){
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "/wifi_status",true);
+        xhr.send();
+        xhr.onload=(err)=>{
+            let elm=document.getElementById("wifilist");
+            elm.innerHTML=""
+            ssid_list=[];
+            cnt=0;
+
+            let resp=JSON.parse(xhr.response);
+
+            let signal, ssid, secured, color;
+
+            resp.forEach(e => {
+                if (e[0]=="*")
+                    color="#50bd0c";
+                else
+                    color="#000";
+
+                ssid=e[1];
+                ssid_list.push(ssid);
+                
+                signal=String(parseInt(parseInt(e[2])/34+1));
+
+                secured=""
+
+                if (e[3]!="--"){
+                    secured='<img src="/images/lock.png" style="height: 15px;">';
+                }
+
+                
+                elm.innerHTML+='<tr style="color: '+color+'; cursor: pointer;" onclick="select('+cnt+');"><td style="margin-right: 1em;"><img src="/images/wifi-'+signal+'.png" style="height: 15px;"></td><td style="width: 100%;">'+ssid+'</td><td>'+secured+'</td></tr>';
+                cnt++;
+                
+            });
+		}
+		
+    }
+
+    status();
+    setInterval(status,5000);
+
+    function select(n){
+        let ssidelm=document.getElementById("SSID");
+        ssidelm.value=ssid_list[n];
+    }
+
+    function connect(){
+        let ssid=document.getElementById("SSID").value;
+        let passphrase=document.getElementById("Passphrase").value;
+        if (mode){
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "/wifimode?ssid="+ssid+"&pw="+passphrase,true);
+            xhr.onload=(err)=>{
+                let msg=document.getElementById("MSG");
+                msg.innerText=xhr.response;
+                console.log(xhr.response)
+            }
+            xhr.send();
+        }else{
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "/apmode?ssid="+ssid+"&pw="+passphrase,true,);
+            xhr.onload=(err)=>{
+                let msg=document.getElementById("MSG");
+                msg.innerText=xhr.response;
+                
+            }
+            xhr.send();
+        }
+    }
+
+</script>

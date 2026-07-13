@@ -1,0 +1,10 @@
+=== camera device nodes ===
+crw-rw---- root:video /dev/video0
+=== V4L2 inventory ===
+vi-output, imx219 10-0010 (platform:15c10000.vi:2):
+	/dev/video0
+
+=== NVIDIA Argus ===
+PASS: nvargus-daemon active
+PASS: cv2 import 4.3.0
+GStreamer: YES

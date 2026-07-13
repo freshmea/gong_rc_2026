@@ -1,0 +1,3 @@
+host=192.168.0.34
+user=soda
+hostkey=SHA256:mHxNTNfeG7wgldciHKI0cq5J9fSkswLQVY25+ceIXTI

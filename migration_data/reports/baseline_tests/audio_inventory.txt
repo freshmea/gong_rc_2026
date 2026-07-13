@@ -1,0 +1,139 @@
+=== ALSA cards ===
+ 0 [tegrahdaxnx    ]: tegra-hda-xnx - tegra-hda-xnx
+                      tegra-hda-xnx at 0x3518000 irq 64
+ 1 [jetsonxaviernxa]: jetson-xaviernx - jetson-xaviernx-ape
+                      jetson-xaviernx-ape
+**** List of PLAYBACK Hardware Devices ****
+card 0: tegrahdaxnx [tegra-hda-xnx], device 3: HDMI 0 [HDMI 0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 0: tegrahdaxnx [tegra-hda-xnx], device 7: HDMI 0 [HDMI 0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 0: tegrahdaxnx [tegra-hda-xnx], device 8: HDMI 0 [HDMI 0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 0: tegrahdaxnx [tegra-hda-xnx], device 9: HDMI 0 [HDMI 0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 0: ADMAIF1 CIF ADMAIF1-0 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 1: ADMAIF2 CIF ADMAIF2-1 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 2: ADMAIF3 CIF ADMAIF3-2 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 3: ADMAIF4 CIF ADMAIF4-3 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 4: ADMAIF5 CIF ADMAIF5-4 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 5: ADMAIF6 CIF ADMAIF6-5 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 6: ADMAIF7 CIF ADMAIF7-6 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 7: ADMAIF8 CIF ADMAIF8-7 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 8: ADMAIF9 CIF ADMAIF9-8 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 9: ADMAIF10 CIF ADMAIF10-9 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 10: ADMAIF11 CIF ADMAIF11-10 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 11: ADMAIF12 CIF ADMAIF12-11 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 12: ADMAIF13 CIF ADMAIF13-12 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 13: ADMAIF14 CIF ADMAIF14-13 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 14: ADMAIF15 CIF ADMAIF15-14 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 15: ADMAIF16 CIF ADMAIF16-15 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 16: ADMAIF17 CIF ADMAIF17-16 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 17: ADMAIF18 CIF ADMAIF18-17 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 18: ADMAIF19 CIF ADMAIF19-18 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 19: ADMAIF20 CIF ADMAIF20-19 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+**** List of CAPTURE Hardware Devices ****
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 0: ADMAIF1 CIF ADMAIF1-0 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 1: ADMAIF2 CIF ADMAIF2-1 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 2: ADMAIF3 CIF ADMAIF3-2 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 3: ADMAIF4 CIF ADMAIF4-3 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 4: ADMAIF5 CIF ADMAIF5-4 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 5: ADMAIF6 CIF ADMAIF6-5 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 6: ADMAIF7 CIF ADMAIF7-6 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 7: ADMAIF8 CIF ADMAIF8-7 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 8: ADMAIF9 CIF ADMAIF9-8 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 9: ADMAIF10 CIF ADMAIF10-9 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 10: ADMAIF11 CIF ADMAIF11-10 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 11: ADMAIF12 CIF ADMAIF12-11 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 12: ADMAIF13 CIF ADMAIF13-12 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 13: ADMAIF14 CIF ADMAIF14-13 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 14: ADMAIF15 CIF ADMAIF15-14 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 15: ADMAIF16 CIF ADMAIF16-15 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 16: ADMAIF17 CIF ADMAIF17-16 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 17: ADMAIF18 CIF ADMAIF18-17 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 18: ADMAIF19 CIF ADMAIF19-18 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: jetsonxaviernxa [jetson-xaviernx-ape], device 19: ADMAIF20 CIF ADMAIF20-19 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0

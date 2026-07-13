@@ -1,0 +1,174 @@
+#!/usr/bin/env bash
+# Read-only inventory for the original Jetson Xavier NX image.
+set -u
+export LC_ALL=C
+
+section() { printf '\n===== %s =====\n' "$1"; }
+have() { command -v "$1" >/dev/null 2>&1; }
+
+section "COLLECTION_METADATA"
+date --iso-8601=seconds 2>/dev/null || date
+hostname
+id
+getent passwd "$(id -un)" || true
+
+section "OS_BOARD_KERNEL"
+cat /etc/os-release 2>/dev/null || true
+cat /etc/nv_tegra_release 2>/dev/null || true
+tr '\0' '\n' </proc/device-tree/model 2>/dev/null || true
+uname -a
+getconf GNU_LIBC_VERSION 2>/dev/null || true
+ld --version 2>/dev/null | sed -n '1p' || true
+cat /proc/cmdline 2>/dev/null || true
+
+section "COREUTILS_INTEGRITY"
+command -v tail 2>/dev/null || true
+file /usr/bin/tail 2>/dev/null || true
+sha256sum /usr/bin/tail 2>/dev/null || true
+dpkg --verify coreutils 2>/dev/null || true
+od -An -tx1 -N32 /usr/bin/tail 2>/dev/null || true
+
+section "CPU_MEMORY_POWER"
+lscpu 2>/dev/null || true
+free -h 2>/dev/null || true
+cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor 2>/dev/null | sort -u || true
+nvpmodel -q --verbose 2>/dev/null || true
+systemctl status nvfancontrol --no-pager 2>/dev/null || true
+
+section "STORAGE_MOUNTS"
+lsblk -o NAME,PATH,TYPE,FSTYPE,SIZE,FSAVAIL,FSUSE%,MOUNTPOINT,MODEL,SERIAL 2>/dev/null || true
+findmnt -A 2>/dev/null || true
+df -hT 2>/dev/null || true
+cat /etc/fstab 2>/dev/null || true
+
+section "NETWORK"
+ip -brief address 2>/dev/null || true
+ip route 2>/dev/null || true
+ip -details link 2>/dev/null || true
+nmcli -t -f DEVICE,TYPE,STATE,CONNECTION device status 2>/dev/null || true
+ss -lntup 2>/dev/null || true
+
+section "USB_PCI_DEVICE_NODES"
+lsusb 2>/dev/null || true
+lsusb -t 2>/dev/null || true
+lspci -nnk 2>/dev/null || true
+find /dev -maxdepth 2 \( -name 'ttyUSB*' -o -name 'ttyACM*' -o -name 'video*' -o -name 'i2c-*' -o -name 'gpiochip*' -o -name 'spidev*' -o -name 'can*' -o -name 'rplidar*' -o -name 'snd' \) -printf '%M %u:%g %p -> %l\n' 2>/dev/null | sort || true
+find /dev/serial -maxdepth 3 -type l -printf '%p -> %l\n' 2>/dev/null | sort || true
+
+section "VIDEO_CAMERA"
+if have v4l2-ctl; then v4l2-ctl --list-devices 2>/dev/null || true; fi
+for d in /dev/video*; do
+  [ -e "$d" ] || continue
+  printf '\n--- %s ---\n' "$d"
+  v4l2-ctl -d "$d" --all 2>/dev/null || true
+done
+systemctl status nvargus-daemon --no-pager 2>/dev/null || true
+
+section "I2C_GPIO_SPI_CAN"
+i2cdetect -l 2>/dev/null || true
+gpioinfo 2>/dev/null || true
+ip -details link show type can 2>/dev/null || true
+for p in /sys/class/i2c-dev/i2c-* /sys/class/gpio/gpiochip* /sys/class/spi_master/spi*; do
+  [ -e "$p" ] && printf '%s -> %s\n' "$p" "$(readlink -f "$p")"
+done
+
+section "AUDIO_ALSA_PULSE"
+cat /proc/asound/cards 2>/dev/null || true
+cat /proc/asound/devices 2>/dev/null || true
+aplay -l 2>/dev/null || true
+aplay -L 2>/dev/null || true
+arecord -l 2>/dev/null || true
+arecord -L 2>/dev/null || true
+pactl info 2>/dev/null || true
+pactl list short sinks 2>/dev/null || true
+pactl list short sources 2>/dev/null || true
+for card in 0 1 2 3; do
+  amixer -c "$card" scontrols >/dev/null 2>&1 || continue
+  printf '\n--- ALSA CARD %s ---\n' "$card"
+  amixer -c "$card" scontents 2>/dev/null || true
+done
+
+section "CUDA_NVIDIA_LIBRARIES"
+cat /usr/local/cuda/version.txt 2>/dev/null || true
+nvcc --version 2>/dev/null || true
+find /usr/local -maxdepth 3 -type l -name 'cuda*' -printf '%p -> %l\n' 2>/dev/null | sort || true
+dpkg-query -W -f='${binary:Package}\t${Version}\n' 2>/dev/null | grep -Ei 'nvidia|cuda|cudnn|tensorrt|opencv|gstreamer' | sort || true
+
+section "PYTHON_RUNTIME_AND_IMPORTS"
+for exe in python python2 python3 pip pip2 pip3; do
+  if have "$exe"; then printf '%s: ' "$exe"; "$exe" --version 2>&1 || true; command -v "$exe"; fi
+done
+python3 - <<'PY'
+import importlib
+modules = [
+    'pop', 'RPi.GPIO', 'Jetson.GPIO', 'rplidar', 'serial', 'smbus',
+    'pyaudio', 'sounddevice', 'cv2', 'numpy', 'scipy', 'pandas',
+    'tensorflow', 'keras', 'torch', 'jupyterlab', 'notebook', 'tmuxp'
+]
+for name in modules:
+    try:
+        module = importlib.import_module(name)
+        print('%s\tversion=%s\tfile=%s' % (
+            name, getattr(module, '__version__', 'unknown'), getattr(module, '__file__', 'unknown')))
+    except BaseException as exc:
+        print('%s\tERROR=%s: %s' % (name, type(exc).__name__, exc))
+PY
+
+section "PYTHON_PACKAGES"
+python3 -m pip freeze 2>/dev/null || pip3 freeze 2>/dev/null || true
+
+section "APT_PACKAGES"
+apt-mark showmanual 2>/dev/null | sort || true
+printf '\n--- ALL DPKG PACKAGES ---\n'
+dpkg-query -W -f='${binary:Package}\t${Version}\t${Architecture}\n' 2>/dev/null | sort || true
+
+section "APT_SOURCES_AND_HISTORY"
+grep -RhsEv '^\s*(#|$)' /etc/apt/sources.list /etc/apt/sources.list.d 2>/dev/null || true
+zgrep -hE '^(Start-Date|Commandline|Install|Upgrade|Remove|End-Date)' /var/log/apt/history.log* 2>/dev/null || true
+
+section "JUPYTER"
+jupyter --version 2>/dev/null || true
+jupyter --paths 2>/dev/null || true
+jupyter kernelspec list 2>/dev/null || true
+jupyter labextension list 2>&1 || true
+jupyter serverextension list 2>&1 || true
+find /home/soda/.jupyter /home/soda/.ipython -maxdepth 4 -type f -printf '%TY-%Tm-%Td %s %p\n' 2>/dev/null | sort || true
+systemctl cat jupyter.service --no-pager 2>/dev/null || true
+systemctl show jupyter.service -p FragmentPath -p User -p Group -p WorkingDirectory -p ExecStart 2>/dev/null || true
+
+section "TMUX_SHELL"
+tmux -V 2>/dev/null || true
+zsh --version 2>/dev/null || true
+bash --version 2>/dev/null | sed -n '1p' || true
+find /home/soda/.tmux -maxdepth 4 -type f -printf '%TY-%Tm-%Td %s %p\n' 2>/dev/null | sort || true
+
+section "ROS_LIDAR"
+find /opt/ros -maxdepth 2 -mindepth 1 -type d -printf '%p\n' 2>/dev/null | sort || true
+rosversion -d 2>/dev/null || true
+rospack list 2>/dev/null | sort || true
+find /home/soda/catkin_ws/src -maxdepth 6 -type f \( -name 'package.xml' -o -name '*.launch' -o -name '*.rviz' -o -name '*.yaml' \) -printf '%s %p\n' 2>/dev/null | sort || true
+git -C /home/soda/catkin_ws/src/RPLidar_Hector_SLAM status --short --branch 2>/dev/null || true
+git -C /home/soda/catkin_ws/src/RPLidar_Hector_SLAM remote -v 2>/dev/null || true
+git -C /home/soda/catkin_ws/src/RPLidar_Hector_SLAM log -1 --decorate --oneline 2>/dev/null || true
+for d in /dev/rplidar /dev/ttyUSB0 /dev/ttyACM0; do
+  [ -e "$d" ] || continue
+  printf '\n--- UDEV %s ---\n' "$d"
+  udevadm info --query=all --name="$d" 2>/dev/null || true
+done
+
+section "UDEV_MODPROBE_SYSTEMD_CONFIG"
+for f in /etc/udev/rules.d/*.rules /etc/modprobe.d/*.conf /etc/modules /etc/systemd/system/*.service /etc/systemd/system/*.timer; do
+  [ -f "$f" ] || continue
+  printf '\n--- FILE: %s ---\n' "$f"
+  sed -n '1,400p' "$f" 2>/dev/null || true
+done
+
+section "SERVICES"
+systemctl list-unit-files --state=enabled --no-pager 2>/dev/null || true
+systemctl list-units --type=service --state=running --no-pager 2>/dev/null || true
+
+section "HOME_AND_PROJECT_INDEX"
+find /home/soda -maxdepth 3 -mindepth 1 -printf '%y\t%s\t%TY-%Tm-%Td_%TH:%TM\t%p\n' 2>/dev/null \
+  | grep -Ev '/(\.cache|\.local/share/Trash|\.vscode-server|\.npm|\.oh-my-zsh)/' | sort || true
+du -sh /home/soda/Project /home/soda/catkin_ws /home/soda/.config/hanback /home/soda/.jupyter /home/soda/.tmux 2>/dev/null || true
+
