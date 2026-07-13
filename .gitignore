@@ -209,6 +209,9 @@ tempCodeRunnerFile.py
 # PyPI configuration file
 .pypirc
 
+# Migration artifacts (large archives)
+migration_data/artifacts/*.tar.gz
+
 # Marimo
 marimo/_static/
 marimo/_lsp/
