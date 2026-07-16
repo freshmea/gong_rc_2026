@@ -1,4 +1,4 @@
-__version__ = '0.4.0'
+__version__ = '0.4.1'
 
 from threading import Thread, Lock, current_thread
 from smbus import * 
@@ -2733,7 +2733,9 @@ class _camera(SingletonConfigurable):
         )
 
     def start(self):
-        if not self.cap.isOpened():
+        if not hasattr(self, 'cap') or self.cap is None:
+            self.cap = cv2.VideoCapture(self._gst_str(), cv2.CAP_GSTREAMER)
+        elif not self.cap.isOpened():
             self.cap.open(self._gst_str(), cv2.CAP_GSTREAMER)
         self._running = True
         if not hasattr(self, 'thread') or not self.thread.is_alive():
@@ -2742,11 +2744,15 @@ class _camera(SingletonConfigurable):
 
     def stop(self):
         self._running = False
-        if hasattr(self, 'cap'):
-            self.cap.release()
         if (hasattr(self, 'thread') and self.thread.is_alive()
                 and self.thread is not current_thread()):
+            # Let an in-flight cap.read() return before releasing the
+            # GStreamer pipeline, avoiding a concurrent unref race.
             self.thread.join(timeout=2.0)
+        cap = getattr(self, 'cap', None)
+        if cap is not None:
+            cap.release()
+            self.cap = None
 
     def restart(self):
         self.stop()

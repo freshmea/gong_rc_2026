@@ -103,5 +103,6 @@ python3 migration_data/tests/validate_artifacts.py
 - ALSA playback/capture가 열거되고 실제 입출력이 현장 확인됨
 - Jupyter가 서비스 재시작과 재부팅 후 올라오며 새 인증 정보가 적용됨
 - Noetic workspace가 Python 3로 clean build
+- dtb overlay가 배선표와 일치하고 udev rule이 적용됨
 - 수업 노트북 46개가 열리고 핵심 수업 순서가 재현됨
 - 모터/조향은 비상 정지와 기구 고정 후 최종 현장 합격
