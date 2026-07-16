@@ -1284,7 +1284,10 @@ class Collision_Avoid(_cam_based_class):
     STAT_DEFINED=0
     STAT_READY=1
     _stat=STAT_DEFINED
-    BATCH_SIZE=8
+    BATCH_SIZE=2
+    NUM_WORKERS=0
+    INPUT_SIZE=(224, 224)
+    DEFAULT_DEVICE='cpu'
 
     mean = 255.0 * np.array([0.485, 0.456, 0.406])
     stdev = 255.0 * np.array([0.229, 0.224, 0.225])
@@ -1293,6 +1296,7 @@ class Collision_Avoid(_cam_based_class):
 
     def _preprocess(self, value):
         x = cv2.cvtColor(value, cv2.COLOR_BGR2RGB)
+        x = cv2.resize(x, self.INPUT_SIZE)
         x = x.transpose((2, 0, 1))
         x = torch.from_numpy(x).float()
         x = self.normalize(x)
@@ -1300,7 +1304,28 @@ class Collision_Avoid(_cam_based_class):
         x = x[None, ...]
         return x
 
-    def load_datasets(self, path=dataset_path):
+    def _create_model(self, device=None):
+        requested_device = self.DEFAULT_DEVICE if device is None else str(device)
+        if requested_device.startswith('cuda') and not torch.cuda.is_available():
+            print('CUDA is unavailable; falling back to CPU.')
+            requested_device = 'cpu'
+        if requested_device.startswith('cuda'):
+            torch.cuda.empty_cache()
+
+        model = models.alexnet(weights=models.AlexNet_Weights.DEFAULT)
+
+        # Small Jetson datasets use transfer learning: only the final
+        # classifier is trainable, keeping gradients and optimizer state small.
+        for parameter in model.parameters():
+            parameter.requires_grad = False
+        model.classifier[6] = torch.nn.Linear(
+            model.classifier[6].in_features, 2
+        )
+
+        self.device = torch.device(requested_device)
+        return model.to(self.device)
+
+    def load_datasets(self, path=dataset_path, device=None):
         datasets_noti_widget = widgets.Label(value="Loading datasets...")
         model_noti_widget = widgets.Label(value="Creating a new model...")
 
@@ -1314,7 +1339,7 @@ class Collision_Avoid(_cam_based_class):
             path,
             transforms.Compose([
                 transforms.ColorJitter(0.1, 0.1, 0.1, 0.1),
-                transforms.Resize((self.camera.width, self.camera.height)),
+                transforms.Resize(self.INPUT_SIZE),
                 transforms.ToTensor(),
                 transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
             ])
@@ -1335,22 +1360,19 @@ class Collision_Avoid(_cam_based_class):
             self.train_dataset,
             batch_size=self.BATCH_SIZE,
             shuffle=True,
-            num_workers=4
+            num_workers=self.NUM_WORKERS
         )
 
         self.test_loader = torch.utils.data.DataLoader(
             self.test_dataset,
             batch_size=self.BATCH_SIZE,
             shuffle=True,
-            num_workers=4
+            num_workers=self.NUM_WORKERS
         )
 
         if self.model is None:
             display(model_noti_widget)
-            self.model = models.alexnet(pretrained=True)
-            self.model.classifier[6] = torch.nn.Linear(self.model.classifier[6].in_features, 2)
-            self.device = torch.device('cuda')
-            self.model = self.model.to(self.device)
+            self.model = self._create_model(device)
             model_noti_widget.value="Model creation completed."
             
         self._stat=self.STAT_READY
@@ -1382,6 +1404,7 @@ class Collision_Avoid(_cam_based_class):
 
         for epoch in range(times):
             i=0
+            self.model.train()
 
             for images, labels in iter(self.train_loader):
                 time_check=time.time()
@@ -1411,13 +1434,15 @@ class Collision_Avoid(_cam_based_class):
                 spent_time+=time.time()-time_check
                 remaining_time_widget.value=str(int(spent_time*(100.0/total_per)-spent_time))
             
+            self.model.eval()
             test_error_count = 0.0
             for images, labels in iter(self.test_loader):
 
                 time_check=time.time()
                 images = images.to(self.device)
                 labels = labels.to(self.device)
-                outputs = self.model(images)
+                with torch.no_grad():
+                    outputs = self.model(images)
                 test_error_count += float(torch.sum(torch.abs(labels - outputs.argmax(1))))
 
                 i+=len(images)
@@ -1458,16 +1483,13 @@ class Collision_Avoid(_cam_based_class):
 
         remaining_time_widget.value="0"
 
-    def load_model(self,path=MODEL_PATH):
+    def load_model(self,path=MODEL_PATH, device=None):
         if not os.path.exists(path):
             print(path," doesn't exist.")
             return
 
-        self.model = torchvision.models.alexnet(pretrained=True)
-        self.model.classifier[6] = torch.nn.Linear(self.model.classifier[6].in_features, 2)
-        self.model.load_state_dict(torch.load(path))
-        self.device = torch.device('cuda')
-        self.model = self.model.to(self.device)
+        self.model = self._create_model(device)
+        self.model.load_state_dict(torch.load(path, map_location=self.device))
         self._stat=self.STAT_READY
 
     def save_model(self,path=MODEL_PATH):
@@ -1489,9 +1511,10 @@ class Collision_Avoid(_cam_based_class):
 
         x = self.camera.value if value is None else value
         x = self._preprocess(x)
-        y = self.model(x)
-        
-        y = F.softmax(y, dim=1)
+        self.model.eval()
+        with torch.no_grad():
+            y = self.model(x)
+            y = F.softmax(y, dim=1)
         
         prob_blocked = float(y.flatten()[0])
         

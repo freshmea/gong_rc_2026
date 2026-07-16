@@ -1,0 +1,12 @@
+[Unit]
+Description=Allow local soda user to access the Jetson X display
+After=display-manager.service
+Wants=display-manager.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/gong-rc-xhost-soda
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

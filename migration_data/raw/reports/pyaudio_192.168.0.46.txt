@@ -1,0 +1,58 @@
+Warning: Permanently added '192.168.0.46' (ED25519) to the list of known hosts.
+ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.tegra-hda-xnx.pcm.front.0:CARD=0'
+ALSA lib conf.c:4528:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5007:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM front
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround21
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround21
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround40
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround41
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround50
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround51
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround71
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.iec958
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.iec958
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.iec958
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2495:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm_dmix.c:990:(snd_pcm_dmix_open) The dmix plugin supports only playback stream
+ALSA lib pcm_hw.c:1713:(_snd_pcm_hw_open) Invalid value for card
+ALSA lib pcm_hw.c:1713:(_snd_pcm_hw_open) Invalid value for card
+ALSA lib pcm_hw.c:1713:(_snd_pcm_hw_open) Invalid value for card
+ALSA lib pcm_hw.c:1713:(_snd_pcm_hw_open) Invalid value for card
+ALSA lib pcm_dmix.c:1052:(snd_pcm_dmix_open) unable to open slave
+Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1736
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &pcm )' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1768
+PYAUDIO_VERSION 0.2.11
+DEVICE_COUNT 31
+DEFAULT_INPUT {"index": 30, "structVersion": 2, "name": "default", "hostApi": 0, "maxInputChannels": 32, "maxOutputChannels": 32, "defaultLowInputLatency": 0.008707482993197279, "defaultLowOutputLatency": 0.008707482993197279, "defaultHighInputLatency": 0.034829931972789115, "defaultHighOutputLatency": 0.034829931972789115, "defaultSampleRate": 44100.0}
+INPUT_DEVICE {"index": 4, "name": "jetson-xaviernx-ape: - (hw:1,0)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 5, "name": "jetson-xaviernx-ape: - (hw:1,1)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 6, "name": "jetson-xaviernx-ape: - (hw:1,2)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 7, "name": "jetson-xaviernx-ape: - (hw:1,3)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 8, "name": "jetson-xaviernx-ape: - (hw:1,4)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 9, "name": "jetson-xaviernx-ape: - (hw:1,5)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 10, "name": "jetson-xaviernx-ape: - (hw:1,6)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 11, "name": "jetson-xaviernx-ape: - (hw:1,7)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 12, "name": "jetson-xaviernx-ape: - (hw:1,8)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 13, "name": "jetson-xaviernx-ape: - (hw:1,9)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 14, "name": "jetson-xaviernx-ape: - (hw:1,10)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 15, "name": "jetson-xaviernx-ape: - (hw:1,11)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 16, "name": "jetson-xaviernx-ape: - (hw:1,12)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 17, "name": "jetson-xaviernx-ape: - (hw:1,13)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 18, "name": "jetson-xaviernx-ape: - (hw:1,14)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 19, "name": "jetson-xaviernx-ape: - (hw:1,15)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 20, "name": "jetson-xaviernx-ape: - (hw:1,16)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 21, "name": "jetson-xaviernx-ape: - (hw:1,17)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 22, "name": "jetson-xaviernx-ape: - (hw:1,18)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 23, "name": "jetson-xaviernx-ape: - (hw:1,19)", "hostApi": 0, "maxInputChannels": 16, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 25, "name": "pulse", "hostApi": 0, "maxInputChannels": 32, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 26, "name": "music", "hostApi": 0, "maxInputChannels": 128, "defaultSampleRate": 48000.0, "supports_48k_mono_s16": false, "probe_error": "ValueError('Device unavailable', -9985)"}
+INPUT_DEVICE {"index": 28, "name": "voice", "hostApi": 0, "maxInputChannels": 128, "defaultSampleRate": 8000.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 29, "name": "music_and_voice", "hostApi": 0, "maxInputChannels": 128, "defaultSampleRate": 8000.0, "supports_48k_mono_s16": true, "probe_error": null}
+INPUT_DEVICE {"index": 30, "name": "default", "hostApi": 0, "maxInputChannels": 32, "defaultSampleRate": 44100.0, "supports_48k_mono_s16": true, "probe_error": null}

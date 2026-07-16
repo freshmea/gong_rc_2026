@@ -236,6 +236,7 @@
 - 점검 사항
   - softmax 코드 예제가 없음
   - cartpole 예제에서 render 가 되지 않는다. glx 관련 버전 문제인듯? 해결 안됨
+  - camera 가 어안렌즈여서 보정이 필요함. 기하학적 fisheye 역왜곡 계수, 카메라 캘리브레이션, cv.remap()
 
 - 안내할 내용
   - tmux 사용법 - sesstion, window, pane 모니터링과 디버깅

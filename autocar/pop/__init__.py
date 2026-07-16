@@ -1,4 +1,6 @@
-from threading import Thread, Lock
+__version__ = '0.4.0'
+
+from threading import Thread, Lock, current_thread
 from smbus import * 
 from spidev import * 
 from bme680 import *
@@ -8,7 +10,11 @@ import RPi.GPIO as GPIO
 import spidev
 
 #for Camera (AutoCar, Serbot)
-import traitlets, os, cv2
+import traitlets, os
+# Live GStreamer streams have no seek position. OpenCV 4.2 reports that
+# expected condition as a warning, so retain errors while hiding warnings.
+os.environ.setdefault('OPENCV_LOG_LEVEL', 'ERROR')
+import cv2
 from traitlets.config.configurable import SingletonConfigurable
 import atexit
 from IPython.display import display
@@ -31,6 +37,11 @@ import numpy as np
 
 ##################################################################
 
+# Newer Adafruit Blinka releases may select a GPIO numbering mode while
+# importing ``board`` above. The legacy POP API uses BCM pin numbers, so make
+# the mode deterministic without raising during ``import pop``.
+if GPIO.getmode() not in (None, GPIO.BCM):
+    GPIO.cleanup()
 GPIO.setmode(GPIO.BCM)
 
 def checkI2C(bus, addr):
@@ -2582,14 +2593,38 @@ def shiftRegister_unittest():
 
 ##################################################################
 class PiezoBuzzer(PopThread):
+    @staticmethod
+    def _release_stale_pwm(channel):
+        """Release a PWM export left behind by an interrupted process."""
+        try:
+            import Jetson.GPIO.gpio as jetson_gpio
+            info = jetson_gpio._channel_to_info(channel, need_pwm=True)
+            if jetson_gpio._app_channel_configuration(info) is not None:
+                return
+
+            pwm_dir = os.path.join(info.pwm_chip_dir, "pwm%d" % info.pwm_id)
+            if os.path.isdir(pwm_dir):
+                with open(os.path.join(info.pwm_chip_dir, "unexport"), "w") as f:
+                    f.write(str(info.pwm_id))
+        except (ImportError, AttributeError, ValueError):
+            return
+        except OSError as exc:
+            if exc.errno not in (2, 22):
+                raise
+
     def __init__(self,n,freq=261,duty=0):
-        GPIO.setup(n,GPIO.OUT)
+        self._release_stale_pwm(n)
         self.piezo = GPIO.PWM(n,freq)
         self.tempo = 120
         self.piezo.start(duty)
 
     def __del__(self):
-        self.piezo.stop()
+        piezo = getattr(self, "piezo", None)
+        if piezo is not None:
+            try:
+                piezo.stop()
+            except Exception:
+                pass
 
     def setFreq(self,freq):
         self.piezo.ChangeFrequency(freq)
@@ -2600,22 +2635,30 @@ class PiezoBuzzer(PopThread):
     def tone(self,scale,pitch,duration):
 
         TERM = 50
+        if duration <= 0:
+            raise ValueError("duration must be positive")
         
         freq = int(math.pow(2,scale-1)*55*pow(2,(pitch -10)/12))
         self.setFreq(freq)
         self.piezo.start(50)
         
         loop = (int)((60000.0 / self.tempo) * (1.0 / duration * 4))
-        time.sleep((loop - TERM)/1000)
+        time.sleep(max(0, loop - TERM)/1000)
         self.piezo.stop()
                 
     def rest(self,duration):
-        self.tone(0, 0, duration)
+        if duration <= 0:
+            raise ValueError("duration must be positive")
+        self.piezo.stop()
+        loop = (60000.0 / self.tempo) * (1.0 / duration * 4)
+        time.sleep(loop/1000)
         
     def setTempo(self,tempo):
+        if tempo <= 0:
+            raise ValueError("tempo must be positive")
         self.tempo = tempo
         
-    def getTempo():
+    def getTempo(self):
         return self.tempo
 
     def play(self, sheet):
@@ -2643,9 +2686,9 @@ class _camera(SingletonConfigurable):
 
     width = traitlets.Integer(default_value=224).tag(config=True)
     height = traitlets.Integer(default_value=224).tag(config=True)
-    fps = traitlets.Integer(default_value=21).tag(config=True)
-    capture_width = traitlets.Integer(default_value=3280).tag(config=True)
-    capture_height = traitlets.Integer(default_value=2464).tag(config=True)
+    fps = traitlets.Integer(default_value=30).tag(config=True)
+    capture_width = traitlets.Integer(default_value=1640).tag(config=True)
+    capture_height = traitlets.Integer(default_value=1232).tag(config=True)
 
     def __init__(self, *args, **kwargs):
         self.value = np.empty((self.height, self.width, 3), dtype=np.uint8)
@@ -2668,28 +2711,42 @@ class _camera(SingletonConfigurable):
         atexit.register(self.stop)
 
     def _capture_frames(self):
-        while True:
+        while self._running:
             re, image = self.cap.read()
             if re:
                 self.value = image
             else:
                 break
+        self._running = False
 
     def _gst_str(self):
-        return 'nvarguscamerasrc ! video/x-raw(memory:NVMM), width=%d, height=%d, format=(string)NV12, framerate=(fraction)%d/1 ! nvvidconv flip-method=%s ! video/x-raw, width=(int)%d, height=(int)%d, format=(string)BGRx ! videoconvert ! appsink' % (self.capture_width, self.capture_height, self.fps, __main__._camera_flip_method, self.width, self.height)
+        return (
+            'nvarguscamerasrc sensor-id=0 ! '
+            'video/x-raw(memory:NVMM), width=(int)%d, height=(int)%d, '
+            'format=(string)NV12, framerate=(fraction)%d/1 ! '
+            'nvvidconv flip-method=%s ! '
+            'video/x-raw, width=(int)%d, height=(int)%d, format=(string)BGRx ! '
+            'videoconvert ! video/x-raw, format=(string)BGR ! '
+            'appsink drop=true max-buffers=1 sync=false'
+            % (self.capture_width, self.capture_height, self.fps,
+               __main__._camera_flip_method, self.width, self.height)
+        )
 
     def start(self):
         if not self.cap.isOpened():
             self.cap.open(self._gst_str(), cv2.CAP_GSTREAMER)
-        if not hasattr(self, 'thread') or not self.thread.isAlive():
-            self.thread = Thread(target=self._capture_frames)
+        self._running = True
+        if not hasattr(self, 'thread') or not self.thread.is_alive():
+            self.thread = Thread(target=self._capture_frames, daemon=True)
             self.thread.start()
 
     def stop(self):
+        self._running = False
         if hasattr(self, 'cap'):
             self.cap.release()
-        if hasattr(self, 'thread'):
-            self.thread.join()
+        if (hasattr(self, 'thread') and self.thread.is_alive()
+                and self.thread is not current_thread()):
+            self.thread.join(timeout=2.0)
 
     def restart(self):
         self.stop()
@@ -2715,7 +2772,8 @@ class Camera:
         return self.image
 
     def load(self):
-        os.system("echo soda | sudo -S systemctl restart nvargus-daemon")
+        # nvargus-daemon is a system service; restarting it for every Camera
+        # object disrupts other kernels and should only be a recovery action.
         self.camera = _camera.instance(width=self.width, height=self.height)
         self.image = widgets.Image(format='jpeg', width=self.width, height=self.height)
         self.camera_link = traitlets.dlink((self.camera, 'value'), (self.image, 'value'), transform=bgr8_to_jpeg)

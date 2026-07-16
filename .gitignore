@@ -211,6 +211,7 @@ tempCodeRunnerFile.py
 
 # Migration artifacts (large archives)
 migration_data/artifacts/*.tar.gz
+migration_data/packages/*.deb
 
 # Marimo
 marimo/_static/

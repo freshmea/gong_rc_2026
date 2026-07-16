@@ -1,0 +1,1984 @@
+Warning: Permanently added '192.168.0.34' (ED25519) to the list of known hosts.
+HOST=ubuntu
+Linux ubuntu 5.10.216-tegra #1 SMP PREEMPT Mon Jan 26 23:28:09 PST 2026 aarch64 aarch64 aarch64 GNU/Linux
+=== identity ===
+uid=1000(soda) gid=1000(soda) groups=1000(soda),4(adm),20(dialout),24(cdrom),27(sudo),29(audio),30(dip),44(video),46(plugdev),103(render),113(i2c),116(lpadmin),119(sambashare),130(gdm),133(docker),996(weston-launch),999(gpio)
+=== /proc/asound/cards ===
+ 0 [HDA            ]: tegra-hda - NVIDIA Jetson Xavier NX HDA
+                      NVIDIA Jetson Xavier NX HDA at 0x3518000 irq 47
+ 1 [APE            ]: tegra-ape - NVIDIA Jetson Xavier NX APE
+                      NVIDIA-NVIDIAJetsonXavierNXDeveloperKit-NotSpecified-Jetson
+=== /proc/asound/pcm ===
+00-03: HDMI 0 : HDMI 0 : playback 1
+00-07: HDMI 0 : HDMI 0 : playback 1
+00-08: HDMI 0 : HDMI 0 : playback 1
+00-09: HDMI 0 : HDMI 0 : playback 1
+01-00: tegra-dlink-0 XBAR-ADMAIF1-0 :  : playback 1 : capture 1
+01-01: tegra-dlink-1 XBAR-ADMAIF2-1 :  : playback 1 : capture 1
+01-02: tegra-dlink-2 XBAR-ADMAIF3-2 :  : playback 1 : capture 1
+01-03: tegra-dlink-3 XBAR-ADMAIF4-3 :  : playback 1 : capture 1
+01-04: tegra-dlink-4 XBAR-ADMAIF5-4 :  : playback 1 : capture 1
+01-05: tegra-dlink-5 XBAR-ADMAIF6-5 :  : playback 1 : capture 1
+01-06: tegra-dlink-6 XBAR-ADMAIF7-6 :  : playback 1 : capture 1
+01-07: tegra-dlink-7 XBAR-ADMAIF8-7 :  : playback 1 : capture 1
+01-08: tegra-dlink-8 XBAR-ADMAIF9-8 :  : playback 1 : capture 1
+01-09: tegra-dlink-9 XBAR-ADMAIF10-9 :  : playback 1 : capture 1
+01-10: tegra-dlink-10 XBAR-ADMAIF11-10 :  : playback 1 : capture 1
+01-11: tegra-dlink-11 XBAR-ADMAIF12-11 :  : playback 1 : capture 1
+01-12: tegra-dlink-12 XBAR-ADMAIF13-12 :  : playback 1 : capture 1
+01-13: tegra-dlink-13 XBAR-ADMAIF14-13 :  : playback 1 : capture 1
+01-14: tegra-dlink-14 XBAR-ADMAIF15-14 :  : playback 1 : capture 1
+01-15: tegra-dlink-15 XBAR-ADMAIF16-15 :  : playback 1 : capture 1
+01-16: tegra-dlink-16 XBAR-ADMAIF17-16 :  : playback 1 : capture 1
+01-17: tegra-dlink-17 XBAR-ADMAIF18-17 :  : playback 1 : capture 1
+01-18: tegra-dlink-18 XBAR-ADMAIF19-18 :  : playback 1 : capture 1
+01-19: tegra-dlink-19 XBAR-ADMAIF20-19 :  : playback 1 : capture 1
+01-20: tegra-dlink-20 ADSP-FE1-20 :  : playback 1 : capture 1
+01-21: tegra-dlink-21 ADSP-FE2-21 :  : playback 1 : capture 1
+=== arecord -l ===
+**** List of CAPTURE Hardware Devices ****
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 0: tegra-dlink-0 XBAR-ADMAIF1-0 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 1: tegra-dlink-1 XBAR-ADMAIF2-1 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 2: tegra-dlink-2 XBAR-ADMAIF3-2 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 3: tegra-dlink-3 XBAR-ADMAIF4-3 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 4: tegra-dlink-4 XBAR-ADMAIF5-4 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 5: tegra-dlink-5 XBAR-ADMAIF6-5 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 6: tegra-dlink-6 XBAR-ADMAIF7-6 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 7: tegra-dlink-7 XBAR-ADMAIF8-7 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 8: tegra-dlink-8 XBAR-ADMAIF9-8 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 9: tegra-dlink-9 XBAR-ADMAIF10-9 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 10: tegra-dlink-10 XBAR-ADMAIF11-10 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 11: tegra-dlink-11 XBAR-ADMAIF12-11 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 12: tegra-dlink-12 XBAR-ADMAIF13-12 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 13: tegra-dlink-13 XBAR-ADMAIF14-13 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 14: tegra-dlink-14 XBAR-ADMAIF15-14 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 15: tegra-dlink-15 XBAR-ADMAIF16-15 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 16: tegra-dlink-16 XBAR-ADMAIF17-16 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 17: tegra-dlink-17 XBAR-ADMAIF18-17 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 18: tegra-dlink-18 XBAR-ADMAIF19-18 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 19: tegra-dlink-19 XBAR-ADMAIF20-19 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 20: tegra-dlink-20 ADSP-FE1-20 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 21: tegra-dlink-21 ADSP-FE2-21 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+=== aplay -l ===
+**** List of PLAYBACK Hardware Devices ****
+card 0: HDA [NVIDIA Jetson Xavier NX HDA], device 3: HDMI 0 [HDMI 0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 0: HDA [NVIDIA Jetson Xavier NX HDA], device 7: HDMI 0 [HDMI 0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 0: HDA [NVIDIA Jetson Xavier NX HDA], device 8: HDMI 0 [HDMI 0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 0: HDA [NVIDIA Jetson Xavier NX HDA], device 9: HDMI 0 [HDMI 0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 0: tegra-dlink-0 XBAR-ADMAIF1-0 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 1: tegra-dlink-1 XBAR-ADMAIF2-1 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 2: tegra-dlink-2 XBAR-ADMAIF3-2 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 3: tegra-dlink-3 XBAR-ADMAIF4-3 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 4: tegra-dlink-4 XBAR-ADMAIF5-4 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 5: tegra-dlink-5 XBAR-ADMAIF6-5 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 6: tegra-dlink-6 XBAR-ADMAIF7-6 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 7: tegra-dlink-7 XBAR-ADMAIF8-7 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 8: tegra-dlink-8 XBAR-ADMAIF9-8 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 9: tegra-dlink-9 XBAR-ADMAIF10-9 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 10: tegra-dlink-10 XBAR-ADMAIF11-10 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 11: tegra-dlink-11 XBAR-ADMAIF12-11 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 12: tegra-dlink-12 XBAR-ADMAIF13-12 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 13: tegra-dlink-13 XBAR-ADMAIF14-13 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 14: tegra-dlink-14 XBAR-ADMAIF15-14 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 15: tegra-dlink-15 XBAR-ADMAIF16-15 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 16: tegra-dlink-16 XBAR-ADMAIF17-16 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 17: tegra-dlink-17 XBAR-ADMAIF18-17 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 18: tegra-dlink-18 XBAR-ADMAIF19-18 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 19: tegra-dlink-19 XBAR-ADMAIF20-19 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 20: tegra-dlink-20 ADSP-FE1-20 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: APE [NVIDIA Jetson Xavier NX APE], device 21: tegra-dlink-21 ADSP-FE2-21 []
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+=== arecord -L ===
+null
+    Discard all samples (playback) or generate zero samples (capture)
+samplerate
+    Rate Converter Plugin Using Samplerate Library
+speexrate
+    Rate Converter Plugin Using Speex Resampler
+jack
+    JACK Audio Connection Kit
+oss
+    Open Sound System
+pulse
+    PulseAudio Sound Server
+upmix
+    Plugin for channel upmix (4,6,8)
+vdownmix
+    Plugin for channel downmix (stereo) with a simple spacialization
+default
+    Playback/recording through the PulseAudio sound server
+demixer
+usbstream:CARD=HDA
+    NVIDIA Jetson Xavier NX HDA
+    USB Stream Output
+sysdefault:CARD=APE
+    NVIDIA Jetson Xavier NX APE, 
+    Default Audio Device
+front:CARD=APE,DEV=0
+    NVIDIA Jetson Xavier NX APE, 
+    Front speakers
+dmix:CARD=APE,DEV=0
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=1
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=2
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=3
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=4
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=5
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=6
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=7
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=8
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=9
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=10
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=11
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=12
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=13
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=14
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=15
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=16
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=17
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=18
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=19
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=20
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dmix:CARD=APE,DEV=21
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample mixing device
+dsnoop:CARD=APE,DEV=0
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=1
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=2
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=3
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=4
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=5
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=6
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=7
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=8
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=9
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=10
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=11
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=12
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=13
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=14
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=15
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=16
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=17
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=18
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=19
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=20
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+dsnoop:CARD=APE,DEV=21
+    NVIDIA Jetson Xavier NX APE, 
+    Direct sample snooping device
+hw:CARD=APE,DEV=0
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=1
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=2
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=3
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=4
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=5
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=6
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=7
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=8
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=9
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=10
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=11
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=12
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=13
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=14
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=15
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=16
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=17
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=18
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=19
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=20
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+hw:CARD=APE,DEV=21
+    NVIDIA Jetson Xavier NX APE, 
+    Direct hardware device without any conversions
+plughw:CARD=APE,DEV=0
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=1
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=2
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=3
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=4
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=5
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=6
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=7
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=8
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=9
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=10
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=11
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=12
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=13
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=14
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=15
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=16
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=17
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=18
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=19
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=20
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+plughw:CARD=APE,DEV=21
+    NVIDIA Jetson Xavier NX APE, 
+    Hardware device with all software conversions
+usbstream:CARD=APE
+    NVIDIA Jetson Xavier NX APE
+    USB Stream Output
+=== ALSA configuration files ===
+ls: cannot access '/home/soda/.asoundrc': No such file or directory
+lrwxrwxrwx 1 root root  26 Jul 15 13:46 /etc/asound.conf -> /etc/asound.conf.tegra-ape
+-rw-r--r-- 1 root root 840 Jan 27 16:47 /etc/asound.conf.tegra-ape
+-rw-r--r-- 1 root root 755 Jan 27 16:47 /etc/asound.conf.tegra-hda-jetson-agx
+-rw-r--r-- 1 root root 756 Jan 27 16:47 /etc/asound.conf.tegra-hda-jetson-xnx
+--- /etc/asound.conf -> /etc/asound.conf.tegra-ape ---
+#
+#  ALSA library configuration file
+#
+#  SPDX-FileCopyrightText: Copyright (c) 2018-2021 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+#  SPDX-License-Identifier: LicenseRef-NvidiaProprietary
+#
+# NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+# property and proprietary rights in and to this material, related
+# documentation and any modifications thereto. Any use, reproduction,
+# disclosure or distribution of this material and related documentation
+# without an express license agreement from NVIDIA CORPORATION or
+# its affiliates is strictly prohibited.
+
+pcm.!default {
+	type plug
+	slave {
+		pcm "hw:APE,0"
+		channels 2
+		rate 48000
+	}
+	hint.description "Tegra APE Soundcard"
+}
+
+ctl.!default {
+	type hw
+	card APE
+}
+
+pcm.demixer {
+	type plug
+	slave {
+		pcm "dmix:APE,0"
+		channels 2
+		rate 48000
+	}
+}
+=== mixer scontrols ===
+--- CARD 0 ---
+Simple mixer control 'IEC958',0
+Simple mixer control 'IEC958',1
+Simple mixer control 'IEC958',2
+Simple mixer control 'IEC958',3
+--- CARD 1 ---
+Simple mixer control 'DSPK1 Audio Bit Format',0
+Simple mixer control 'DSPK1 Audio Channels',0
+Simple mixer control 'DSPK1 Channel Select',0
+Simple mixer control 'DSPK1 FIFO Threshold',0
+Simple mixer control 'DSPK1 LR Polarity Select',0
+Simple mixer control 'DSPK1 Mono To Stereo',0
+Simple mixer control 'DSPK1 Mux',0
+Simple mixer control 'DSPK1 OSR Value',0
+Simple mixer control 'DSPK1 Sample Rate',0
+Simple mixer control 'DSPK1 Stereo To Mono',0
+Simple mixer control 'DSPK2 Audio Bit Format',0
+Simple mixer control 'DSPK2 Audio Channels',0
+Simple mixer control 'DSPK2 Channel Select',0
+Simple mixer control 'DSPK2 FIFO Threshold',0
+Simple mixer control 'DSPK2 LR Polarity Select',0
+Simple mixer control 'DSPK2 Mono To Stereo',0
+Simple mixer control 'DSPK2 Mux',0
+Simple mixer control 'DSPK2 OSR Value',0
+Simple mixer control 'DSPK2 Sample Rate',0
+Simple mixer control 'DSPK2 Stereo To Mono',0
+Simple mixer control 'I2S1 BCLK Ratio',0
+Simple mixer control 'I2S1 Capture Audio Bit Format',0
+Simple mixer control 'I2S1 Capture Audio Channels',0
+Simple mixer control 'I2S1 Capture Mono To Stereo',0
+Simple mixer control 'I2S1 Capture Stereo To Mono',0
+Simple mixer control 'I2S1 Client Bit Format',0
+Simple mixer control 'I2S1 Client Channels',0
+Simple mixer control 'I2S1 FSYNC Width',0
+Simple mixer control 'I2S1 Loopback',0
+Simple mixer control 'I2S1 Mux',0
+Simple mixer control 'I2S1 Playback Audio Bit Format',0
+Simple mixer control 'I2S1 Playback Audio Channels',0
+Simple mixer control 'I2S1 Playback FIFO Threshold',0
+Simple mixer control 'I2S1 Playback Mono To Stereo',0
+Simple mixer control 'I2S1 Playback Stereo To Mono',0
+Simple mixer control 'I2S1 Sample Rate',0
+Simple mixer control 'I2S1 codec frame mode',0
+Simple mixer control 'I2S1 codec master mode',0
+Simple mixer control 'I2S2 BCLK Ratio',0
+Simple mixer control 'I2S2 Capture Audio Bit Format',0
+Simple mixer control 'I2S2 Capture Audio Channels',0
+Simple mixer control 'I2S2 Capture Mono To Stereo',0
+Simple mixer control 'I2S2 Capture Stereo To Mono',0
+Simple mixer control 'I2S2 Client Bit Format',0
+Simple mixer control 'I2S2 Client Channels',0
+Simple mixer control 'I2S2 FSYNC Width',0
+Simple mixer control 'I2S2 Loopback',0
+Simple mixer control 'I2S2 Mux',0
+Simple mixer control 'I2S2 Playback Audio Bit Format',0
+Simple mixer control 'I2S2 Playback Audio Channels',0
+Simple mixer control 'I2S2 Playback FIFO Threshold',0
+Simple mixer control 'I2S2 Playback Mono To Stereo',0
+Simple mixer control 'I2S2 Playback Stereo To Mono',0
+Simple mixer control 'I2S2 Sample Rate',0
+Simple mixer control 'I2S2 codec frame mode',0
+Simple mixer control 'I2S2 codec master mode',0
+Simple mixer control 'I2S3 BCLK Ratio',0
+Simple mixer control 'I2S3 Capture Audio Bit Format',0
+Simple mixer control 'I2S3 Capture Audio Channels',0
+Simple mixer control 'I2S3 Capture Mono To Stereo',0
+Simple mixer control 'I2S3 Capture Stereo To Mono',0
+Simple mixer control 'I2S3 Client Bit Format',0
+Simple mixer control 'I2S3 Client Channels',0
+Simple mixer control 'I2S3 FSYNC Width',0
+Simple mixer control 'I2S3 Loopback',0
+Simple mixer control 'I2S3 Mux',0
+Simple mixer control 'I2S3 Playback Audio Bit Format',0
+Simple mixer control 'I2S3 Playback Audio Channels',0
+Simple mixer control 'I2S3 Playback FIFO Threshold',0
+Simple mixer control 'I2S3 Playback Mono To Stereo',0
+Simple mixer control 'I2S3 Playback Stereo To Mono',0
+Simple mixer control 'I2S3 Sample Rate',0
+Simple mixer control 'I2S3 codec frame mode',0
+Simple mixer control 'I2S3 codec master mode',0
+Simple mixer control 'I2S4 BCLK Ratio',0
+Simple mixer control 'I2S4 Capture Audio Bit Format',0
+Simple mixer control 'I2S4 Capture Audio Channels',0
+Simple mixer control 'I2S4 Capture Mono To Stereo',0
+Simple mixer control 'I2S4 Capture Stereo To Mono',0
+Simple mixer control 'I2S4 Client Bit Format',0
+Simple mixer control 'I2S4 Client Channels',0
+Simple mixer control 'I2S4 FSYNC Width',0
+Simple mixer control 'I2S4 Loopback',0
+Simple mixer control 'I2S4 Mux',0
+Simple mixer control 'I2S4 Playback Audio Bit Format',0
+Simple mixer control 'I2S4 Playback Audio Channels',0
+Simple mixer control 'I2S4 Playback FIFO Threshold',0
+Simple mixer control 'I2S4 Playback Mono To Stereo',0
+Simple mixer control 'I2S4 Playback Stereo To Mono',0
+Simple mixer control 'I2S4 Sample Rate',0
+Simple mixer control 'I2S4 codec frame mode',0
+Simple mixer control 'I2S4 codec master mode',0
+Simple mixer control 'I2S5 BCLK Ratio',0
+Simple mixer control 'I2S5 Capture Audio Bit Format',0
+Simple mixer control 'I2S5 Capture Audio Channels',0
+Simple mixer control 'I2S5 Capture Mono To Stereo',0
+Simple mixer control 'I2S5 Capture Stereo To Mono',0
+Simple mixer control 'I2S5 Client Bit Format',0
+Simple mixer control 'I2S5 Client Channels',0
+Simple mixer control 'I2S5 FSYNC Width',0
+Simple mixer control 'I2S5 Loopback',0
+Simple mixer control 'I2S5 Mux',0
+Simple mixer control 'I2S5 Playback Audio Bit Format',0
+Simple mixer control 'I2S5 Playback Audio Channels',0
+Simple mixer control 'I2S5 Playback FIFO Threshold',0
+Simple mixer control 'I2S5 Playback Mono To Stereo',0
+Simple mixer control 'I2S5 Playback Stereo To Mono',0
+Simple mixer control 'I2S5 Sample Rate',0
+Simple mixer control 'I2S5 codec frame mode',0
+Simple mixer control 'I2S5 codec master mode',0
+Simple mixer control 'I2S6 BCLK Ratio',0
+Simple mixer control 'I2S6 Capture Audio Bit Format',0
+Simple mixer control 'I2S6 Capture Audio Channels',0
+Simple mixer control 'I2S6 Capture Mono To Stereo',0
+Simple mixer control 'I2S6 Capture Stereo To Mono',0
+Simple mixer control 'I2S6 Client Bit Format',0
+Simple mixer control 'I2S6 Client Channels',0
+Simple mixer control 'I2S6 FSYNC Width',0
+Simple mixer control 'I2S6 Loopback',0
+Simple mixer control 'I2S6 Mux',0
+Simple mixer control 'I2S6 Playback Audio Bit Format',0
+Simple mixer control 'I2S6 Playback Audio Channels',0
+Simple mixer control 'I2S6 Playback FIFO Threshold',0
+Simple mixer control 'I2S6 Playback Mono To Stereo',0
+Simple mixer control 'I2S6 Playback Stereo To Mono',0
+Simple mixer control 'I2S6 Sample Rate',0
+Simple mixer control 'I2S6 codec frame mode',0
+Simple mixer control 'I2S6 codec master mode',0
+Simple mixer control 'AAC-DEC1 MUX',0
+Simple mixer control 'ADMA1 MUX',0
+Simple mixer control 'ADMA1-TX MUX',0
+Simple mixer control 'ADMA10 MUX',0
+Simple mixer control 'ADMA10-TX MUX',0
+Simple mixer control 'ADMA11 MUX',0
+Simple mixer control 'ADMA11-TX MUX',0
+Simple mixer control 'ADMA12 MUX',0
+Simple mixer control 'ADMA12-TX MUX',0
+Simple mixer control 'ADMA13 MUX',0
+Simple mixer control 'ADMA13-TX MUX',0
+Simple mixer control 'ADMA14 MUX',0
+Simple mixer control 'ADMA14-TX MUX',0
+Simple mixer control 'ADMA15 MUX',0
+Simple mixer control 'ADMA15-TX MUX',0
+Simple mixer control 'ADMA2 MUX',0
+Simple mixer control 'ADMA2-TX MUX',0
+Simple mixer control 'ADMA3 MUX',0
+Simple mixer control 'ADMA3-TX MUX',0
+Simple mixer control 'ADMA4 MUX',0
+Simple mixer control 'ADMA4-TX MUX',0
+Simple mixer control 'ADMA5 MUX',0
+Simple mixer control 'ADMA5-TX MUX',0
+Simple mixer control 'ADMA6 MUX',0
+Simple mixer control 'ADMA6-TX MUX',0
+Simple mixer control 'ADMA7 MUX',0
+Simple mixer control 'ADMA7-TX MUX',0
+Simple mixer control 'ADMA8 MUX',0
+Simple mixer control 'ADMA8-TX MUX',0
+Simple mixer control 'ADMA9 MUX',0
+Simple mixer control 'ADMA9-TX MUX',0
+Simple mixer control 'ADMAIF1 Capture Audio Channels',0
+Simple mixer control 'ADMAIF1 Capture Client Channels',0
+Simple mixer control 'ADMAIF1 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF1 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF1 Mux',0
+Simple mixer control 'ADMAIF1 Playback Audio Channels',0
+Simple mixer control 'ADMAIF1 Playback Client Channels',0
+Simple mixer control 'ADMAIF1 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF1 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF10 Capture Audio Channels',0
+Simple mixer control 'ADMAIF10 Capture Client Channels',0
+Simple mixer control 'ADMAIF10 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF10 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF10 Mux',0
+Simple mixer control 'ADMAIF10 Playback Audio Channels',0
+Simple mixer control 'ADMAIF10 Playback Client Channels',0
+Simple mixer control 'ADMAIF10 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF10 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF11 Capture Audio Channels',0
+Simple mixer control 'ADMAIF11 Capture Client Channels',0
+Simple mixer control 'ADMAIF11 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF11 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF11 Mux',0
+Simple mixer control 'ADMAIF11 Playback Audio Channels',0
+Simple mixer control 'ADMAIF11 Playback Client Channels',0
+Simple mixer control 'ADMAIF11 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF11 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF12 Capture Audio Channels',0
+Simple mixer control 'ADMAIF12 Capture Client Channels',0
+Simple mixer control 'ADMAIF12 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF12 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF12 Mux',0
+Simple mixer control 'ADMAIF12 Playback Audio Channels',0
+Simple mixer control 'ADMAIF12 Playback Client Channels',0
+Simple mixer control 'ADMAIF12 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF12 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF13 Capture Audio Channels',0
+Simple mixer control 'ADMAIF13 Capture Client Channels',0
+Simple mixer control 'ADMAIF13 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF13 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF13 Mux',0
+Simple mixer control 'ADMAIF13 Playback Audio Channels',0
+Simple mixer control 'ADMAIF13 Playback Client Channels',0
+Simple mixer control 'ADMAIF13 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF13 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF14 Capture Audio Channels',0
+Simple mixer control 'ADMAIF14 Capture Client Channels',0
+Simple mixer control 'ADMAIF14 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF14 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF14 Mux',0
+Simple mixer control 'ADMAIF14 Playback Audio Channels',0
+Simple mixer control 'ADMAIF14 Playback Client Channels',0
+Simple mixer control 'ADMAIF14 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF14 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF15 Capture Audio Channels',0
+Simple mixer control 'ADMAIF15 Capture Client Channels',0
+Simple mixer control 'ADMAIF15 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF15 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF15 Mux',0
+Simple mixer control 'ADMAIF15 Playback Audio Channels',0
+Simple mixer control 'ADMAIF15 Playback Client Channels',0
+Simple mixer control 'ADMAIF15 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF15 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF16 Capture Audio Channels',0
+Simple mixer control 'ADMAIF16 Capture Client Channels',0
+Simple mixer control 'ADMAIF16 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF16 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF16 Mux',0
+Simple mixer control 'ADMAIF16 Playback Audio Channels',0
+Simple mixer control 'ADMAIF16 Playback Client Channels',0
+Simple mixer control 'ADMAIF16 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF16 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF17 Capture Audio Channels',0
+Simple mixer control 'ADMAIF17 Capture Client Channels',0
+Simple mixer control 'ADMAIF17 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF17 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF17 Mux',0
+Simple mixer control 'ADMAIF17 Playback Audio Channels',0
+Simple mixer control 'ADMAIF17 Playback Client Channels',0
+Simple mixer control 'ADMAIF17 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF17 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF18 Capture Audio Channels',0
+Simple mixer control 'ADMAIF18 Capture Client Channels',0
+Simple mixer control 'ADMAIF18 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF18 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF18 Mux',0
+Simple mixer control 'ADMAIF18 Playback Audio Channels',0
+Simple mixer control 'ADMAIF18 Playback Client Channels',0
+Simple mixer control 'ADMAIF18 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF18 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF19 Capture Audio Channels',0
+Simple mixer control 'ADMAIF19 Capture Client Channels',0
+Simple mixer control 'ADMAIF19 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF19 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF19 Mux',0
+Simple mixer control 'ADMAIF19 Playback Audio Channels',0
+Simple mixer control 'ADMAIF19 Playback Client Channels',0
+Simple mixer control 'ADMAIF19 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF19 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF2 Capture Audio Channels',0
+Simple mixer control 'ADMAIF2 Capture Client Channels',0
+Simple mixer control 'ADMAIF2 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF2 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF2 Mux',0
+Simple mixer control 'ADMAIF2 Playback Audio Channels',0
+Simple mixer control 'ADMAIF2 Playback Client Channels',0
+Simple mixer control 'ADMAIF2 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF2 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF20 Capture Audio Channels',0
+Simple mixer control 'ADMAIF20 Capture Client Channels',0
+Simple mixer control 'ADMAIF20 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF20 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF20 Mux',0
+Simple mixer control 'ADMAIF20 Playback Audio Channels',0
+Simple mixer control 'ADMAIF20 Playback Client Channels',0
+Simple mixer control 'ADMAIF20 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF20 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF3 Capture Audio Channels',0
+Simple mixer control 'ADMAIF3 Capture Client Channels',0
+Simple mixer control 'ADMAIF3 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF3 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF3 Mux',0
+Simple mixer control 'ADMAIF3 Playback Audio Channels',0
+Simple mixer control 'ADMAIF3 Playback Client Channels',0
+Simple mixer control 'ADMAIF3 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF3 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF4 Capture Audio Channels',0
+Simple mixer control 'ADMAIF4 Capture Client Channels',0
+Simple mixer control 'ADMAIF4 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF4 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF4 Mux',0
+Simple mixer control 'ADMAIF4 Playback Audio Channels',0
+Simple mixer control 'ADMAIF4 Playback Client Channels',0
+Simple mixer control 'ADMAIF4 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF4 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF5 Capture Audio Channels',0
+Simple mixer control 'ADMAIF5 Capture Client Channels',0
+Simple mixer control 'ADMAIF5 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF5 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF5 Mux',0
+Simple mixer control 'ADMAIF5 Playback Audio Channels',0
+Simple mixer control 'ADMAIF5 Playback Client Channels',0
+Simple mixer control 'ADMAIF5 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF5 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF6 Capture Audio Channels',0
+Simple mixer control 'ADMAIF6 Capture Client Channels',0
+Simple mixer control 'ADMAIF6 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF6 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF6 Mux',0
+Simple mixer control 'ADMAIF6 Playback Audio Channels',0
+Simple mixer control 'ADMAIF6 Playback Client Channels',0
+Simple mixer control 'ADMAIF6 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF6 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF7 Capture Audio Channels',0
+Simple mixer control 'ADMAIF7 Capture Client Channels',0
+Simple mixer control 'ADMAIF7 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF7 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF7 Mux',0
+Simple mixer control 'ADMAIF7 Playback Audio Channels',0
+Simple mixer control 'ADMAIF7 Playback Client Channels',0
+Simple mixer control 'ADMAIF7 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF7 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF8 Capture Audio Channels',0
+Simple mixer control 'ADMAIF8 Capture Client Channels',0
+Simple mixer control 'ADMAIF8 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF8 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF8 Mux',0
+Simple mixer control 'ADMAIF8 Playback Audio Channels',0
+Simple mixer control 'ADMAIF8 Playback Client Channels',0
+Simple mixer control 'ADMAIF8 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF8 Playback Stereo To Mono',0
+Simple mixer control 'ADMAIF9 Capture Audio Channels',0
+Simple mixer control 'ADMAIF9 Capture Client Channels',0
+Simple mixer control 'ADMAIF9 Capture Mono To Stereo',0
+Simple mixer control 'ADMAIF9 Capture Stereo To Mono',0
+Simple mixer control 'ADMAIF9 Mux',0
+Simple mixer control 'ADMAIF9 Playback Audio Channels',0
+Simple mixer control 'ADMAIF9 Playback Client Channels',0
+Simple mixer control 'ADMAIF9 Playback Mono To Stereo',0
+Simple mixer control 'ADMAIF9 Playback Stereo To Mono',0
+Simple mixer control 'ADSP init',0
+Simple mixer control 'ADSP-ADMAIF1 MUX',0
+Simple mixer control 'ADSP-ADMAIF10 MUX',0
+Simple mixer control 'ADSP-ADMAIF11 MUX',0
+Simple mixer control 'ADSP-ADMAIF12 MUX',0
+Simple mixer control 'ADSP-ADMAIF13 MUX',0
+Simple mixer control 'ADSP-ADMAIF14 MUX',0
+Simple mixer control 'ADSP-ADMAIF15 MUX',0
+Simple mixer control 'ADSP-ADMAIF16 MUX',0
+Simple mixer control 'ADSP-ADMAIF17 MUX',0
+Simple mixer control 'ADSP-ADMAIF18 MUX',0
+Simple mixer control 'ADSP-ADMAIF19 MUX',0
+Simple mixer control 'ADSP-ADMAIF2 MUX',0
+Simple mixer control 'ADSP-ADMAIF20 MUX',0
+Simple mixer control 'ADSP-ADMAIF3 MUX',0
+Simple mixer control 'ADSP-ADMAIF4 MUX',0
+Simple mixer control 'ADSP-ADMAIF5 MUX',0
+Simple mixer control 'ADSP-ADMAIF6 MUX',0
+Simple mixer control 'ADSP-ADMAIF7 MUX',0
+Simple mixer control 'ADSP-ADMAIF8 MUX',0
+Simple mixer control 'ADSP-ADMAIF9 MUX',0
+Simple mixer control 'ADSP-EAVB MUX',0
+Simple mixer control 'ADSP-FE1 MUX',0
+Simple mixer control 'ADSP-FE10 MUX',0
+Simple mixer control 'ADSP-FE11 MUX',0
+Simple mixer control 'ADSP-FE12 MUX',0
+Simple mixer control 'ADSP-FE13 MUX',0
+Simple mixer control 'ADSP-FE14 MUX',0
+Simple mixer control 'ADSP-FE15 MUX',0
+Simple mixer control 'ADSP-FE2 MUX',0
+Simple mixer control 'ADSP-FE3 MUX',0
+Simple mixer control 'ADSP-FE4 MUX',0
+Simple mixer control 'ADSP-FE5 MUX',0
+Simple mixer control 'ADSP-FE6 MUX',0
+Simple mixer control 'ADSP-FE7 MUX',0
+Simple mixer control 'ADSP-FE8 MUX',0
+Simple mixer control 'ADSP-FE9 MUX',0
+Simple mixer control 'ADX1 Byte Map 0',0
+Simple mixer control 'ADX1 Byte Map 1',0
+Simple mixer control 'ADX1 Byte Map 10',0
+Simple mixer control 'ADX1 Byte Map 11',0
+Simple mixer control 'ADX1 Byte Map 12',0
+Simple mixer control 'ADX1 Byte Map 13',0
+Simple mixer control 'ADX1 Byte Map 14',0
+Simple mixer control 'ADX1 Byte Map 15',0
+Simple mixer control 'ADX1 Byte Map 16',0
+Simple mixer control 'ADX1 Byte Map 17',0
+Simple mixer control 'ADX1 Byte Map 18',0
+Simple mixer control 'ADX1 Byte Map 19',0
+Simple mixer control 'ADX1 Byte Map 2',0
+Simple mixer control 'ADX1 Byte Map 20',0
+Simple mixer control 'ADX1 Byte Map 21',0
+Simple mixer control 'ADX1 Byte Map 22',0
+Simple mixer control 'ADX1 Byte Map 23',0
+Simple mixer control 'ADX1 Byte Map 24',0
+Simple mixer control 'ADX1 Byte Map 25',0
+Simple mixer control 'ADX1 Byte Map 26',0
+Simple mixer control 'ADX1 Byte Map 27',0
+Simple mixer control 'ADX1 Byte Map 28',0
+Simple mixer control 'ADX1 Byte Map 29',0
+Simple mixer control 'ADX1 Byte Map 3',0
+Simple mixer control 'ADX1 Byte Map 30',0
+Simple mixer control 'ADX1 Byte Map 31',0
+Simple mixer control 'ADX1 Byte Map 32',0
+Simple mixer control 'ADX1 Byte Map 33',0
+Simple mixer control 'ADX1 Byte Map 34',0
+Simple mixer control 'ADX1 Byte Map 35',0
+Simple mixer control 'ADX1 Byte Map 36',0
+Simple mixer control 'ADX1 Byte Map 37',0
+Simple mixer control 'ADX1 Byte Map 38',0
+Simple mixer control 'ADX1 Byte Map 39',0
+Simple mixer control 'ADX1 Byte Map 4',0
+Simple mixer control 'ADX1 Byte Map 40',0
+Simple mixer control 'ADX1 Byte Map 41',0
+Simple mixer control 'ADX1 Byte Map 42',0
+Simple mixer control 'ADX1 Byte Map 43',0
+Simple mixer control 'ADX1 Byte Map 44',0
+Simple mixer control 'ADX1 Byte Map 45',0
+Simple mixer control 'ADX1 Byte Map 46',0
+Simple mixer control 'ADX1 Byte Map 47',0
+Simple mixer control 'ADX1 Byte Map 48',0
+Simple mixer control 'ADX1 Byte Map 49',0
+Simple mixer control 'ADX1 Byte Map 5',0
+Simple mixer control 'ADX1 Byte Map 50',0
+Simple mixer control 'ADX1 Byte Map 51',0
+Simple mixer control 'ADX1 Byte Map 52',0
+Simple mixer control 'ADX1 Byte Map 53',0
+Simple mixer control 'ADX1 Byte Map 54',0
+Simple mixer control 'ADX1 Byte Map 55',0
+Simple mixer control 'ADX1 Byte Map 56',0
+Simple mixer control 'ADX1 Byte Map 57',0
+Simple mixer control 'ADX1 Byte Map 58',0
+Simple mixer control 'ADX1 Byte Map 59',0
+Simple mixer control 'ADX1 Byte Map 6',0
+Simple mixer control 'ADX1 Byte Map 60',0
+Simple mixer control 'ADX1 Byte Map 61',0
+Simple mixer control 'ADX1 Byte Map 62',0
+Simple mixer control 'ADX1 Byte Map 63',0
+Simple mixer control 'ADX1 Byte Map 7',0
+Simple mixer control 'ADX1 Byte Map 8',0
+Simple mixer control 'ADX1 Byte Map 9',0
+Simple mixer control 'ADX1 Input Audio Channels',0
+Simple mixer control 'ADX1 Mux',0
+Simple mixer control 'ADX1 Output1 Audio Channels',0
+Simple mixer control 'ADX1 Output2 Audio Channels',0
+Simple mixer control 'ADX1 Output3 Audio Channels',0
+Simple mixer control 'ADX1 Output4 Audio Channels',0
+Simple mixer control 'ADX2 Byte Map 0',0
+Simple mixer control 'ADX2 Byte Map 1',0
+Simple mixer control 'ADX2 Byte Map 10',0
+Simple mixer control 'ADX2 Byte Map 11',0
+Simple mixer control 'ADX2 Byte Map 12',0
+Simple mixer control 'ADX2 Byte Map 13',0
+Simple mixer control 'ADX2 Byte Map 14',0
+Simple mixer control 'ADX2 Byte Map 15',0
+Simple mixer control 'ADX2 Byte Map 16',0
+Simple mixer control 'ADX2 Byte Map 17',0
+Simple mixer control 'ADX2 Byte Map 18',0
+Simple mixer control 'ADX2 Byte Map 19',0
+Simple mixer control 'ADX2 Byte Map 2',0
+Simple mixer control 'ADX2 Byte Map 20',0
+Simple mixer control 'ADX2 Byte Map 21',0
+Simple mixer control 'ADX2 Byte Map 22',0
+Simple mixer control 'ADX2 Byte Map 23',0
+Simple mixer control 'ADX2 Byte Map 24',0
+Simple mixer control 'ADX2 Byte Map 25',0
+Simple mixer control 'ADX2 Byte Map 26',0
+Simple mixer control 'ADX2 Byte Map 27',0
+Simple mixer control 'ADX2 Byte Map 28',0
+Simple mixer control 'ADX2 Byte Map 29',0
+Simple mixer control 'ADX2 Byte Map 3',0
+Simple mixer control 'ADX2 Byte Map 30',0
+Simple mixer control 'ADX2 Byte Map 31',0
+Simple mixer control 'ADX2 Byte Map 32',0
+Simple mixer control 'ADX2 Byte Map 33',0
+Simple mixer control 'ADX2 Byte Map 34',0
+Simple mixer control 'ADX2 Byte Map 35',0
+Simple mixer control 'ADX2 Byte Map 36',0
+Simple mixer control 'ADX2 Byte Map 37',0
+Simple mixer control 'ADX2 Byte Map 38',0
+Simple mixer control 'ADX2 Byte Map 39',0
+Simple mixer control 'ADX2 Byte Map 4',0
+Simple mixer control 'ADX2 Byte Map 40',0
+Simple mixer control 'ADX2 Byte Map 41',0
+Simple mixer control 'ADX2 Byte Map 42',0
+Simple mixer control 'ADX2 Byte Map 43',0
+Simple mixer control 'ADX2 Byte Map 44',0
+Simple mixer control 'ADX2 Byte Map 45',0
+Simple mixer control 'ADX2 Byte Map 46',0
+Simple mixer control 'ADX2 Byte Map 47',0
+Simple mixer control 'ADX2 Byte Map 48',0
+Simple mixer control 'ADX2 Byte Map 49',0
+Simple mixer control 'ADX2 Byte Map 5',0
+Simple mixer control 'ADX2 Byte Map 50',0
+Simple mixer control 'ADX2 Byte Map 51',0
+Simple mixer control 'ADX2 Byte Map 52',0
+Simple mixer control 'ADX2 Byte Map 53',0
+Simple mixer control 'ADX2 Byte Map 54',0
+Simple mixer control 'ADX2 Byte Map 55',0
+Simple mixer control 'ADX2 Byte Map 56',0
+Simple mixer control 'ADX2 Byte Map 57',0
+Simple mixer control 'ADX2 Byte Map 58',0
+Simple mixer control 'ADX2 Byte Map 59',0
+Simple mixer control 'ADX2 Byte Map 6',0
+Simple mixer control 'ADX2 Byte Map 60',0
+Simple mixer control 'ADX2 Byte Map 61',0
+Simple mixer control 'ADX2 Byte Map 62',0
+Simple mixer control 'ADX2 Byte Map 63',0
+Simple mixer control 'ADX2 Byte Map 7',0
+Simple mixer control 'ADX2 Byte Map 8',0
+Simple mixer control 'ADX2 Byte Map 9',0
+Simple mixer control 'ADX2 Input Audio Channels',0
+Simple mixer control 'ADX2 Mux',0
+Simple mixer control 'ADX2 Output1 Audio Channels',0
+Simple mixer control 'ADX2 Output2 Audio Channels',0
+Simple mixer control 'ADX2 Output3 Audio Channels',0
+Simple mixer control 'ADX2 Output4 Audio Channels',0
+Simple mixer control 'ADX3 Byte Map 0',0
+Simple mixer control 'ADX3 Byte Map 1',0
+Simple mixer control 'ADX3 Byte Map 10',0
+Simple mixer control 'ADX3 Byte Map 11',0
+Simple mixer control 'ADX3 Byte Map 12',0
+Simple mixer control 'ADX3 Byte Map 13',0
+Simple mixer control 'ADX3 Byte Map 14',0
+Simple mixer control 'ADX3 Byte Map 15',0
+Simple mixer control 'ADX3 Byte Map 16',0
+Simple mixer control 'ADX3 Byte Map 17',0
+Simple mixer control 'ADX3 Byte Map 18',0
+Simple mixer control 'ADX3 Byte Map 19',0
+Simple mixer control 'ADX3 Byte Map 2',0
+Simple mixer control 'ADX3 Byte Map 20',0
+Simple mixer control 'ADX3 Byte Map 21',0
+Simple mixer control 'ADX3 Byte Map 22',0
+Simple mixer control 'ADX3 Byte Map 23',0
+Simple mixer control 'ADX3 Byte Map 24',0
+Simple mixer control 'ADX3 Byte Map 25',0
+Simple mixer control 'ADX3 Byte Map 26',0
+Simple mixer control 'ADX3 Byte Map 27',0
+Simple mixer control 'ADX3 Byte Map 28',0
+Simple mixer control 'ADX3 Byte Map 29',0
+Simple mixer control 'ADX3 Byte Map 3',0
+Simple mixer control 'ADX3 Byte Map 30',0
+Simple mixer control 'ADX3 Byte Map 31',0
+Simple mixer control 'ADX3 Byte Map 32',0
+Simple mixer control 'ADX3 Byte Map 33',0
+Simple mixer control 'ADX3 Byte Map 34',0
+Simple mixer control 'ADX3 Byte Map 35',0
+Simple mixer control 'ADX3 Byte Map 36',0
+Simple mixer control 'ADX3 Byte Map 37',0
+Simple mixer control 'ADX3 Byte Map 38',0
+Simple mixer control 'ADX3 Byte Map 39',0
+Simple mixer control 'ADX3 Byte Map 4',0
+Simple mixer control 'ADX3 Byte Map 40',0
+Simple mixer control 'ADX3 Byte Map 41',0
+Simple mixer control 'ADX3 Byte Map 42',0
+Simple mixer control 'ADX3 Byte Map 43',0
+Simple mixer control 'ADX3 Byte Map 44',0
+Simple mixer control 'ADX3 Byte Map 45',0
+Simple mixer control 'ADX3 Byte Map 46',0
+Simple mixer control 'ADX3 Byte Map 47',0
+Simple mixer control 'ADX3 Byte Map 48',0
+Simple mixer control 'ADX3 Byte Map 49',0
+Simple mixer control 'ADX3 Byte Map 5',0
+Simple mixer control 'ADX3 Byte Map 50',0
+Simple mixer control 'ADX3 Byte Map 51',0
+Simple mixer control 'ADX3 Byte Map 52',0
+Simple mixer control 'ADX3 Byte Map 53',0
+Simple mixer control 'ADX3 Byte Map 54',0
+Simple mixer control 'ADX3 Byte Map 55',0
+Simple mixer control 'ADX3 Byte Map 56',0
+Simple mixer control 'ADX3 Byte Map 57',0
+Simple mixer control 'ADX3 Byte Map 58',0
+Simple mixer control 'ADX3 Byte Map 59',0
+Simple mixer control 'ADX3 Byte Map 6',0
+Simple mixer control 'ADX3 Byte Map 60',0
+Simple mixer control 'ADX3 Byte Map 61',0
+Simple mixer control 'ADX3 Byte Map 62',0
+Simple mixer control 'ADX3 Byte Map 63',0
+Simple mixer control 'ADX3 Byte Map 7',0
+Simple mixer control 'ADX3 Byte Map 8',0
+Simple mixer control 'ADX3 Byte Map 9',0
+Simple mixer control 'ADX3 Input Audio Channels',0
+Simple mixer control 'ADX3 Mux',0
+Simple mixer control 'ADX3 Output1 Audio Channels',0
+Simple mixer control 'ADX3 Output2 Audio Channels',0
+Simple mixer control 'ADX3 Output3 Audio Channels',0
+Simple mixer control 'ADX3 Output4 Audio Channels',0
+Simple mixer control 'ADX4 Byte Map 0',0
+Simple mixer control 'ADX4 Byte Map 1',0
+Simple mixer control 'ADX4 Byte Map 10',0
+Simple mixer control 'ADX4 Byte Map 11',0
+Simple mixer control 'ADX4 Byte Map 12',0
+Simple mixer control 'ADX4 Byte Map 13',0
+Simple mixer control 'ADX4 Byte Map 14',0
+Simple mixer control 'ADX4 Byte Map 15',0
+Simple mixer control 'ADX4 Byte Map 16',0
+Simple mixer control 'ADX4 Byte Map 17',0
+Simple mixer control 'ADX4 Byte Map 18',0
+Simple mixer control 'ADX4 Byte Map 19',0
+Simple mixer control 'ADX4 Byte Map 2',0
+Simple mixer control 'ADX4 Byte Map 20',0
+Simple mixer control 'ADX4 Byte Map 21',0
+Simple mixer control 'ADX4 Byte Map 22',0
+Simple mixer control 'ADX4 Byte Map 23',0
+Simple mixer control 'ADX4 Byte Map 24',0
+Simple mixer control 'ADX4 Byte Map 25',0
+Simple mixer control 'ADX4 Byte Map 26',0
+Simple mixer control 'ADX4 Byte Map 27',0
+Simple mixer control 'ADX4 Byte Map 28',0
+Simple mixer control 'ADX4 Byte Map 29',0
+Simple mixer control 'ADX4 Byte Map 3',0
+Simple mixer control 'ADX4 Byte Map 30',0
+Simple mixer control 'ADX4 Byte Map 31',0
+Simple mixer control 'ADX4 Byte Map 32',0
+Simple mixer control 'ADX4 Byte Map 33',0
+Simple mixer control 'ADX4 Byte Map 34',0
+Simple mixer control 'ADX4 Byte Map 35',0
+Simple mixer control 'ADX4 Byte Map 36',0
+Simple mixer control 'ADX4 Byte Map 37',0
+Simple mixer control 'ADX4 Byte Map 38',0
+Simple mixer control 'ADX4 Byte Map 39',0
+Simple mixer control 'ADX4 Byte Map 4',0
+Simple mixer control 'ADX4 Byte Map 40',0
+Simple mixer control 'ADX4 Byte Map 41',0
+Simple mixer control 'ADX4 Byte Map 42',0
+Simple mixer control 'ADX4 Byte Map 43',0
+Simple mixer control 'ADX4 Byte Map 44',0
+Simple mixer control 'ADX4 Byte Map 45',0
+Simple mixer control 'ADX4 Byte Map 46',0
+Simple mixer control 'ADX4 Byte Map 47',0
+Simple mixer control 'ADX4 Byte Map 48',0
+Simple mixer control 'ADX4 Byte Map 49',0
+Simple mixer control 'ADX4 Byte Map 5',0
+Simple mixer control 'ADX4 Byte Map 50',0
+Simple mixer control 'ADX4 Byte Map 51',0
+Simple mixer control 'ADX4 Byte Map 52',0
+Simple mixer control 'ADX4 Byte Map 53',0
+Simple mixer control 'ADX4 Byte Map 54',0
+Simple mixer control 'ADX4 Byte Map 55',0
+Simple mixer control 'ADX4 Byte Map 56',0
+Simple mixer control 'ADX4 Byte Map 57',0
+Simple mixer control 'ADX4 Byte Map 58',0
+Simple mixer control 'ADX4 Byte Map 59',0
+Simple mixer control 'ADX4 Byte Map 6',0
+Simple mixer control 'ADX4 Byte Map 60',0
+Simple mixer control 'ADX4 Byte Map 61',0
+Simple mixer control 'ADX4 Byte Map 62',0
+Simple mixer control 'ADX4 Byte Map 63',0
+Simple mixer control 'ADX4 Byte Map 7',0
+Simple mixer control 'ADX4 Byte Map 8',0
+Simple mixer control 'ADX4 Byte Map 9',0
+Simple mixer control 'ADX4 Input Audio Channels',0
+Simple mixer control 'ADX4 Mux',0
+Simple mixer control 'ADX4 Output1 Audio Channels',0
+Simple mixer control 'ADX4 Output2 Audio Channels',0
+Simple mixer control 'ADX4 Output3 Audio Channels',0
+Simple mixer control 'ADX4 Output4 Audio Channels',0
+Simple mixer control 'AEC MUX',0
+Simple mixer control 'AFC1 Mux',0
+Simple mixer control 'AFC1 dest module name',0
+Simple mixer control 'AFC1 ppm diff',0
+Simple mixer control 'AFC1 src burst',0
+Simple mixer control 'AFC1 start threshold',0
+Simple mixer control 'AFC1 threshold type',0
+Simple mixer control 'AFC2 Mux',0
+Simple mixer control 'AFC2 dest module name',0
+Simple mixer control 'AFC2 ppm diff',0
+Simple mixer control 'AFC2 src burst',0
+Simple mixer control 'AFC2 start threshold',0
+Simple mixer control 'AFC2 threshold type',0
+Simple mixer control 'AFC3 Mux',0
+Simple mixer control 'AFC3 dest module name',0
+Simple mixer control 'AFC3 ppm diff',0
+Simple mixer control 'AFC3 src burst',0
+Simple mixer control 'AFC3 start threshold',0
+Simple mixer control 'AFC3 threshold type',0
+Simple mixer control 'AFC4 Mux',0
+Simple mixer control 'AFC4 dest module name',0
+Simple mixer control 'AFC4 ppm diff',0
+Simple mixer control 'AFC4 src burst',0
+Simple mixer control 'AFC4 start threshold',0
+Simple mixer control 'AFC4 threshold type',0
+Simple mixer control 'AFC5 Mux',0
+Simple mixer control 'AFC5 dest module name',0
+Simple mixer control 'AFC5 ppm diff',0
+Simple mixer control 'AFC5 src burst',0
+Simple mixer control 'AFC5 start threshold',0
+Simple mixer control 'AFC5 threshold type',0
+Simple mixer control 'AFC6 Mux',0
+Simple mixer control 'AFC6 dest module name',0
+Simple mixer control 'AFC6 ppm diff',0
+Simple mixer control 'AFC6 src burst',0
+Simple mixer control 'AFC6 start threshold',0
+Simple mixer control 'AFC6 threshold type',0
+Simple mixer control 'AMX1 Byte Map 0',0
+Simple mixer control 'AMX1 Byte Map 1',0
+Simple mixer control 'AMX1 Byte Map 10',0
+Simple mixer control 'AMX1 Byte Map 11',0
+Simple mixer control 'AMX1 Byte Map 12',0
+Simple mixer control 'AMX1 Byte Map 13',0
+Simple mixer control 'AMX1 Byte Map 14',0
+Simple mixer control 'AMX1 Byte Map 15',0
+Simple mixer control 'AMX1 Byte Map 16',0
+Simple mixer control 'AMX1 Byte Map 17',0
+Simple mixer control 'AMX1 Byte Map 18',0
+Simple mixer control 'AMX1 Byte Map 19',0
+Simple mixer control 'AMX1 Byte Map 2',0
+Simple mixer control 'AMX1 Byte Map 20',0
+Simple mixer control 'AMX1 Byte Map 21',0
+Simple mixer control 'AMX1 Byte Map 22',0
+Simple mixer control 'AMX1 Byte Map 23',0
+Simple mixer control 'AMX1 Byte Map 24',0
+Simple mixer control 'AMX1 Byte Map 25',0
+Simple mixer control 'AMX1 Byte Map 26',0
+Simple mixer control 'AMX1 Byte Map 27',0
+Simple mixer control 'AMX1 Byte Map 28',0
+Simple mixer control 'AMX1 Byte Map 29',0
+Simple mixer control 'AMX1 Byte Map 3',0
+Simple mixer control 'AMX1 Byte Map 30',0
+Simple mixer control 'AMX1 Byte Map 31',0
+Simple mixer control 'AMX1 Byte Map 32',0
+Simple mixer control 'AMX1 Byte Map 33',0
+Simple mixer control 'AMX1 Byte Map 34',0
+Simple mixer control 'AMX1 Byte Map 35',0
+Simple mixer control 'AMX1 Byte Map 36',0
+Simple mixer control 'AMX1 Byte Map 37',0
+Simple mixer control 'AMX1 Byte Map 38',0
+Simple mixer control 'AMX1 Byte Map 39',0
+Simple mixer control 'AMX1 Byte Map 4',0
+Simple mixer control 'AMX1 Byte Map 40',0
+Simple mixer control 'AMX1 Byte Map 41',0
+Simple mixer control 'AMX1 Byte Map 42',0
+Simple mixer control 'AMX1 Byte Map 43',0
+Simple mixer control 'AMX1 Byte Map 44',0
+Simple mixer control 'AMX1 Byte Map 45',0
+Simple mixer control 'AMX1 Byte Map 46',0
+Simple mixer control 'AMX1 Byte Map 47',0
+Simple mixer control 'AMX1 Byte Map 48',0
+Simple mixer control 'AMX1 Byte Map 49',0
+Simple mixer control 'AMX1 Byte Map 5',0
+Simple mixer control 'AMX1 Byte Map 50',0
+Simple mixer control 'AMX1 Byte Map 51',0
+Simple mixer control 'AMX1 Byte Map 52',0
+Simple mixer control 'AMX1 Byte Map 53',0
+Simple mixer control 'AMX1 Byte Map 54',0
+Simple mixer control 'AMX1 Byte Map 55',0
+Simple mixer control 'AMX1 Byte Map 56',0
+Simple mixer control 'AMX1 Byte Map 57',0
+Simple mixer control 'AMX1 Byte Map 58',0
+Simple mixer control 'AMX1 Byte Map 59',0
+Simple mixer control 'AMX1 Byte Map 6',0
+Simple mixer control 'AMX1 Byte Map 60',0
+Simple mixer control 'AMX1 Byte Map 61',0
+Simple mixer control 'AMX1 Byte Map 62',0
+Simple mixer control 'AMX1 Byte Map 63',0
+Simple mixer control 'AMX1 Byte Map 7',0
+Simple mixer control 'AMX1 Byte Map 8',0
+Simple mixer control 'AMX1 Byte Map 9',0
+Simple mixer control 'AMX1 Input1 Audio Channels',0
+Simple mixer control 'AMX1 Input2 Audio Channels',0
+Simple mixer control 'AMX1 Input3 Audio Channels',0
+Simple mixer control 'AMX1 Input4 Audio Channels',0
+Simple mixer control 'AMX1 Output Audio Channels',0
+Simple mixer control 'AMX1 RX1 Mux',0
+Simple mixer control 'AMX1 RX2 Mux',0
+Simple mixer control 'AMX1 RX3 Mux',0
+Simple mixer control 'AMX1 RX4 Mux',0
+Simple mixer control 'AMX2 Byte Map 0',0
+Simple mixer control 'AMX2 Byte Map 1',0
+Simple mixer control 'AMX2 Byte Map 10',0
+Simple mixer control 'AMX2 Byte Map 11',0
+Simple mixer control 'AMX2 Byte Map 12',0
+Simple mixer control 'AMX2 Byte Map 13',0
+Simple mixer control 'AMX2 Byte Map 14',0
+Simple mixer control 'AMX2 Byte Map 15',0
+Simple mixer control 'AMX2 Byte Map 16',0
+Simple mixer control 'AMX2 Byte Map 17',0
+Simple mixer control 'AMX2 Byte Map 18',0
+Simple mixer control 'AMX2 Byte Map 19',0
+Simple mixer control 'AMX2 Byte Map 2',0
+Simple mixer control 'AMX2 Byte Map 20',0
+Simple mixer control 'AMX2 Byte Map 21',0
+Simple mixer control 'AMX2 Byte Map 22',0
+Simple mixer control 'AMX2 Byte Map 23',0
+Simple mixer control 'AMX2 Byte Map 24',0
+Simple mixer control 'AMX2 Byte Map 25',0
+Simple mixer control 'AMX2 Byte Map 26',0
+Simple mixer control 'AMX2 Byte Map 27',0
+Simple mixer control 'AMX2 Byte Map 28',0
+Simple mixer control 'AMX2 Byte Map 29',0
+Simple mixer control 'AMX2 Byte Map 3',0
+Simple mixer control 'AMX2 Byte Map 30',0
+Simple mixer control 'AMX2 Byte Map 31',0
+Simple mixer control 'AMX2 Byte Map 32',0
+Simple mixer control 'AMX2 Byte Map 33',0
+Simple mixer control 'AMX2 Byte Map 34',0
+Simple mixer control 'AMX2 Byte Map 35',0
+Simple mixer control 'AMX2 Byte Map 36',0
+Simple mixer control 'AMX2 Byte Map 37',0
+Simple mixer control 'AMX2 Byte Map 38',0
+Simple mixer control 'AMX2 Byte Map 39',0
+Simple mixer control 'AMX2 Byte Map 4',0
+Simple mixer control 'AMX2 Byte Map 40',0
+Simple mixer control 'AMX2 Byte Map 41',0
+Simple mixer control 'AMX2 Byte Map 42',0
+Simple mixer control 'AMX2 Byte Map 43',0
+Simple mixer control 'AMX2 Byte Map 44',0
+Simple mixer control 'AMX2 Byte Map 45',0
+Simple mixer control 'AMX2 Byte Map 46',0
+Simple mixer control 'AMX2 Byte Map 47',0
+Simple mixer control 'AMX2 Byte Map 48',0
+Simple mixer control 'AMX2 Byte Map 49',0
+Simple mixer control 'AMX2 Byte Map 5',0
+Simple mixer control 'AMX2 Byte Map 50',0
+Simple mixer control 'AMX2 Byte Map 51',0
+Simple mixer control 'AMX2 Byte Map 52',0
+Simple mixer control 'AMX2 Byte Map 53',0
+Simple mixer control 'AMX2 Byte Map 54',0
+Simple mixer control 'AMX2 Byte Map 55',0
+Simple mixer control 'AMX2 Byte Map 56',0
+Simple mixer control 'AMX2 Byte Map 57',0
+Simple mixer control 'AMX2 Byte Map 58',0
+Simple mixer control 'AMX2 Byte Map 59',0
+Simple mixer control 'AMX2 Byte Map 6',0
+Simple mixer control 'AMX2 Byte Map 60',0
+Simple mixer control 'AMX2 Byte Map 61',0
+Simple mixer control 'AMX2 Byte Map 62',0
+Simple mixer control 'AMX2 Byte Map 63',0
+Simple mixer control 'AMX2 Byte Map 7',0
+Simple mixer control 'AMX2 Byte Map 8',0
+Simple mixer control 'AMX2 Byte Map 9',0
+Simple mixer control 'AMX2 Input1 Audio Channels',0
+Simple mixer control 'AMX2 Input2 Audio Channels',0
+Simple mixer control 'AMX2 Input3 Audio Channels',0
+Simple mixer control 'AMX2 Input4 Audio Channels',0
+Simple mixer control 'AMX2 Output Audio Channels',0
+Simple mixer control 'AMX2 RX1 Mux',0
+Simple mixer control 'AMX2 RX2 Mux',0
+Simple mixer control 'AMX2 RX3 Mux',0
+Simple mixer control 'AMX2 RX4 Mux',0
+Simple mixer control 'AMX3 Byte Map 0',0
+Simple mixer control 'AMX3 Byte Map 1',0
+Simple mixer control 'AMX3 Byte Map 10',0
+Simple mixer control 'AMX3 Byte Map 11',0
+Simple mixer control 'AMX3 Byte Map 12',0
+Simple mixer control 'AMX3 Byte Map 13',0
+Simple mixer control 'AMX3 Byte Map 14',0
+Simple mixer control 'AMX3 Byte Map 15',0
+Simple mixer control 'AMX3 Byte Map 16',0
+Simple mixer control 'AMX3 Byte Map 17',0
+Simple mixer control 'AMX3 Byte Map 18',0
+Simple mixer control 'AMX3 Byte Map 19',0
+Simple mixer control 'AMX3 Byte Map 2',0
+Simple mixer control 'AMX3 Byte Map 20',0
+Simple mixer control 'AMX3 Byte Map 21',0
+Simple mixer control 'AMX3 Byte Map 22',0
+Simple mixer control 'AMX3 Byte Map 23',0
+Simple mixer control 'AMX3 Byte Map 24',0
+Simple mixer control 'AMX3 Byte Map 25',0
+Simple mixer control 'AMX3 Byte Map 26',0
+Simple mixer control 'AMX3 Byte Map 27',0
+Simple mixer control 'AMX3 Byte Map 28',0
+Simple mixer control 'AMX3 Byte Map 29',0
+Simple mixer control 'AMX3 Byte Map 3',0
+Simple mixer control 'AMX3 Byte Map 30',0
+Simple mixer control 'AMX3 Byte Map 31',0
+Simple mixer control 'AMX3 Byte Map 32',0
+Simple mixer control 'AMX3 Byte Map 33',0
+Simple mixer control 'AMX3 Byte Map 34',0
+Simple mixer control 'AMX3 Byte Map 35',0
+Simple mixer control 'AMX3 Byte Map 36',0
+Simple mixer control 'AMX3 Byte Map 37',0
+Simple mixer control 'AMX3 Byte Map 38',0
+Simple mixer control 'AMX3 Byte Map 39',0
+Simple mixer control 'AMX3 Byte Map 4',0
+Simple mixer control 'AMX3 Byte Map 40',0
+Simple mixer control 'AMX3 Byte Map 41',0
+Simple mixer control 'AMX3 Byte Map 42',0
+Simple mixer control 'AMX3 Byte Map 43',0
+Simple mixer control 'AMX3 Byte Map 44',0
+Simple mixer control 'AMX3 Byte Map 45',0
+Simple mixer control 'AMX3 Byte Map 46',0
+Simple mixer control 'AMX3 Byte Map 47',0
+Simple mixer control 'AMX3 Byte Map 48',0
+Simple mixer control 'AMX3 Byte Map 49',0
+Simple mixer control 'AMX3 Byte Map 5',0
+Simple mixer control 'AMX3 Byte Map 50',0
+Simple mixer control 'AMX3 Byte Map 51',0
+Simple mixer control 'AMX3 Byte Map 52',0
+Simple mixer control 'AMX3 Byte Map 53',0
+Simple mixer control 'AMX3 Byte Map 54',0
+Simple mixer control 'AMX3 Byte Map 55',0
+Simple mixer control 'AMX3 Byte Map 56',0
+Simple mixer control 'AMX3 Byte Map 57',0
+Simple mixer control 'AMX3 Byte Map 58',0
+Simple mixer control 'AMX3 Byte Map 59',0
+Simple mixer control 'AMX3 Byte Map 6',0
+Simple mixer control 'AMX3 Byte Map 60',0
+Simple mixer control 'AMX3 Byte Map 61',0
+Simple mixer control 'AMX3 Byte Map 62',0
+Simple mixer control 'AMX3 Byte Map 63',0
+Simple mixer control 'AMX3 Byte Map 7',0
+Simple mixer control 'AMX3 Byte Map 8',0
+Simple mixer control 'AMX3 Byte Map 9',0
+Simple mixer control 'AMX3 Input1 Audio Channels',0
+Simple mixer control 'AMX3 Input2 Audio Channels',0
+Simple mixer control 'AMX3 Input3 Audio Channels',0
+Simple mixer control 'AMX3 Input4 Audio Channels',0
+Simple mixer control 'AMX3 Output Audio Channels',0
+Simple mixer control 'AMX3 RX1 Mux',0
+Simple mixer control 'AMX3 RX2 Mux',0
+Simple mixer control 'AMX3 RX3 Mux',0
+Simple mixer control 'AMX3 RX4 Mux',0
+Simple mixer control 'AMX4 Byte Map 0',0
+Simple mixer control 'AMX4 Byte Map 1',0
+Simple mixer control 'AMX4 Byte Map 10',0
+Simple mixer control 'AMX4 Byte Map 11',0
+Simple mixer control 'AMX4 Byte Map 12',0
+Simple mixer control 'AMX4 Byte Map 13',0
+Simple mixer control 'AMX4 Byte Map 14',0
+Simple mixer control 'AMX4 Byte Map 15',0
+Simple mixer control 'AMX4 Byte Map 16',0
+Simple mixer control 'AMX4 Byte Map 17',0
+Simple mixer control 'AMX4 Byte Map 18',0
+Simple mixer control 'AMX4 Byte Map 19',0
+Simple mixer control 'AMX4 Byte Map 2',0
+Simple mixer control 'AMX4 Byte Map 20',0
+Simple mixer control 'AMX4 Byte Map 21',0
+Simple mixer control 'AMX4 Byte Map 22',0
+Simple mixer control 'AMX4 Byte Map 23',0
+Simple mixer control 'AMX4 Byte Map 24',0
+Simple mixer control 'AMX4 Byte Map 25',0
+Simple mixer control 'AMX4 Byte Map 26',0
+Simple mixer control 'AMX4 Byte Map 27',0
+Simple mixer control 'AMX4 Byte Map 28',0
+Simple mixer control 'AMX4 Byte Map 29',0
+Simple mixer control 'AMX4 Byte Map 3',0
+Simple mixer control 'AMX4 Byte Map 30',0
+Simple mixer control 'AMX4 Byte Map 31',0
+Simple mixer control 'AMX4 Byte Map 32',0
+Simple mixer control 'AMX4 Byte Map 33',0
+Simple mixer control 'AMX4 Byte Map 34',0
+Simple mixer control 'AMX4 Byte Map 35',0
+Simple mixer control 'AMX4 Byte Map 36',0
+Simple mixer control 'AMX4 Byte Map 37',0
+Simple mixer control 'AMX4 Byte Map 38',0
+Simple mixer control 'AMX4 Byte Map 39',0
+Simple mixer control 'AMX4 Byte Map 4',0
+Simple mixer control 'AMX4 Byte Map 40',0
+Simple mixer control 'AMX4 Byte Map 41',0
+Simple mixer control 'AMX4 Byte Map 42',0
+Simple mixer control 'AMX4 Byte Map 43',0
+Simple mixer control 'AMX4 Byte Map 44',0
+Simple mixer control 'AMX4 Byte Map 45',0
+Simple mixer control 'AMX4 Byte Map 46',0
+Simple mixer control 'AMX4 Byte Map 47',0
+Simple mixer control 'AMX4 Byte Map 48',0
+Simple mixer control 'AMX4 Byte Map 49',0
+Simple mixer control 'AMX4 Byte Map 5',0
+Simple mixer control 'AMX4 Byte Map 50',0
+Simple mixer control 'AMX4 Byte Map 51',0
+Simple mixer control 'AMX4 Byte Map 52',0
+Simple mixer control 'AMX4 Byte Map 53',0
+Simple mixer control 'AMX4 Byte Map 54',0
+Simple mixer control 'AMX4 Byte Map 55',0
+Simple mixer control 'AMX4 Byte Map 56',0
+Simple mixer control 'AMX4 Byte Map 57',0
+Simple mixer control 'AMX4 Byte Map 58',0
+Simple mixer control 'AMX4 Byte Map 59',0
+Simple mixer control 'AMX4 Byte Map 6',0
+Simple mixer control 'AMX4 Byte Map 60',0
+Simple mixer control 'AMX4 Byte Map 61',0
+Simple mixer control 'AMX4 Byte Map 62',0
+Simple mixer control 'AMX4 Byte Map 63',0
+Simple mixer control 'AMX4 Byte Map 7',0
+Simple mixer control 'AMX4 Byte Map 8',0
+Simple mixer control 'AMX4 Byte Map 9',0
+Simple mixer control 'AMX4 Input1 Audio Channels',0
+Simple mixer control 'AMX4 Input2 Audio Channels',0
+Simple mixer control 'AMX4 Input3 Audio Channels',0
+Simple mixer control 'AMX4 Input4 Audio Channels',0
+Simple mixer control 'AMX4 Output Audio Channels',0
+Simple mixer control 'AMX4 RX1 Mux',0
+Simple mixer control 'AMX4 RX2 Mux',0
+Simple mixer control 'AMX4 RX3 Mux',0
+Simple mixer control 'AMX4 RX4 Mux',0
+Simple mixer control 'APE Reg Dump',0
+Simple mixer control 'APM-IN1 MUX',0
+Simple mixer control 'APM-IN10 MUX',0
+Simple mixer control 'APM-IN11 MUX',0
+Simple mixer control 'APM-IN12 MUX',0
+Simple mixer control 'APM-IN13 MUX',0
+Simple mixer control 'APM-IN14 MUX',0
+Simple mixer control 'APM-IN15 MUX',0
+Simple mixer control 'APM-IN2 MUX',0
+Simple mixer control 'APM-IN3 MUX',0
+Simple mixer control 'APM-IN4 MUX',0
+Simple mixer control 'APM-IN5 MUX',0
+Simple mixer control 'APM-IN6 MUX',0
+Simple mixer control 'APM-IN7 MUX',0
+Simple mixer control 'APM-IN8 MUX',0
+Simple mixer control 'APM-IN9 MUX',0
+Simple mixer control 'APM-OUT1 MUX',0
+Simple mixer control 'APM-OUT10 MUX',0
+Simple mixer control 'APM-OUT11 MUX',0
+Simple mixer control 'APM-OUT12 MUX',0
+Simple mixer control 'APM-OUT13 MUX',0
+Simple mixer control 'APM-OUT14 MUX',0
+Simple mixer control 'APM-OUT15 MUX',0
+Simple mixer control 'APM-OUT2 MUX',0
+Simple mixer control 'APM-OUT3 MUX',0
+Simple mixer control 'APM-OUT4 MUX',0
+Simple mixer control 'APM-OUT5 MUX',0
+Simple mixer control 'APM-OUT6 MUX',0
+Simple mixer control 'APM-OUT7 MUX',0
+Simple mixer control 'APM-OUT8 MUX',0
+Simple mixer control 'APM-OUT9 MUX',0
+Simple mixer control 'APM1 Input Mode',0
+Simple mixer control 'APM1 Min ADSP Clock',0
+Simple mixer control 'APM1 Priority',0
+Simple mixer control 'APM1 Secure Mode',0
+Simple mixer control 'APM10 Input Mode',0
+Simple mixer control 'APM10 Min ADSP Clock',0
+Simple mixer control 'APM10 Priority',0
+Simple mixer control 'APM10 Secure Mode',0
+Simple mixer control 'APM11 Input Mode',0
+Simple mixer control 'APM11 Min ADSP Clock',0
+Simple mixer control 'APM11 Priority',0
+Simple mixer control 'APM11 Secure Mode',0
+Simple mixer control 'APM12 Input Mode',0
+Simple mixer control 'APM12 Min ADSP Clock',0
+Simple mixer control 'APM12 Priority',0
+Simple mixer control 'APM12 Secure Mode',0
+Simple mixer control 'APM13 Input Mode',0
+Simple mixer control 'APM13 Min ADSP Clock',0
+Simple mixer control 'APM13 Priority',0
+Simple mixer control 'APM13 Secure Mode',0
+Simple mixer control 'APM14 Input Mode',0
+Simple mixer control 'APM14 Min ADSP Clock',0
+Simple mixer control 'APM14 Priority',0
+Simple mixer control 'APM14 Secure Mode',0
+Simple mixer control 'APM15 Input Mode',0
+Simple mixer control 'APM15 Min ADSP Clock',0
+Simple mixer control 'APM15 Priority',0
+Simple mixer control 'APM15 Secure Mode',0
+Simple mixer control 'APM2 Input Mode',0
+Simple mixer control 'APM2 Min ADSP Clock',0
+Simple mixer control 'APM2 Priority',0
+Simple mixer control 'APM2 Secure Mode',0
+Simple mixer control 'APM3 Input Mode',0
+Simple mixer control 'APM3 Min ADSP Clock',0
+Simple mixer control 'APM3 Priority',0
+Simple mixer control 'APM3 Secure Mode',0
+Simple mixer control 'APM4 Input Mode',0
+Simple mixer control 'APM4 Min ADSP Clock',0
+Simple mixer control 'APM4 Priority',0
+Simple mixer control 'APM4 Secure Mode',0
+Simple mixer control 'APM5 Input Mode',0
+Simple mixer control 'APM5 Min ADSP Clock',0
+Simple mixer control 'APM5 Priority',0
+Simple mixer control 'APM5 Secure Mode',0
+Simple mixer control 'APM6 Input Mode',0
+Simple mixer control 'APM6 Min ADSP Clock',0
+Simple mixer control 'APM6 Priority',0
+Simple mixer control 'APM6 Secure Mode',0
+Simple mixer control 'APM7 Input Mode',0
+Simple mixer control 'APM7 Min ADSP Clock',0
+Simple mixer control 'APM7 Priority',0
+Simple mixer control 'APM7 Secure Mode',0
+Simple mixer control 'APM8 Input Mode',0
+Simple mixer control 'APM8 Min ADSP Clock',0
+Simple mixer control 'APM8 Priority',0
+Simple mixer control 'APM8 Secure Mode',0
+Simple mixer control 'APM9 Input Mode',0
+Simple mixer control 'APM9 Min ADSP Clock',0
+Simple mixer control 'APM9 Priority',0
+Simple mixer control 'APM9 Secure Mode',0
+Simple mixer control 'ASRC1 RX1 Mux',0
+Simple mixer control 'ASRC1 RX2 Mux',0
+Simple mixer control 'ASRC1 RX3 Mux',0
+Simple mixer control 'ASRC1 RX4 Mux',0
+Simple mixer control 'ASRC1 RX5 Mux',0
+Simple mixer control 'ASRC1 RX6 Mux',0
+Simple mixer control 'ASRC1 RX7 Mux',0
+Simple mixer control 'ASRC1 Ratio1 Fractional Part',0
+Simple mixer control 'ASRC1 Ratio1 Integer Part',0
+Simple mixer control 'ASRC1 Ratio1 Source',0
+Simple mixer control 'ASRC1 Ratio2 Fractional Part',0
+Simple mixer control 'ASRC1 Ratio2 Integer Part',0
+Simple mixer control 'ASRC1 Ratio2 Source',0
+Simple mixer control 'ASRC1 Ratio3 Fractional Part',0
+Simple mixer control 'ASRC1 Ratio3 Integer Part',0
+Simple mixer control 'ASRC1 Ratio3 Source',0
+Simple mixer control 'ASRC1 Ratio4 Fractional Part',0
+Simple mixer control 'ASRC1 Ratio4 Integer Part',0
+Simple mixer control 'ASRC1 Ratio4 Source',0
+Simple mixer control 'ASRC1 Ratio5 Fractional Part',0
+Simple mixer control 'ASRC1 Ratio5 Integer Part',0
+Simple mixer control 'ASRC1 Ratio5 Source',0
+Simple mixer control 'ASRC1 Ratio6 Fractional Part',0
+Simple mixer control 'ASRC1 Ratio6 Integer Part',0
+Simple mixer control 'ASRC1 Ratio6 Source',0
+Simple mixer control 'ASRC1 Stream1 Enable',0
+Simple mixer control 'ASRC1 Stream1 Hwcomp Disable',0
+Simple mixer control 'ASRC1 Stream1 Input Thresh',0
+Simple mixer control 'ASRC1 Stream1 Output Thresh',0
+Simple mixer control 'ASRC1 Stream2 Enable',0
+Simple mixer control 'ASRC1 Stream2 Hwcomp Disable',0
+Simple mixer control 'ASRC1 Stream2 Input Thresh',0
+Simple mixer control 'ASRC1 Stream2 Output Thresh',0
+Simple mixer control 'ASRC1 Stream3 Enable',0
+Simple mixer control 'ASRC1 Stream3 Hwcomp Disable',0
+Simple mixer control 'ASRC1 Stream3 Input Thresh',0
+Simple mixer control 'ASRC1 Stream3 Output Thresh',0
+Simple mixer control 'ASRC1 Stream4 Enable',0
+Simple mixer control 'ASRC1 Stream4 Hwcomp Disable',0
+Simple mixer control 'ASRC1 Stream4 Input Thresh',0
+Simple mixer control 'ASRC1 Stream4 Output Thresh',0
+Simple mixer control 'ASRC1 Stream5 Enable',0
+Simple mixer control 'ASRC1 Stream5 Hwcomp Disable',0
+Simple mixer control 'ASRC1 Stream5 Input Thresh',0
+Simple mixer control 'ASRC1 Stream5 Output Thresh',0
+Simple mixer control 'ASRC1 Stream6 Enable',0
+Simple mixer control 'ASRC1 Stream6 Hwcomp Disable',0
+Simple mixer control 'ASRC1 Stream6 Input Thresh',0
+Simple mixer control 'ASRC1 Stream6 Output Thresh',0
+Simple mixer control 'DMIC1 Audio Bit Format',0
+Simple mixer control 'DMIC1 Audio Channels',0
+Simple mixer control 'DMIC1 Boost Gain',0
+Simple mixer control 'DMIC1 Channel Select',0
+Simple mixer control 'DMIC1 LR Polarity Select',0
+Simple mixer control 'DMIC1 Mono To Stereo',0
+Simple mixer control 'DMIC1 OSR Value',0
+Simple mixer control 'DMIC1 Sample Rate',0
+Simple mixer control 'DMIC1 Stereo To Mono',0
+Simple mixer control 'DMIC2 Audio Bit Format',0
+Simple mixer control 'DMIC2 Audio Channels',0
+Simple mixer control 'DMIC2 Boost Gain',0
+Simple mixer control 'DMIC2 Channel Select',0
+Simple mixer control 'DMIC2 LR Polarity Select',0
+Simple mixer control 'DMIC2 Mono To Stereo',0
+Simple mixer control 'DMIC2 OSR Value',0
+Simple mixer control 'DMIC2 Sample Rate',0
+Simple mixer control 'DMIC2 Stereo To Mono',0
+Simple mixer control 'DMIC3 Audio Bit Format',0
+Simple mixer control 'DMIC3 Audio Channels',0
+Simple mixer control 'DMIC3 Boost Gain',0
+Simple mixer control 'DMIC3 Channel Select',0
+Simple mixer control 'DMIC3 LR Polarity Select',0
+Simple mixer control 'DMIC3 Mono To Stereo',0
+Simple mixer control 'DMIC3 OSR Value',0
+Simple mixer control 'DMIC3 Sample Rate',0
+Simple mixer control 'DMIC3 Stereo To Mono',0
+Simple mixer control 'DMIC4 Audio Bit Format',0
+Simple mixer control 'DMIC4 Audio Channels',0
+Simple mixer control 'DMIC4 Boost Gain',0
+Simple mixer control 'DMIC4 Channel Select',0
+Simple mixer control 'DMIC4 LR Polarity Select',0
+Simple mixer control 'DMIC4 Mono To Stereo',0
+Simple mixer control 'DMIC4 OSR Value',0
+Simple mixer control 'DMIC4 Sample Rate',0
+Simple mixer control 'DMIC4 Stereo To Mono',0
+Simple mixer control 'Denominator1 Mux',0
+Simple mixer control 'Denominator1 Prescalar',0
+Simple mixer control 'Denominator2 Mux',0
+Simple mixer control 'Denominator2 Prescalar',0
+Simple mixer control 'Denominator3 Mux',0
+Simple mixer control 'Denominator3 Prescalar',0
+Simple mixer control 'Denominator4 Mux',0
+Simple mixer control 'Denominator4 Prescalar',0
+Simple mixer control 'Denominator5 Mux',0
+Simple mixer control 'Denominator5 Prescalar',0
+Simple mixer control 'Denominator6 Mux',0
+Simple mixer control 'Denominator6 Prescalar',0
+Simple mixer control 'Lane1 Ratio Frac',0
+Simple mixer control 'Lane1 Ratio Int',0
+Simple mixer control 'Lane1 enable',0
+Simple mixer control 'Lane2 Ratio Frac',0
+Simple mixer control 'Lane2 Ratio Int',0
+Simple mixer control 'Lane2 enable',0
+Simple mixer control 'Lane3 Ratio Frac',0
+Simple mixer control 'Lane3 Ratio Int',0
+Simple mixer control 'Lane3 enable',0
+Simple mixer control 'Lane4 Ratio Frac',0
+Simple mixer control 'Lane4 Ratio Int',0
+Simple mixer control 'Lane4 enable',0
+Simple mixer control 'Lane5 Ratio Frac',0
+Simple mixer control 'Lane5 Ratio Int',0
+Simple mixer control 'Lane5 enable',0
+Simple mixer control 'Lane6 Ratio Frac',0
+Simple mixer control 'Lane6 Ratio Int',0
+Simple mixer control 'Lane6 enable',0
+Simple mixer control 'MIXER1 Adder1 RX1',0
+Simple mixer control 'MIXER1 Adder1 RX10',0
+Simple mixer control 'MIXER1 Adder1 RX2',0
+Simple mixer control 'MIXER1 Adder1 RX3',0
+Simple mixer control 'MIXER1 Adder1 RX4',0
+Simple mixer control 'MIXER1 Adder1 RX5',0
+Simple mixer control 'MIXER1 Adder1 RX6',0
+Simple mixer control 'MIXER1 Adder1 RX7',0
+Simple mixer control 'MIXER1 Adder1 RX8',0
+Simple mixer control 'MIXER1 Adder1 RX9',0
+Simple mixer control 'MIXER1 Adder2 RX1',0
+Simple mixer control 'MIXER1 Adder2 RX10',0
+Simple mixer control 'MIXER1 Adder2 RX2',0
+Simple mixer control 'MIXER1 Adder2 RX3',0
+Simple mixer control 'MIXER1 Adder2 RX4',0
+Simple mixer control 'MIXER1 Adder2 RX5',0
+Simple mixer control 'MIXER1 Adder2 RX6',0
+Simple mixer control 'MIXER1 Adder2 RX7',0
+Simple mixer control 'MIXER1 Adder2 RX8',0
+Simple mixer control 'MIXER1 Adder2 RX9',0
+Simple mixer control 'MIXER1 Adder3 RX1',0
+Simple mixer control 'MIXER1 Adder3 RX10',0
+Simple mixer control 'MIXER1 Adder3 RX2',0
+Simple mixer control 'MIXER1 Adder3 RX3',0
+Simple mixer control 'MIXER1 Adder3 RX4',0
+Simple mixer control 'MIXER1 Adder3 RX5',0
+Simple mixer control 'MIXER1 Adder3 RX6',0
+Simple mixer control 'MIXER1 Adder3 RX7',0
+Simple mixer control 'MIXER1 Adder3 RX8',0
+Simple mixer control 'MIXER1 Adder3 RX9',0
+Simple mixer control 'MIXER1 Adder4 RX1',0
+Simple mixer control 'MIXER1 Adder4 RX10',0
+Simple mixer control 'MIXER1 Adder4 RX2',0
+Simple mixer control 'MIXER1 Adder4 RX3',0
+Simple mixer control 'MIXER1 Adder4 RX4',0
+Simple mixer control 'MIXER1 Adder4 RX5',0
+Simple mixer control 'MIXER1 Adder4 RX6',0
+Simple mixer control 'MIXER1 Adder4 RX7',0
+Simple mixer control 'MIXER1 Adder4 RX8',0
+Simple mixer control 'MIXER1 Adder4 RX9',0
+Simple mixer control 'MIXER1 Adder5 RX1',0
+Simple mixer control 'MIXER1 Adder5 RX10',0
+Simple mixer control 'MIXER1 Adder5 RX2',0
+Simple mixer control 'MIXER1 Adder5 RX3',0
+Simple mixer control 'MIXER1 Adder5 RX4',0
+Simple mixer control 'MIXER1 Adder5 RX5',0
+Simple mixer control 'MIXER1 Adder5 RX6',0
+Simple mixer control 'MIXER1 Adder5 RX7',0
+Simple mixer control 'MIXER1 Adder5 RX8',0
+Simple mixer control 'MIXER1 Adder5 RX9',0
+Simple mixer control 'MIXER1 Mixer Enable',0
+Simple mixer control 'MIXER1 RX1 Audio Channels',0
+Simple mixer control 'MIXER1 RX1 Gain',0
+Simple mixer control 'MIXER1 RX1 Gain Instant',0
+Simple mixer control 'MIXER1 RX1 Mux',0
+Simple mixer control 'MIXER1 RX10 Audio Channels',0
+Simple mixer control 'MIXER1 RX10 Gain',0
+Simple mixer control 'MIXER1 RX10 Gain Instant',0
+Simple mixer control 'MIXER1 RX10 Mux',0
+Simple mixer control 'MIXER1 RX2 Audio Channels',0
+Simple mixer control 'MIXER1 RX2 Gain',0
+Simple mixer control 'MIXER1 RX2 Gain Instant',0
+Simple mixer control 'MIXER1 RX2 Mux',0
+Simple mixer control 'MIXER1 RX3 Audio Channels',0
+Simple mixer control 'MIXER1 RX3 Gain',0
+Simple mixer control 'MIXER1 RX3 Gain Instant',0
+Simple mixer control 'MIXER1 RX3 Mux',0
+Simple mixer control 'MIXER1 RX4 Audio Channels',0
+Simple mixer control 'MIXER1 RX4 Gain',0
+Simple mixer control 'MIXER1 RX4 Gain Instant',0
+Simple mixer control 'MIXER1 RX4 Mux',0
+Simple mixer control 'MIXER1 RX5 Audio Channels',0
+Simple mixer control 'MIXER1 RX5 Gain',0
+Simple mixer control 'MIXER1 RX5 Gain Instant',0
+Simple mixer control 'MIXER1 RX5 Mux',0
+Simple mixer control 'MIXER1 RX6 Audio Channels',0
+Simple mixer control 'MIXER1 RX6 Gain',0
+Simple mixer control 'MIXER1 RX6 Gain Instant',0
+Simple mixer control 'MIXER1 RX6 Mux',0
+Simple mixer control 'MIXER1 RX7 Audio Channels',0
+Simple mixer control 'MIXER1 RX7 Gain',0
+Simple mixer control 'MIXER1 RX7 Gain Instant',0
+Simple mixer control 'MIXER1 RX7 Mux',0
+Simple mixer control 'MIXER1 RX8 Audio Channels',0
+Simple mixer control 'MIXER1 RX8 Gain',0
+Simple mixer control 'MIXER1 RX8 Gain Instant',0
+Simple mixer control 'MIXER1 RX8 Mux',0
+Simple mixer control 'MIXER1 RX9 Audio Channels',0
+Simple mixer control 'MIXER1 RX9 Gain',0
+Simple mixer control 'MIXER1 RX9 Gain Instant',0
+Simple mixer control 'MIXER1 RX9 Mux',0
+Simple mixer control 'MIXER1 TX1 Audio Channels',0
+Simple mixer control 'MIXER1 TX2 Audio Channels',0
+Simple mixer control 'MIXER1 TX3 Audio Channels',0
+Simple mixer control 'MIXER1 TX4 Audio Channels',0
+Simple mixer control 'MIXER1 TX5 Audio Channels',0
+Simple mixer control 'MP3-DEC1 MUX',0
+Simple mixer control 'MVC1',0
+Simple mixer control 'MVC1 Audio Bit Format',0
+Simple mixer control 'MVC1 Audio Channels',0
+Simple mixer control 'MVC1 Bits',0
+Simple mixer control 'MVC1 Bypass',0
+Simple mixer control 'MVC1 Channel1',0
+Simple mixer control 'MVC1 Channel2',0
+Simple mixer control 'MVC1 Channel3',0
+Simple mixer control 'MVC1 Channel4',0
+Simple mixer control 'MVC1 Channel5',0
+Simple mixer control 'MVC1 Channel6',0
+Simple mixer control 'MVC1 Channel7',0
+Simple mixer control 'MVC1 Channel8',0
+Simple mixer control 'MVC1 Curve Type',0
+Simple mixer control 'MVC1 Mute',0
+Simple mixer control 'MVC1 Mux',0
+Simple mixer control 'MVC1 Per Chan Mute Mask',0
+Simple mixer control 'MVC2',0
+Simple mixer control 'MVC2 Audio Bit Format',0
+Simple mixer control 'MVC2 Audio Channels',0
+Simple mixer control 'MVC2 Bits',0
+Simple mixer control 'MVC2 Bypass',0
+Simple mixer control 'MVC2 Channel1',0
+Simple mixer control 'MVC2 Channel2',0
+Simple mixer control 'MVC2 Channel3',0
+Simple mixer control 'MVC2 Channel4',0
+Simple mixer control 'MVC2 Channel5',0
+Simple mixer control 'MVC2 Channel6',0
+Simple mixer control 'MVC2 Channel7',0
+Simple mixer control 'MVC2 Channel8',0
+Simple mixer control 'MVC2 Curve Type',0
+Simple mixer control 'MVC2 Mute',0
+Simple mixer control 'MVC2 Mux',0
+Simple mixer control 'MVC2 Per Chan Mute Mask',0
+Simple mixer control 'NULL-SINK1 MUX',0
+Simple mixer control 'NULL-SINK10 MUX',0
+Simple mixer control 'NULL-SINK11 MUX',0
+Simple mixer control 'NULL-SINK12 MUX',0
+Simple mixer control 'NULL-SINK13 MUX',0
+Simple mixer control 'NULL-SINK14 MUX',0
+Simple mixer control 'NULL-SINK15 MUX',0
+Simple mixer control 'NULL-SINK2 MUX',0
+Simple mixer control 'NULL-SINK3 MUX',0
+Simple mixer control 'NULL-SINK4 MUX',0
+Simple mixer control 'NULL-SINK5 MUX',0
+Simple mixer control 'NULL-SINK6 MUX',0
+Simple mixer control 'NULL-SINK7 MUX',0
+Simple mixer control 'NULL-SINK8 MUX',0
+Simple mixer control 'NULL-SINK9 MUX',0
+Simple mixer control 'Numerator1 Mux',0
+Simple mixer control 'Numerator1 Prescalar',0
+Simple mixer control 'Numerator2 Mux',0
+Simple mixer control 'Numerator2 Prescalar',0
+Simple mixer control 'Numerator3 Mux',0
+Simple mixer control 'Numerator3 Prescalar',0
+Simple mixer control 'Numerator4 Mux',0
+Simple mixer control 'Numerator4 Prescalar',0
+Simple mixer control 'Numerator5 Mux',0
+Simple mixer control 'Numerator5 Prescalar',0
+Simple mixer control 'Numerator6 Mux',0
+Simple mixer control 'Numerator6 Prescalar',0
+Simple mixer control 'OPE1 MBDRC Fast Attack Factor',0
+Simple mixer control 'OPE1 MBDRC Fast Release Factor',0
+Simple mixer control 'OPE1 MBDRC Filter Structure',0
+Simple mixer control 'OPE1 MBDRC Frame Size',0
+Simple mixer control 'OPE1 MBDRC Master',0
+Simple mixer control 'OPE1 MBDRC Mode',0
+Simple mixer control 'OPE1 MBDRC Peak RMS Mode',0
+Simple mixer control 'OPE1 MBDRC RMS Offset',0
+Simple mixer control 'OPE1 MBDRC Shift Control',0
+Simple mixer control 'OPE1 Mux',0
+Simple mixer control 'OPE1 PEQ Active',0
+Simple mixer control 'OPE1 PEQ Biquad Stages',0
+Simple mixer control 'OPE1 PEQ Channel-0 biquad gain params',0
+Simple mixer control 'OPE1 PEQ Channel-0 biquad shift params',0
+Simple mixer control 'OPE1 PEQ Channel-1 biquad gain params',0
+Simple mixer control 'OPE1 PEQ Channel-1 biquad shift params',0
+Simple mixer control 'OPE1 PEQ Channel-2 biquad gain params',0
+Simple mixer control 'OPE1 PEQ Channel-2 biquad shift params',0
+Simple mixer control 'OPE1 PEQ Channel-3 biquad gain params',0
+Simple mixer control 'OPE1 PEQ Channel-3 biquad shift params',0
+Simple mixer control 'OPE1 PEQ Channel-4 biquad gain params',0
+Simple mixer control 'OPE1 PEQ Channel-4 biquad shift params',0
+Simple mixer control 'OPE1 PEQ Channel-5 biquad gain params',0
+Simple mixer control 'OPE1 PEQ Channel-5 biquad shift params',0
+Simple mixer control 'OPE1 PEQ Channel-6 biquad gain params',0
+Simple mixer control 'OPE1 PEQ Channel-6 biquad shift params',0
+Simple mixer control 'OPE1 PEQ Channel-7 biquad gain params',0
+Simple mixer control 'OPE1 PEQ Channel-7 biquad shift params',0
+Simple mixer control 'OPE1 direction peq to mbdrc',0
+Simple mixer control 'PLUGIN10-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN11-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN12-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN13-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN14-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN15-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN16-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN17-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN18-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN19-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN20-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN7-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN8-PLACE-HOLDER MUX',0
+Simple mixer control 'PLUGIN9-PLACE-HOLDER MUX',0
+Simple mixer control 'SFC1 Client Channels',0
+Simple mixer control 'SFC1 Init',0
+Simple mixer control 'SFC1 Input Audio Bit Format',0
+Simple mixer control 'SFC1 Input Audio Channels',0
+Simple mixer control 'SFC1 Input Mono To Stereo',0
+Simple mixer control 'SFC1 Input Sample Rate',0
+Simple mixer control 'SFC1 Input Stereo To Mono',0
+Simple mixer control 'SFC1 Mux',0
+Simple mixer control 'SFC1 Output Audio Bit Format',0
+Simple mixer control 'SFC1 Output Audio Channels',0
+Simple mixer control 'SFC1 Output Mono To Stereo',0
+Simple mixer control 'SFC1 Output Sample Rate',0
+Simple mixer control 'SFC1 Output Stereo To Mono',0
+Simple mixer control 'SFC2 Client Channels',0
+Simple mixer control 'SFC2 Init',0
+Simple mixer control 'SFC2 Input Audio Bit Format',0
+Simple mixer control 'SFC2 Input Audio Channels',0
+Simple mixer control 'SFC2 Input Mono To Stereo',0
+Simple mixer control 'SFC2 Input Sample Rate',0
+Simple mixer control 'SFC2 Input Stereo To Mono',0
+Simple mixer control 'SFC2 Mux',0
+Simple mixer control 'SFC2 Output Audio Bit Format',0
+Simple mixer control 'SFC2 Output Audio Channels',0
+Simple mixer control 'SFC2 Output Mono To Stereo',0
+Simple mixer control 'SFC2 Output Sample Rate',0
+Simple mixer control 'SFC2 Output Stereo To Mono',0
+Simple mixer control 'SFC3 Client Channels',0
+Simple mixer control 'SFC3 Init',0
+Simple mixer control 'SFC3 Input Audio Bit Format',0
+Simple mixer control 'SFC3 Input Audio Channels',0
+Simple mixer control 'SFC3 Input Mono To Stereo',0
+Simple mixer control 'SFC3 Input Sample Rate',0
+Simple mixer control 'SFC3 Input Stereo To Mono',0
+Simple mixer control 'SFC3 Mux',0
+Simple mixer control 'SFC3 Output Audio Bit Format',0
+Simple mixer control 'SFC3 Output Audio Channels',0
+Simple mixer control 'SFC3 Output Mono To Stereo',0
+Simple mixer control 'SFC3 Output Sample Rate',0
+Simple mixer control 'SFC3 Output Stereo To Mono',0
+Simple mixer control 'SFC4 Client Channels',0
+Simple mixer control 'SFC4 Init',0
+Simple mixer control 'SFC4 Input Audio Bit Format',0
+Simple mixer control 'SFC4 Input Audio Channels',0
+Simple mixer control 'SFC4 Input Mono To Stereo',0
+Simple mixer control 'SFC4 Input Sample Rate',0
+Simple mixer control 'SFC4 Input Stereo To Mono',0
+Simple mixer control 'SFC4 Mux',0
+Simple mixer control 'SFC4 Output Audio Bit Format',0
+Simple mixer control 'SFC4 Output Audio Channels',0
+Simple mixer control 'SFC4 Output Mono To Stereo',0
+Simple mixer control 'SFC4 Output Sample Rate',0
+Simple mixer control 'SFC4 Output Stereo To Mono',0
+Simple mixer control 'SPKPROT-SW MUX',0
+Simple mixer control 'SPKPROT1 Mux',0
+Simple mixer control 'SRC MUX',0
+Simple mixer control 'WIRE MUX',0
+Simple mixer control 'codec-x format',0
+Simple mixer control 'codec-x rate',0
+=== audio processes ===
+1817 /usr/bin/pulseaudio --daemonize=no --log-target=journal
+5525 /usr/bin/pulseaudio --daemonize=no --log-target=journal

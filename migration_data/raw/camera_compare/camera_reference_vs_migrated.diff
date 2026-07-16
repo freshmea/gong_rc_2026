@@ -1,0 +1,435 @@
+--- migration_data/raw/camera_compare/camera_192.168.0.46.txt	2026-07-15 13:09:54.493614001 +0900
++++ migration_data/raw/camera_compare/camera_192.168.0.34.txt	2026-07-15 13:10:06.945590877 +0900
+@@ -1,27 +1,27 @@
+-Warning: Permanently added '192.168.0.46' (ED25519) to the list of known hosts.
+-
++Warning: Permanently added '192.168.0.34' (ED25519) to the list of known hosts.
++[sudo] password for soda: 
+ ### platform
+-canoe
+-Linux canoe 4.9.140-tegra #1 SMP PREEMPT Thu Jun 25 21:22:12 PDT 2020 aarch64 aarch64 aarch64 GNU/Linux
++ubuntu
++Linux ubuntu 5.10.216-tegra #1 SMP PREEMPT Mon Jan 26 23:28:09 PST 2026 aarch64 aarch64 aarch64 GNU/Linux
+ NAME="Ubuntu"
+-VERSION="18.04.4 LTS (Bionic Beaver)"
++VERSION="20.04.6 LTS (Focal Fossa)"
+ ID=ubuntu
+ ID_LIKE=debian
+-PRETTY_NAME="Ubuntu 18.04.4 LTS"
+-VERSION_ID="18.04"
++PRETTY_NAME="Ubuntu 20.04.6 LTS"
++VERSION_ID="20.04"
+ HOME_URL="https://www.ubuntu.com/"
+ SUPPORT_URL="https://help.ubuntu.com/"
+ BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+ PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+-VERSION_CODENAME=bionic
+-UBUNTU_CODENAME=bionic
++VERSION_CODENAME=focal
++UBUNTU_CODENAME=focal
+ 
+ ### OpenCV and GStreamer
+-cv2=4.3.0
++cv2=4.2.0
+   Video I/O:
+-    GStreamer:                   YES (1.14.5)
+-gst-launch-1.0 version 1.14.5
+-GStreamer 1.14.5
++    GStreamer:                   YES (1.16.2)
++gst-launch-1.0 version 1.16.3
++GStreamer 1.16.3
+ https://launchpad.net/distros/ubuntu/+source/gstreamer1.0
+ Factory Details:
+   Rank                     primary (256)
+@@ -65,55 +65,49 @@
+     Pad Template: 'src'
+ 
+ Element Properties:
+-  name                : The name of the object
++  acquire-wait        : Set the waiting time for the acquireFrame before timeout. Default 5000000000 (in nanosec)
+                         flags: readable, writable
+-                        String. Default: "nvarguscamerasrc0"
+-  parent              : The parent of the object
++                        Unsigned Integer64. Range: 5000000000 - 18446744073709551615 Default: 5000000000 
++  aeantibanding       : property to set the auto exposure antibanding mode
+                         flags: readable, writable
+-                        Object of type "GstObject"
+-  blocksize           : Size in bytes to read per buffer (-1 = default)
++                        Enum "GstNvArgusCamAeAntiBandingMode" Default: 1, "AeAntibandingMode_Auto"
++                           (0): AeAntibandingMode_Off - GST_NVCAM_AEANTIBANDING_OFF
++                           (1): AeAntibandingMode_Auto - GST_NVCAM_AEANTIBANDING_AUTO
++                           (2): AeAntibandingMode_50HZ - GST_NVCAM_AEANTIBANDING_50HZ
++                           (3): AeAntibandingMode_60HZ - GST_NVCAM_AEANTIBANDING_60HZ
++  aelock              : set or unset the auto exposure lock
+                         flags: readable, writable
+-                        Unsigned Integer. Range: 0 - 4294967295 Default: 4096 
+-  num-buffers         : Number of buffers to output before sending EOS (-1 = unlimited)
++                        Boolean. Default: false
++  aeregion            : Property to set region of interest for auto exposure
++			with values of ROI coordinates (left, top, right, bottom)
++			and weight (float number) in that order, to set the property
++			use for example: aeregion="0 0 256 256 1"
++                        flags: readable, writable
++                        String. Default: null
++  awblock             : set or unset the auto white balance lock
+                         flags: readable, writable
+-                        Integer. Range: -1 - 2147483647 Default: -1 
+-  typefind            : Run typefind before negotiating (deprecated, non-functional)
+-                        flags: readable, writable, deprecated
+                         Boolean. Default: false
+-  do-timestamp        : Apply current stream time to buffers
++  blocksize           : Size in bytes to read per buffer (-1 = default)
+                         flags: readable, writable
+-                        Boolean. Default: true
+-  silent              : Produce verbose output ?
++                        Unsigned Integer. Range: 0 - 4294967295 Default: 4096 
++  do-timestamp        : Apply current stream time to buffers
+                         flags: readable, writable
+                         Boolean. Default: true
+-  timeout             : timeout to capture in seconds (Either specify timeout or num-buffers, not both)
+-                        flags: readable, writable
+-                        Unsigned Integer. Range: 0 - 2147483647 Default: 0 
+-  wbmode              : White balance affects the color temperature of the photo
++  ee-mode             : property to select edge enhnacement mode
+                         flags: readable, writable
+-                        Enum "GstNvArgusCamWBMode" Default: 1, "auto"
+-                           (0): off              - GST_NVCAM_WB_MODE_OFF
+-                           (1): auto             - GST_NVCAM_WB_MODE_AUTO
+-                           (2): incandescent     - GST_NVCAM_WB_MODE_INCANDESCENT
+-                           (3): fluorescent      - GST_NVCAM_WB_MODE_FLUORESCENT
+-                           (4): warm-fluorescent - GST_NVCAM_WB_MODE_WARM_FLUORESCENT
+-                           (5): daylight         - GST_NVCAM_WB_MODE_DAYLIGHT
+-                           (6): cloudy-daylight  - GST_NVCAM_WB_MODE_CLOUDY_DAYLIGHT
+-                           (7): twilight         - GST_NVCAM_WB_MODE_TWILIGHT
+-                           (8): shade            - GST_NVCAM_WB_MODE_SHADE
+-                           (9): manual           - GST_NVCAM_WB_MODE_MANUAL
+-  saturation          : Property to adjust saturation value
++                        Enum "GstNvArgusCamEEMode" Default: 1, "EdgeEnhancement_Fast"
++                           (0): EdgeEnhancement_Off - GST_NVCAM_EE_OFF
++                           (1): EdgeEnhancement_Fast - GST_NVCAM_EE_FAST
++                           (2): EdgeEnhancement_HighQuality - GST_NVCAM_EE_HIGHQUALITY
++  ee-strength         : property to adjust edge enhancement strength
+                         flags: readable, writable
+-                        Float. Range:               0 -               2 Default:               1 
+-  sensor-id           : Set the id of camera sensor to use. Default 0.
++                        Float. Range:              -1 -               1 Default:              -1 
++  event-wait          : Set the waiting time for the event before timeout. Default 3000000000 (in nanosec)
+                         flags: readable, writable
+-                        Integer. Range: 0 - 255 Default: 0 
+-  sensor-mode         : Set the camera sensor mode to use. Default -1 (Select the best match)
++                        Unsigned Integer64. Range: 3000000000 - 18446744073709551615 Default: 3000000000 
++  exposurecompensation: property to adjust exposure compensation
+                         flags: readable, writable
+-                        Integer. Range: -1 - 255 Default: -1 
+-  total-sensor-modes  : Query the number of sensor modes available. Default 0
+-                        flags: readable
+-                        Integer. Range: 0 - 255 Default: 0 
++                        Float. Range:              -2 -               2 Default:               0 
+   exposuretimerange   : Property to adjust exposure time range in nanoseconds
+ 			Use string with values of Exposure Time Range (low, high)
+ 			in that order, to set the property.
+@@ -132,71 +126,88 @@
+ 			eg: ispdigitalgainrange="1 8"
+                         flags: readable, writable
+                         String. Default: null
+-  tnr-strength        : property to adjust temporal noise reduction strength
++  name                : The name of the object
+                         flags: readable, writable
+-                        Float. Range:              -1 -               1 Default:              -1 
++                        String. Default: "nvarguscamerasrc0"
++  num-buffers         : Number of buffers to output before sending EOS (-1 = unlimited)
++                        flags: readable, writable
++                        Integer. Range: -1 - 2147483647 Default: -1 
++  parent              : The parent of the object
++                        flags: readable, writable
++                        Object of type "GstObject"
++  saturation          : Property to adjust saturation value
++                        flags: readable, writable
++                        Float. Range:               0 -               2 Default:               1 
++  sensor-id           : Set the id of camera sensor to use. Default 0.
++                        flags: readable, writable
++                        Integer. Range: 0 - 255 Default: 0 
++  sensor-mode         : Set the camera sensor mode to use. Default -1 (Select the best match)
++                        flags: readable, writable
++                        Integer. Range: -1 - 255 Default: -1 
++  silent              : Produce verbose output ?
++                        flags: readable, writable
++                        Boolean. Default: true
++  timeout             : timeout to capture in seconds (Either specify timeout or num-buffers, not both)
++                        flags: readable, writable
++                        Unsigned Integer. Range: 0 - 2147483647 Default: 0 
+   tnr-mode            : property to select temporal noise reduction mode
+                         flags: readable, writable
+                         Enum "GstNvArgusCamTNRMode" Default: 1, "NoiseReduction_Fast"
+                            (0): NoiseReduction_Off - GST_NVCAM_NR_OFF
+                            (1): NoiseReduction_Fast - GST_NVCAM_NR_FAST
+                            (2): NoiseReduction_HighQuality - GST_NVCAM_NR_HIGHQUALITY
+-  ee-mode             : property to select edge enhnacement mode
+-                        flags: readable, writable
+-                        Enum "GstNvArgusCamEEMode" Default: 1, "EdgeEnhancement_Fast"
+-                           (0): EdgeEnhancement_Off - GST_NVCAM_EE_OFF
+-                           (1): EdgeEnhancement_Fast - GST_NVCAM_EE_FAST
+-                           (2): EdgeEnhancement_HighQuality - GST_NVCAM_EE_HIGHQUALITY
+-  ee-strength         : property to adjust edge enhancement strength
++  tnr-strength        : property to adjust temporal noise reduction strength
+                         flags: readable, writable
+                         Float. Range:              -1 -               1 Default:              -1 
+-  aeantibanding       : property to set the auto exposure antibanding mode
+-                        flags: readable, writable
+-                        Enum "GstNvArgusCamAeAntiBandingMode" Default: 1, "AeAntibandingMode_Auto"
+-                           (0): AeAntibandingMode_Off - GST_NVCAM_AEANTIBANDING_OFF
+-                           (1): AeAntibandingMode_Auto - GST_NVCAM_AEANTIBANDING_AUTO
+-                           (2): AeAntibandingMode_50HZ - GST_NVCAM_AEANTIBANDING_50HZ
+-                           (3): AeAntibandingMode_60HZ - GST_NVCAM_AEANTIBANDING_60HZ
+-  exposurecompensation: property to adjust exposure compensation
+-                        flags: readable, writable
+-                        Float. Range:              -2 -               2 Default:               0 
+-  aelock              : set or unset the auto exposure lock
+-                        flags: readable, writable
+-                        Boolean. Default: false
+-  awblock             : set or unset the auto white balance lock
+-                        flags: readable, writable
++  total-sensor-modes  : Query the number of sensor modes available. Default 0
++                        flags: readable
++                        Integer. Range: 0 - 255 Default: 0 
++  typefind            : Run typefind before negotiating (deprecated, non-functional)
++                        flags: readable, writable, deprecated
+                         Boolean. Default: false
+-  bufapi-version      : set to use new Buffer API
++  wbmode              : White balance affects the color temperature of the photo
+                         flags: readable, writable
+-                        Boolean. Default: false
++                        Enum "GstNvArgusCamWBMode" Default: 1, "auto"
++                           (0): off              - GST_NVCAM_WB_MODE_OFF
++                           (1): auto             - GST_NVCAM_WB_MODE_AUTO
++                           (2): incandescent     - GST_NVCAM_WB_MODE_INCANDESCENT
++                           (3): fluorescent      - GST_NVCAM_WB_MODE_FLUORESCENT
++                           (4): warm-fluorescent - GST_NVCAM_WB_MODE_WARM_FLUORESCENT
++                           (5): daylight         - GST_NVCAM_WB_MODE_DAYLIGHT
++                           (6): cloudy-daylight  - GST_NVCAM_WB_MODE_CLOUDY_DAYLIGHT
++                           (7): twilight         - GST_NVCAM_WB_MODE_TWILIGHT
++                           (8): shade            - GST_NVCAM_WB_MODE_SHADE
++                           (9): manual           - GST_NVCAM_WB_MODE_MANUAL
+ 
+ ### Argus and camera service
+ # /etc/systemd/system/nvargus-daemon.service
+ #
+-# Copyright (c) 2016-2018, NVIDIA CORPORATION.  All rights reserved.
++# SPDX-FileCopyrightText: Copyright (c) 2016-2018 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
++# SPDX-License-Identifier: BSD-3-Clause
+ #
+ # Redistribution and use in source and binary forms, with or without
+-# modification, are permitted provided that the following conditions
+-# are met:
+-#  * Redistributions of source code must retain the above copyright
+-#    notice, this list of conditions and the following disclaimer.
+-#  * Redistributions in binary form must reproduce the above copyright
+-#    notice, this list of conditions and the following disclaimer in the
+-#    documentation and/or other materials provided with the distribution.
+-#  * Neither the name of NVIDIA CORPORATION nor the names of its
+-#    contributors may be used to endorse or promote products derived
+-#    from this software without specific prior written permission.
++# modification, are permitted provided that the following conditions are met:
++#
++# 1. Redistributions of source code must retain the above copyright notice, this
++# list of conditions and the following disclaimer.
+ #
+-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS'' AND ANY
+-# EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+-# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+-# PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+-# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+-# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+-# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+-# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+-# OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+-# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++# 2. Redistributions in binary form must reproduce the above copyright notice,
++# this list of conditions and the following disclaimer in the documentation
++# and/or other materials provided with the distribution.
++#
++# 3. Neither the name of the copyright holder nor the names of its
++# contributors may be used to endorse or promote products derived from
++# this software without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
++# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
++# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
++# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
++# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
++# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
++# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+ [Unit]
+@@ -217,49 +228,101 @@
+ [Install]
+ WantedBy=multi-user.target
+ ● nvargus-daemon.service - Argus daemon
+-   Loaded: loaded (/etc/systemd/system/nvargus-daemon.service; enabled; vendor preset: enabled)
+-   Active: active (running) since Wed 2026-07-15 11:37:51 KST; 1h 32min ago
+- Main PID: 6040 (nvargus-daemon)
+-    Tasks: 5 (limit: 4915)
+-   CGroup: /system.slice/nvargus-daemon.service
+-           └─6040 /usr/sbin/nvargus-daemon
+-
+-Jul 15 11:37:51 nozzle systemd[1]: Started Argus daemon.
++     Loaded: loaded (/etc/systemd/system/nvargus-daemon.service; enabled; vendor preset: enabled)
++     Active: active (running) since Wed 2026-07-15 13:05:20 KST; 4min 45s ago
++   Main PID: 3886 (nvargus-daemon)
++      Tasks: 36 (limit: 8106)
++     Memory: 143.1M
++     CGroup: /system.slice/nvargus-daemon.service
++             └─3886 /usr/sbin/nvargus-daemon
++
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: SCF: Error BadParameter:  (propagating from src/api/CameraDriver.cpp, function addSourceByIndex(), line 347)
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: SCF: Error BadParameter:  (propagating from src/api/CameraDriver.cpp, function getSource(), line 519)
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: ---- imager: No override file found. ----
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: E/ libnvphs:socket: Error[2]: socket connection /var/lib/nvphs/nvphsd.ctl to PHS failed: No such file or directory
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: D/ libnvphs:socket: Warning: connecting to Power Hinting Service failed. Is PHS running?
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: === python[2847]: CameraProvider initialized (0xffff8c6fac00)SCF: Error BadValue: NvPHSSendThroughputHints (in src/common/CameraPowerHint.cpp, function sendCameraPowerHint(), line 56)
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: E/ libnvphs:socket: Error[2]: socket connection /var/lib/nvphs/nvphsd.ctl to PHS failed: No such file or directory
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: D/ libnvphs:socket: Warning: connecting to Power Hinting Service failed. Is PHS running?
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: E/ libnvphs: Error: NvPHSSendThroughputHints[usecase=camera, hint=MinCPU, value=4294967295, timeout_ms=1000]: queue_or_send() failed
++Jul 15 13:09:26 ubuntu nvargus-daemon[3886]: === python[3968]: Connection established (FFFF4DFEE900)=== python[3968]: CameraProvider initialized (0xfffef4000c20)(Argus) Error AlreadyAllocated: Device 0 (of 1) is in use (in src/api/CameraProviderImpl.cpp, function createCaptureSessionInternal(), line 286)
++Jul 15 13:05:23 ubuntu nvargus-daemon[3886]: === NVIDIA Libargus Camera Service (0.99.33)=== Listening for connections...=== python[2847]: Connection established (FFFF91B29900)OFParserListModules: module list: /proc/device-tree/tegra-camera-platform/modules/module0
++Jul 15 13:05:23 ubuntu nvargus-daemon[3886]: OFParserListModules: module list: /proc/device-tree/tegra-camera-platform/modules/module1
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: ---- imager: No override file found. ----
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: (NvCamV4l2) Error ModuleNotPresent: V4L2Device not available (in /dvs/git/dirty/git-master_linux/camera/utils/nvcamv4l2/v4l2_device.cpp, function findDevice(), line 257)
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: (NvCamV4l2) Error ModuleNotPresent:  (propagating from /dvs/git/dirty/git-master_linux/camera/utils/nvcamv4l2/v4l2_device.cpp, function initialize(), line 61)
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: (NvOdmDevice) Error ModuleNotPresent:  (propagating from dvs/git/dirty/git-master_linux/camera-partner/imager/src/devices/V4L2SensorViCsi.cpp, function initialize(), line 112)
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: NvPclDriverInitializeData: Unable to initialize driver v4l2_sensor
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: NvPclInitializeDrivers: error: Failed to init camera sub module v4l2_sensor
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: NvPclStartPlatformDrivers: Failed to start module drivers
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: NvPclStateControllerOpen: Failed ImagerGUID 1. (error 0xA000E)
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: NvPclOpen: PCL Open Failed. Error: 0xf
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: SCF: Error BadParameter: Sensor could not be opened. (in src/services/capture/CaptureServiceDeviceSensor.cpp, function getSourceFromGuid(), line 726)
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: SCF: Error BadParameter:  (propagating from src/services/capture/CaptureService.cpp, function addSourceByGuid(), line 453)
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: SCF: Error BadParameter:  (propagating from src/api/CameraDriver.cpp, function addSourceByIndex(), line 347)
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: SCF: Error BadParameter:  (propagating from src/api/CameraDriver.cpp, function getSource(), line 519)
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: ---- imager: No override file found. ----
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: E/ libnvphs:socket: Error[2]: socket connection /var/lib/nvphs/nvphsd.ctl to PHS failed: No such file or directory
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: D/ libnvphs:socket: Warning: connecting to Power Hinting Service failed. Is PHS running?
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: === python[2847]: CameraProvider initialized (0xffff8c6fac00)SCF: Error BadValue: NvPHSSendThroughputHints (in src/common/CameraPowerHint.cpp, function sendCameraPowerHint(), line 56)
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: E/ libnvphs:socket: Error[2]: socket connection /var/lib/nvphs/nvphsd.ctl to PHS failed: No such file or directory
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: D/ libnvphs:socket: Warning: connecting to Power Hinting Service failed. Is PHS running?
++Jul 15 13:05:24 ubuntu nvargus-daemon[3886]: E/ libnvphs: Error: NvPHSSendThroughputHints[usecase=camera, hint=MinCPU, value=4294967295, timeout_ms=1000]: queue_or_send() failed
++Jul 15 13:09:26 ubuntu nvargus-daemon[3886]: === python[3968]: Connection established (FFFF4DFEE900)=== python[3968]: CameraProvider initialized (0xfffef4000c20)(Argus) Error AlreadyAllocated: Device 0 (of 1) is in use (in src/api/CameraProviderImpl.cpp, function createCaptureSessionInternal(), line 286)
+ 
+ ### ISP and camera configuration files
+-89584 /var/nvidia/nvcam/settings/camera_overrides.isp
++684140 /var/nvidia/nvcam/settings/nvcam_cache_0.bin
+ 
+ ### ISP file checksums
+-c6b8cafffa5f218a85f73d323e2a72b382194b84b39ff9a7804fffc1819638ec  /var/nvidia/nvcam/settings/camera_overrides.isp
+ 
+ ### Device Tree camera modules
+ 
+ ### Video devices
+-vi-output, imx219 10-0010 (platform:15c10000.vi:2):
++NVIDIA Tegra Video Input Device (platform:tegra-camrtc-ca):
++	/dev/media0
++
++vi-output, imx219 10-0010 (platform:tegra-capture-vi:2):
+ 	/dev/video0
+ 
+-Driver Info (not using libv4l2):
+-	Driver name   : tegra-video
+-	Card type     : vi-output, imx219 10-0010
+-	Bus info      : platform:15c10000.vi:2
+-	Driver version: 4.9.140
+-	Capabilities  : 0x84200001
++Driver Info:
++	Driver name      : tegra-video
++	Card type        : vi-output, imx219 10-0010
++	Bus info         : platform:tegra-capture-vi:2
++	Driver version   : 5.10.216
++	Capabilities     : 0x84200001
+ 		Video Capture
+ 		Streaming
+ 		Extended Pix Format
+ 		Device Capabilities
+-	Device Caps   : 0x04200001
++	Device Caps      : 0x04200001
+ 		Video Capture
+ 		Streaming
+ 		Extended Pix Format
++Media Driver Info:
++	Driver name      : tegra-camrtc-ca
++	Model            : NVIDIA Tegra Video Input Device
++	Serial           : 
++	Bus info         : 
++	Media version    : 5.10.216
++	Hardware revision: 0x00000003 (3)
++	Driver version   : 5.10.216
++Interface Info:
++	ID               : 0x0300000b
++	Type             : V4L Video
++Entity Info:
++	ID               : 0x00000009 (9)
++	Name             : vi-output, imx219 10-0010
++	Function         : V4L2 I/O
++	Pad 0x0100000a   : 0: Sink
++	  Link 0x0200000f: from remote pad 0x1000006 of entity '13e10000.host1x:nvcsi@15a00000-': Data, Enabled
+ Priority: 2
+-Video input : 0 (Camera 2: ok)
++Video input : 0 (Camera 2: no power)
+ Format Video Capture:
+-	Width/Height      : 3264/2464
+-	Pixel Format      : 'RG10'
++	Width/Height      : 3280/2464
++	Pixel Format      : 'RG10' (10-bit Bayer RGRG/GBGB)
+ 	Field             : None
+-	Bytes per Line    : 6528
+-	Size Image        : 16084992
++	Bytes per Line    : 6560
++	Size Image        : 16163840
+ 	Colorspace        : sRGB
+ 	Transfer Function : Default (maps to sRGB)
+ 	YCbCr/HSV Encoding: Default (maps to ITU-R 601)
+@@ -269,22 +332,30 @@
+ Camera Controls
+ 
+                      group_hold 0x009a2003 (bool)   : default=0 value=0 flags=execute-on-write
+-                    sensor_mode 0x009a2008 (int64)  : min=0 max=0 step=0 default=0 value=0 flags=slider
+-                           gain 0x009a2009 (int64)  : min=0 max=0 step=0 default=0 value=16 flags=slider
+-                       exposure 0x009a200a (int64)  : min=0 max=0 step=0 default=0 value=13 flags=slider
+-                     frame_rate 0x009a200b (int64)  : min=0 max=0 step=0 default=0 value=2000000 flags=slider
+-           sensor_configuration 0x009a2032 (u32)    : min=0 max=0 step=0 default=0 flags=read-only, volatile, has-payload
+-         sensor_mode_i2c_packet 0x009a2033 (u32)    : min=0 max=0 step=0 default=0 flags=read-only, volatile, has-payload
+-      sensor_control_i2c_packet 0x009a2034 (u32)    : min=0 max=0 step=0 default=0 flags=read-only, volatile, has-payload
+-                    bypass_mode 0x009a2064 (intmenu): min=0 max=1 default=0 value=0
+-                override_enable 0x009a2065 (intmenu): min=0 max=1 default=0 value=0
++                    sensor_mode 0x009a2008 (int64)  : min=0 max=5 step=1 default=0 value=0 flags=slider
++                           gain 0x009a2009 (int64)  : min=16 max=171 step=1 default=16 value=31 flags=slider
++                       exposure 0x009a200a (int64)  : min=13 max=683710 step=1 default=2495 value=33330 flags=slider
++                     frame_rate 0x009a200b (int64)  : min=2000000 max=21000000 step=1 default=21000000 value=21000000 flags=slider
++           sensor_configuration 0x009a2032 (u32)    : min=0 max=4294967295 step=1 default=0 [22] flags=read-only, volatile, has-payload
++         sensor_mode_i2c_packet 0x009a2033 (u32)    : min=0 max=4294967295 step=1 default=0 [1026] flags=read-only, volatile, has-payload
++      sensor_control_i2c_packet 0x009a2034 (u32)    : min=0 max=4294967295 step=1 default=0 [1026] flags=read-only, volatile, has-payload
++                    bypass_mode 0x009a2064 (intmenu): min=0 max=1 default=0 value=1
++				0: 0 (0x0)
++				1: 1 (0x1)
++                override_enable 0x009a2065 (intmenu): min=0 max=1 default=0 value=1
++				0: 0 (0x0)
++				1: 1 (0x1)
+                    height_align 0x009a2066 (int)    : min=1 max=16 step=1 default=1 value=1
+                      size_align 0x009a2067 (intmenu): min=0 max=2 default=0 value=0
++				0: 1 (0x1)
++				1: 65536 (0x10000)
++				2: 131072 (0x20000)
+                write_isp_format 0x009a2068 (int)    : min=1 max=1 step=1 default=1 value=1
+-       sensor_signal_properties 0x009a2069 (u32)    : min=0 max=0 step=0 default=0 flags=read-only, has-payload
+-        sensor_image_properties 0x009a206a (u32)    : min=0 max=0 step=0 default=0 flags=read-only, has-payload
+-      sensor_control_properties 0x009a206b (u32)    : min=0 max=0 step=0 default=0 flags=read-only, has-payload
+-              sensor_dv_timings 0x009a206c (u32)    : min=0 max=0 step=0 default=0 flags=read-only, has-payload
++       sensor_signal_properties 0x009a2069 (u32)    : min=0 max=4294967295 step=1 default=0 [30][18] flags=read-only, has-payload
++        sensor_image_properties 0x009a206a (u32)    : min=0 max=4294967295 step=1 default=0 [30][16] flags=read-only, has-payload
++      sensor_control_properties 0x009a206b (u32)    : min=0 max=4294967295 step=1 default=0 [30][36] flags=read-only, has-payload
++              sensor_dv_timings 0x009a206c (u32)    : min=0 max=4294967295 step=1 default=0 [30][16] flags=read-only, has-payload
+                low_latency_mode 0x009a206d (bool)   : default=0 value=0
+                preferred_stride 0x009a206e (int)    : min=0 max=65535 step=1 default=0 value=0
++    override_capture_timeout_ms 0x009a206f (int)    : min=-1 max=2147483647 step=1 default=2500 value=2500
+                    sensor_modes 0x009a2082 (int)    : min=0 max=30 step=1 default=30 value=5 flags=read-only

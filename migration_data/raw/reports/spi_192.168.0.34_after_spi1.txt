@@ -1,0 +1,364 @@
+Warning: Permanently added '192.168.0.34' (ED25519) to the list of known hosts.
+[sudo] password for soda: 
+### platform
+ubuntu
+Linux ubuntu 5.10.216-tegra #1 SMP PREEMPT Mon Jan 26 23:28:09 PST 2026 aarch64 aarch64 aarch64 GNU/Linux
+NAME="Ubuntu"
+VERSION="20.04.6 LTS (Focal Fossa)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 20.04.6 LTS"
+VERSION_ID="20.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=focal
+UBUNTU_CODENAME=focal
+NVIDIA Jetson Xavier NX Developer Kit
+
+### SPI modules and character devices
+spi_tegra114           32768  0
+spidev                 28672  0
+crw-rw---- root:gpio Wed Jul 15 13:01:10.8480000000 2026:% /dev/spidev2.1
+crw-rw---- root:gpio Wed Jul 15 13:01:10.8560000000 2026:% /dev/spidev0.0
+crw-rw---- root:gpio Wed Jul 15 13:01:10.8800000000 2026:% /dev/spidev2.0
+crw-rw---- root:gpio Wed Jul 15 13:01:11.0880000000 2026:% /dev/spidev0.1
+/sys/class/spidev -> 
+/sys/class/spidev/spidev0.0 -> ../../devices/platform/3210000.spi/spi_master/spi0/spi0.0/spidev/spidev0.0
+/sys/class/spidev/spidev0.1 -> ../../devices/platform/3210000.spi/spi_master/spi0/spi0.1/spidev/spidev0.1
+/sys/class/spidev/spidev2.0 -> ../../devices/platform/3230000.spi/spi_master/spi2/spi2.0/spidev/spidev2.0
+/sys/class/spidev/spidev2.1 -> ../../devices/platform/3230000.spi/spi_master/spi2/spi2.1/spidev/spidev2.1
+
+### SPI bus devices
+DEVICE=/sys/bus/spi/devices/spi0.0
+modalias=spi:tegra-spidev
+compatible=tegra-spidev
+status=/home/soda/gong_rc_2026/migration_data/tests/inspect_spi_reference.sh: line 24: /sys/bus/spi/devices/spi0.0/of_node/status: No such file or directory
+
+driver=../../../../../../bus/spi/drivers/spidev
+DEVICE=/sys/bus/spi/devices/spi0.1
+modalias=spi:tegra-spidev
+compatible=tegra-spidev
+status=/home/soda/gong_rc_2026/migration_data/tests/inspect_spi_reference.sh: line 24: /sys/bus/spi/devices/spi0.1/of_node/status: No such file or directory
+
+driver=../../../../../../bus/spi/drivers/spidev
+DEVICE=/sys/bus/spi/devices/spi2.0
+modalias=spi:tegra-spidev
+compatible=tegra-spidev
+status=/home/soda/gong_rc_2026/migration_data/tests/inspect_spi_reference.sh: line 24: /sys/bus/spi/devices/spi2.0/of_node/status: No such file or directory
+
+driver=../../../../../../bus/spi/drivers/spidev
+DEVICE=/sys/bus/spi/devices/spi2.1
+modalias=spi:tegra-spidev
+compatible=tegra-spidev
+status=/home/soda/gong_rc_2026/migration_data/tests/inspect_spi_reference.sh: line 24: /sys/bus/spi/devices/spi2.1/of_node/status: No such file or directory
+
+driver=../../../../../../bus/spi/drivers/spidev
+
+### automatic module loading
+--- /etc/modules
+# /etc/modules: kernel modules to load at boot time.
+#
+# This file contains the names of kernel modules that should be loaded
+# at boot time, one per line. Lines beginning with "#" are ignored.
+
+--- /etc/modules-load.d/gong-rc-spidev.conf
+spidev
+--- /etc/modules-load.d/modules.conf
+# /etc/modules: kernel modules to load at boot time.
+#
+# This file contains the names of kernel modules that should be loaded
+# at boot time, one per line. Lines beginning with "#" are ignored.
+
+--- /etc/modules-load.d/nv.conf
+# SPDX-FileCopyrightText: Copyright (c) 2020-2022 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: LicenseRef-NvidiaProprietary
+#
+# NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+# property and proprietary rights in and to this material, related
+# documentation and any modifications thereto. Any use, reproduction,
+# disclosure or distribution of this material and related documentation
+# without an express license agreement from NVIDIA CORPORATION or
+# its affiliates is strictly prohibited.
+
+#nvmap module
+nvmap
+
+# nvgpu module
+nvgpu
+
+# pwm-fan module
+pwm-fan
+
+# ina3221 module
+ina3221
+
+### boot DT configuration
+TIMEOUT 30
+DEFAULT JetsonIO
+
+MENU TITLE L4T boot options
+
+LABEL primary
+      MENU LABEL primary kernel
+      LINUX /boot/Image
+      FDT /boot/dtb/kernel_tegra194-p3668-0000-p3509-0000.dtb
+      INITRD /boot/initrd
+      APPEND ${cbootargs} root=/dev/mmcblk0p1 rw rootwait rootfstype=ext4 console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0 video=efifb:off nv-auto-config 
+
+# When testing a custom kernel, it is recommended that you create a backup of
+# the original kernel and add a new entry to this file so that the device can
+# fallback to the original kernel. To do this:
+#
+# 1, Make a backup of the original kernel
+#      sudo cp /boot/Image /boot/Image.backup
+#
+# 2, Copy your custom kernel into /boot/Image
+#
+# 3, Uncomment below menu setting lines for the original kernel
+#
+# 4, Reboot
+
+# LABEL backup
+#    MENU LABEL backup kernel
+#    LINUX /boot/Image.backup
+#    FDT /boot/dtb/kernel_tegra194-p3668-0000-p3509-0000.dtb
+#    INITRD /boot/initrd
+#    APPEND ${cbootargs}
+
+LABEL JetsonIO
+	MENU LABEL Custom Header Config: <HDR40 User Custom [2026-07-15-125742]>
+	LINUX /boot/Image
+	FDT /boot/kernel_tegra194-p3668-0000-p3509-0000-user-custom.dtb
+	INITRD /boot/initrd
+	APPEND ${cbootargs} root=/dev/mmcblk0p1 rw rootwait rootfstype=ext4 console=ttyTCU0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0 video=efifb:off nv-auto-config
+10306 /boot/tegra234-p3737-camera-dual-hawk-ar0234-e3653-overlay.dtbo
+1051 /boot/tegra194-p2888-0004-e3900-0000-adafruit-uda1334a.dtbo
+1055 /boot/tegra194-p2888-0004-e3900-0000-adafruit-sph0645lm4h.dtbo
+1079 /boot/tegra194-p3668-all-p3509-0000-adafruit-uda1334a.dtbo
+1083 /boot/tegra194-p2888-0001-p2822-0000-adafruit-uda1334a.dtbo
+1083 /boot/tegra194-p3668-all-p3509-0000-adafruit-sph0645lm4h.dtbo
+1087 /boot/tegra194-p2888-0001-p2822-0000-adafruit-sph0645lm4h.dtbo
+1139 /boot/tegra234-p3737-0000-p3701-0000-adafruit-uda1334a.dtbo
+1143 /boot/tegra234-p3737-0000-p3701-0000-adafruit-sph0645lm4h.dtbo
+1297 /boot/tegra194-p2888-0001-p2822-0000-csi.dtbo
+12999 /boot/tegra234-p3737-camera-dual-imx274-overlay.dtbo
+1328 /boot/tegra234-p3767-overlay.dtbo
+13523 /boot/tegra194-p2822-camera-dual-imx274-overlay.dtbo
+1471 /boot/tegra194-p3668-p3509-overlay.dtbo
+1491 /boot/tegra234-p3767-0000-p3509-a02-adafruit-uda1334a.dtbo
+1495 /boot/tegra234-p3767-0000-p3509-a02-adafruit-sph0645lm4h.dtbo
+1533 /boot/tegra234-p3737-0000-p3701-0000-m2ke.dtbo
+1817 /boot/tegra194-p2888-0004-e3900-0000-csi.dtbo
+1833 /boot/tegra194-p2888-0001-p2822-0000-m2ke.dtbo
+18595 /boot/tegra194-p2822-camera-e3333-overlay.dtbo
+18647 /boot/tegra234-p3737-camera-e3333-overlay.dtbo
+1885 /boot/tegra234-p3767-0000-p3509-a02-m2ke.dtbo
+1918 /boot/tegra194-p2888-0001-p2822-0000-overlay.dtbo
+2045 /boot/tegra234-p3737-0000-p3701-0000-csi.dtbo
+2109 /boot/tegra194-p3668-all-p3509-0000-m2ke.dtbo
+250615 /boot/tegra234-p3701-0002-p3711-0000.dtb
+26294 /boot/tegra234-p3740-camera-hawk-owl-overlay.dtbo
+27350 /boot/tegra234-p3737-camera-hawk-owl-overlay.dtbo
+2815 /boot/tegra194-p3668-all-p3509-0000-camera-imx219-dual.dtbo
+2847 /boot/tegra234-p3767-camera-imx219-dual.dtbo
+292649 /boot/tegra234-p3701-0002-p3740-0002-b01.dtb
+292661 /boot/tegra234-p3701-0002-p3740-0002.dtb
+2994 /boot/tegra194-p3668-all-p3509-0000-camera-imx477-imx219.dtbo
+301188 /boot/tegra234-p3701-0008-p3740-0002-c01.dtb
+3019 /boot/tegra234-p3767-camera-p3768-imx219-dual.dtbo
+3026 /boot/tegra234-p3767-camera-imx477-imx219.dtbo
+3035 /boot/tegra194-p2888-0004-e3900-0000-imx274.dtbo
+3071 /boot/tegra194-p3668-all-p3509-0000-camera-imx477-dual.dtbo
+3103 /boot/tegra234-p3767-camera-imx477-dual.dtbo
+3151 /boot/tegra194-p2888-0004-e3900-0000-respeaker-4-mic-array.dtbo
+3179 /boot/tegra194-p3668-all-p3509-0000-respeaker-4-mic-array.dtbo
+3183 /boot/tegra194-p2888-0001-p2822-0000-respeaker-4-mic-array.dtbo
+3187 /boot/tegra194-p2888-0004-e3900-0000-respeaker-4-mic-lin-array.dtbo
+3198 /boot/tegra234-p3767-camera-p3768-imx477-imx219.dtbo
+3215 /boot/tegra194-p3668-all-p3509-0000-respeaker-4-mic-lin-array.dtbo
+3219 /boot/tegra194-p2888-0001-p2822-0000-respeaker-4-mic-lin-array.dtbo
+3234 /boot/tegra194-p2822-camera-e2832-overlay.dtbo
+3239 /boot/tegra234-p3737-0000-p3701-0000-respeaker-4-mic-array.dtbo
+326751 /boot/dtb/kernel_tegra194-p3668-0000-p3509-0000.dtb
+326751 /boot/kernel_tegra194-p3668-0000-p3509-0000.dtb
+326752 /boot/tegra194-p3668-0000-p3509-0000.dtb
+326784 /boot/tegra194-p3668-0001-p3509-0000.dtb
+326848 /boot/tegra194-p3668-all-p3509-0000.dtb
+327556 /boot/kernel_tegra194-p3668-0000-p3509-0000-user-custom.dtb
+3275 /boot/tegra234-p3737-0000-p3701-0000-respeaker-4-mic-lin-array.dtbo
+3275 /boot/tegra234-p3767-camera-p3768-imx477-dual.dtbo
+3300 /boot/tegra234-p3740-camera-p3785-overlay.dtbo
+3418 /boot/tegra234-p3737-overlay.dtbo
+344274 /boot/tegra234-p3701-0000-as-p3767-0000-p3737-0000.dtb
+344278 /boot/tegra234-p3701-0000-as-p3767-0001-p3737-0000.dtb
+344294 /boot/tegra234-p3701-0000-as-p3767-0003-p3737-0000.dtb
+344294 /boot/tegra234-p3701-0000-as-p3767-0004-p3737-0000.dtb
+346307 /boot/tegra234-p3767-0000-p3768-0000-a0.dtb
+346335 /boot/tegra234-p3767-0000-super-p3768-0000-a0.dtb
+346995 /boot/tegra234-p3767-0001-p3768-0000-a0.dtb
+347023 /boot/tegra234-p3767-0001-super-p3768-0000-a0.dtb
+347086 /boot/tegra234-p3767-0004-p3768-0000-a0.dtb
+347118 /boot/tegra234-p3767-0003-super-p3768-0000-a0.dtb
+347118 /boot/tegra234-p3767-0004-super-p3768-0000-a0.dtb
+347134 /boot/tegra234-p3767-0003-p3768-0000-a0.dtb
+3591 /boot/tegra234-p3767-0000-p3509-a02-respeaker-4-mic-array.dtbo
+3627 /boot/tegra234-p3767-0000-p3509-a02-respeaker-4-mic-lin-array.dtbo
+3640 /boot/tegra234-p3767-camera-p3768-imx477-dual-4lane.dtbo
+393968 /boot/tegra194-p2888-0001-p2822-0000.dtb
+394000 /boot/tegra194-p2888-0001-p2822-0000-maxn.dtb
+395017 /boot/tegra194-p2888-0008-p2822-0000-maxn.dtb
+395056 /boot/tegra194-p2888-0008-p2822-0000.dtb
+3955 /boot/tegra194-p2888-0004-e3900-0000-fe-pi-audio.dtbo
+3962 /boot/tegra234-p3737-0000-p3701-0000-hdr40.dtbo
+3983 /boot/tegra194-p3668-all-p3509-0000-fe-pi-audio.dtbo
+3987 /boot/tegra194-p2888-0001-p2822-0000-fe-pi-audio.dtbo
+4043 /boot/tegra234-p3737-0000-p3701-0000-fe-pi-audio.dtbo
+405392 /boot/tegra194-p2888-0004-e3900-0000.dtb
+4167 /boot/tegra194-p2822-camera-e3331-overlay.dtbo
+4219 /boot/tegra234-p3737-camera-e3331-overlay.dtbo
+4321 /boot/tegra234-p3767-0000-p3509-a02-hdr40.dtbo
+4354 /boot/tegra194-p2822-camera-e3326-overlay.dtbo
+4374 /boot/tegra234-p3737-audio-codec-rt5658-40pin.dtbo
+438991 /boot/tegra234-p3701-0008-p3737-0000.dtb
+438995 /boot/tegra234-p3701-0000-p3737-0000.dtb
+438995 /boot/tegra234-p3701-0004-p3737-0000.dtb
+438995 /boot/tegra234-p3701-0005-p3737-0000.dtb
+4389 /boot/tegra194-p2888-0004-e3900-0000-hdr40.dtbo
+439071 /boot/tegra234-p3701-0000-p3737-0000-kexec.dtb
+4395 /boot/tegra234-p3767-0000-p3509-a02-fe-pi-audio.dtbo
+4585 /boot/tegra194-p2888-0001-p2822-0000-hdr40.dtbo
+4874 /boot/tegra194-p2888-0004-e3900-0000-dual-imx274.dtbo
+5605 /boot/tegra194-p3668-all-p3509-0000-hdr40.dtbo
+7086 /boot/tegra194-p2822-camera-imx390-overlay.dtbo
+7138 /boot/tegra234-p3737-camera-imx390-overlay.dtbo
+812 /boot/tegra234-p3767-0000-p3509-a02-csi.dtbo
+8198 /boot/tegra234-p3737-camera-imx185-overlay.dtbo
+830 /boot/tegra234-p3701-overlay.dtbo
+8320 /boot/tegra194-p2822-camera-eCAM130A_CUXVR-overlay.dtbo
+8690 /boot/tegra194-p2822-camera-imx185-overlay.dtbo
+883 /boot/tegra194-p2888-0008-p2822-0000-overlay.dtbo
+910 /boot/tegra234-p3768-overlay.dtbo
+984 /boot/tegra234-p3767-0000-p3768-0000-csi.dtbo
+
+### Jetson-IO enabled functions
+Header 1 [default]: Jetson 40pin Header
+  Enabled functions (pins):
+   1. spi1 (19,21,23,24,26)
+Header 2: Jetson Nano CSI Connector
+  No functions are enabled.
+Header 3: Jetson M.2 Key E Slot
+  Enabled functions (pins):
+   1. i2s3 (8,10,12,14)
+
+### SPI pinctrl
+--- /sys/kernel/debug/pinctrl/155f0000.dpaux/pinconf-pins
+--- /sys/kernel/debug/pinctrl/155f0000.dpaux/pinmux-pins
+--- /sys/kernel/debug/pinctrl/max20024-pinctrl/pinconf-pins
+--- /sys/kernel/debug/pinctrl/max20024-pinctrl/pinmux-pins
+--- /sys/kernel/debug/pinctrl/c360000.pmc/pinconf-pins
+pin 66 (spi): pin low power (0 mode), pin power source (0 selector)
+--- /sys/kernel/debug/pinctrl/2430000.pinmux/pinconf-pins
+pin 10 (QSPI0_SCK_PC0): 
+pin 11 (QSPI0_CS_N_PC1): 
+pin 12 (QSPI0_IO0_PC2): 
+pin 13 (QSPI0_IO1_PC3): 
+pin 14 (QSPI0_IO2_PC4): 
+pin 15 (QSPI0_IO3_PC5): 
+pin 16 (QSPI1_SCK_PC6): 
+pin 17 (QSPI1_CS_N_PC7): 
+pin 18 (QSPI1_IO0_PD0): 
+pin 19 (QSPI1_IO1_PD1): 
+pin 20 (QSPI1_IO2_PD2): 
+pin 21 (QSPI1_IO3_PD3): 
+pin 23 (EQOS_TD0_PE1): 
+pin 24 (EQOS_TD1_PE2): 
+pin 26 (EQOS_TD3_PE4): 
+pin 149 (SPI3_SCK_PY0): 
+pin 150 (SPI3_MISO_PY1): 
+pin 151 (SPI3_MOSI_PY2): 
+pin 152 (SPI3_CS0_PY3): 
+pin 153 (SPI3_CS1_PY4): 
+pin 160 (SPI1_SCK_PZ3): 
+pin 161 (SPI1_MISO_PZ4): 
+pin 162 (SPI1_MOSI_PZ5): 
+pin 163 (SPI1_CS0_PZ6): 
+pin 164 (SPI1_CS1_PZ7): 
+pin 177 (SPI2_SCK_PCC0): 
+pin 178 (SPI2_MISO_PCC1): 
+pin 179 (SPI2_MOSI_PCC2): 
+pin 180 (SPI2_CS0_PCC3): 
+pin 190 (AO_RETENTION_N_PEE2): 
+pin 191 (BATT_OC_PEE3): 
+pin 192 (POWER_ON_PEE4): 
+pin 193 (PWR_I2C_SCL_PEE5): 
+pin 194 (PWR_I2C_SDA_PEE6): 
+pin 195 (UFS0_REF_CLK_PFF0): 
+pin 196 (UFS0_RST_PFF1): 
+pin 197 (PEX_L5_CLKREQ_N_PGG0): 
+pin 198 (PEX_L5_RST_N_PGG1): 
+pin 199 (DIRECTDC_COMP): 
+pin 210 (SDMMC4_DAT0): 
+pin 211 (SDMMC1_COMP): 
+pin 212 (SDMMC1_HV_TRIM): 
+pin 213 (SDMMC3_COMP): 
+pin 214 (SDMMC3_HV_TRIM): 
+pin 215 (EQOS_COMP): 
+pin 216 (QSPI_COMP): 
+pin 217 (SYS_RESET_N): 
+pin 218 (SHUTDOWN_N): 
+pin 219 (PMU_INT_N): 
+--- /sys/kernel/debug/pinctrl/2430000.pinmux/pinmux-pins
+pin 10 (QSPI0_SCK_PC0): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 11 (QSPI0_CS_N_PC1): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 12 (QSPI0_IO0_PC2): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 13 (QSPI0_IO1_PC3): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 14 (QSPI0_IO2_PC4): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 15 (QSPI0_IO3_PC5): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 16 (QSPI1_SCK_PC6): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 17 (QSPI1_CS_N_PC7): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 18 (QSPI1_IO0_PD0): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 19 (QSPI1_IO1_PD1): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 20 (QSPI1_IO2_PD2): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 21 (QSPI1_IO3_PD3): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 23 (EQOS_TD0_PE1): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 24 (EQOS_TD1_PE2): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 26 (EQOS_TD3_PE4): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 149 (SPI3_SCK_PY0): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 150 (SPI3_MISO_PY1): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 151 (SPI3_MOSI_PY2): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 152 (SPI3_CS0_PY3): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 153 (SPI3_CS1_PY4): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 160 (SPI1_SCK_PZ3): 2430000.pinmux (GPIO UNCLAIMED) (HOG) function spi1 group spi1_sck_pz3
+pin 161 (SPI1_MISO_PZ4): 2430000.pinmux (GPIO UNCLAIMED) (HOG) function spi1 group spi1_miso_pz4
+pin 162 (SPI1_MOSI_PZ5): 2430000.pinmux (GPIO UNCLAIMED) (HOG) function spi1 group spi1_mosi_pz5
+pin 163 (SPI1_CS0_PZ6): 2430000.pinmux (GPIO UNCLAIMED) (HOG) function spi1 group spi1_cs0_pz6
+pin 164 (SPI1_CS1_PZ7): 2430000.pinmux (GPIO UNCLAIMED) (HOG) function spi1 group spi1_cs1_pz7
+pin 177 (SPI2_SCK_PCC0): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 178 (SPI2_MISO_PCC1): (MUX UNCLAIMED) tegra194-gpio-aon:318
+pin 179 (SPI2_MOSI_PCC2): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 180 (SPI2_CS0_PCC3): (MUX UNCLAIMED) tegra194-gpio-aon:320
+pin 190 (AO_RETENTION_N_PEE2): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 191 (BATT_OC_PEE3): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 192 (POWER_ON_PEE4): (MUX UNCLAIMED) tegra194-gpio-aon:332
+pin 193 (PWR_I2C_SCL_PEE5): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 194 (PWR_I2C_SDA_PEE6): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 195 (UFS0_REF_CLK_PFF0): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 196 (UFS0_RST_PFF1): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 197 (PEX_L5_CLKREQ_N_PGG0): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 198 (PEX_L5_RST_N_PGG1): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 199 (DIRECTDC_COMP): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 210 (SDMMC4_DAT0): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 211 (SDMMC1_COMP): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 212 (SDMMC1_HV_TRIM): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 213 (SDMMC3_COMP): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 214 (SDMMC3_HV_TRIM): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 215 (EQOS_COMP): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 216 (QSPI_COMP): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 217 (SYS_RESET_N): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 218 (SHUTDOWN_N): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 219 (PMU_INT_N): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+
+### Python SPI open and transfer
+spidev_import=FAIL ModuleNotFoundError: No module named 'spidev'

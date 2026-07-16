@@ -1,8 +1,10 @@
-"""Memory-aware facade for the legacy POP TensorFlow AI classes.
+"""Memory-aware, backward-compatible facade for POP TensorFlow AI classes.
 
-``from pop import AI`` stays lightweight. TensorFlow is loaded only when an AI
-class is first accessed. CPU is the default for multi-kernel classroom use;
-call ``AI.configure("gpu")`` before class access when GPU is actually needed.
+Importing this module is intentionally cheap. TensorFlow and the legacy POP
+implementation are loaded only when an AI class/function is first accessed.
+The default device policy is CPU so many classroom Jupyter kernels can coexist
+on an 8 GB Jetson. Call ``configure("gpu")`` before accessing a class when a
+lesson actually needs GPU acceleration.
 """
 
 from __future__ import annotations
@@ -13,11 +15,25 @@ import threading
 import warnings
 
 
-_EXPORTS = (
-    "Linear_Regression", "Logistic_Regression", "Perceptron", "ANN",
-    "DNN", "CNN", "RNN", "DQN", "FaceNet", "onehot",
+_IMPLEMENTATION_EXPORTS = (
+    "Linear_Regression",
+    "Logistic_Regression",
+    "Perceptron",
+    "ANN",
+    "DNN",
+    "CNN",
+    "RNN",
+    "DQN",
+    "FaceNet",
+    "onehot",
 )
-__all__ = ("configure", "device_policy", "is_loaded", *_EXPORTS)
+
+__all__ = (
+    "configure",
+    "device_policy",
+    "is_loaded",
+    *_IMPLEMENTATION_EXPORTS,
+)
 
 _lock = threading.RLock()
 _implementation = None
@@ -27,14 +43,25 @@ _effective_device = None
 
 def _normalize_device(device):
     value = str(device).strip().lower()
-    aliases = {"cpu": "cpu", "gpu": "gpu", "cuda": "gpu", "auto": "auto"}
+    aliases = {
+        "cpu": "cpu",
+        "gpu": "gpu",
+        "cuda": "gpu",
+        "auto": "auto",
+    }
     if value not in aliases:
         raise ValueError("device must be one of: cpu, gpu, cuda, auto")
     return aliases[value]
 
 
 def configure(device="cpu"):
-    """Select CPU or GPU before the first POP AI class is accessed."""
+    """Select the TensorFlow device before the first POP AI class is used.
+
+    ``cpu`` is the memory-saving classroom default. ``gpu`` enables the Jetson
+    GPU with incremental allocation. ``auto`` selects GPU when one is present.
+    The policy cannot be changed after the implementation has been loaded.
+    """
+
     global _configured_device
     normalized = _normalize_device(device)
     with _lock:
@@ -49,7 +76,8 @@ def configure(device="cpu"):
 
 
 def device_policy():
-    """Return requested/effective device policy and load state."""
+    """Return the requested and effective POP AI device policy."""
+
     requested = _configured_device or _normalize_device(
         os.environ.get("POP_AI_DEVICE", "cpu")
     )
@@ -61,23 +89,27 @@ def device_policy():
 
 
 def is_loaded():
-    """Return whether the TensorFlow-backed implementation is loaded."""
+    """Return whether TensorFlow-backed POP AI classes have been loaded."""
+
     return _implementation is not None
 
 
-def _apply_device_policy():
+def _apply_tensorflow_device_policy():
     global _configured_device, _effective_device
+
     requested = _configured_device or _normalize_device(
         os.environ.get("POP_AI_DEVICE", "cpu")
     )
     _configured_device = requested
 
+    # Import only at first class access, never at ``from pop import AI``.
     import tensorflow as tf
 
     gpus = tf.config.list_physical_devices("GPU")
     selected = "gpu" if requested == "auto" and gpus else requested
     if selected == "auto":
         selected = "cpu"
+
     try:
         if selected == "cpu":
             tf.config.set_visible_devices([], "GPU")
@@ -87,6 +119,7 @@ def _apply_device_policy():
             for gpu in gpus:
                 tf.config.experimental.set_memory_growth(gpu, True)
     except RuntimeError as exc:
+        # Device visibility is immutable after TensorFlow runtime initialization.
         warnings.warn(
             "TensorFlow was initialized before POP AI device selection; "
             f"requested policy {selected!r} could not be applied: {exc}",
@@ -94,20 +127,26 @@ def _apply_device_policy():
             stacklevel=3,
         )
         selected = "existing"
+
     _effective_device = selected
 
 
 def _install_instance_optimizers(module, tf):
-    """Give each model its own optimizer and TF variable-slot state."""
+    """Give each model its own TF 2.12 optimizer and variable-slot state."""
+
     model_classes = (
-        "Linear_Regression", "Logistic_Regression", "Perceptron", "ANN",
-        "DNN", "CNN", "RNN", "DQN",
+        "Linear_Regression",
+        "Logistic_Regression",
+        "Perceptron",
+        "ANN",
+        "DNN",
+        "CNN",
+        "RNN",
+        "DQN",
     )
     for name in model_classes:
         cls = getattr(module, name)
-        # Use only the class's own marker; inherited markers must not skip
-        # subclasses that override __init__ (DNN, CNN, RNN, and DQN).
-        if cls.__dict__.get("_pop_instance_optimizer", False):
+        if getattr(cls, "_pop_instance_optimizer", False):
             continue
         original_init = cls.__init__
 
@@ -123,16 +162,20 @@ def _install_instance_optimizers(module, tf):
         cls._pop_instance_optimizer = True
 
 
-def _load():
+def _load_implementation():
     global _implementation
     with _lock:
         if _implementation is None:
-            _apply_device_policy()
+            _apply_tensorflow_device_policy()
             module = importlib.import_module("._AI_tensorflow", __package__)
+
             import tensorflow as tf
 
             _install_instance_optimizers(module, tf)
-            for name in _EXPORTS:
+
+            # Preserve the historical public module path for introspection and
+            # pickling even though definitions live in the private module.
+            for name in _IMPLEMENTATION_EXPORTS:
                 obj = getattr(module, name)
                 if getattr(obj, "__module__", None) == module.__name__:
                     try:
@@ -140,13 +183,14 @@ def _load():
                     except (AttributeError, TypeError):
                         pass
                 globals()[name] = obj
+
             _implementation = module
         return _implementation
 
 
 def __getattr__(name):
-    if name in _EXPORTS:
-        return getattr(_load(), name)
+    if name in _IMPLEMENTATION_EXPORTS:
+        return getattr(_load_implementation(), name)
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 

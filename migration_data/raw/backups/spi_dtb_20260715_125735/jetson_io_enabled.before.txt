@@ -1,0 +1,7 @@
+Header 1 [default]: Jetson 40pin Header
+  No functions are enabled.
+Header 2: Jetson Nano CSI Connector
+  No functions are enabled.
+Header 3: Jetson M.2 Key E Slot
+  Enabled functions (pins):
+   1. i2s3 (8,10,12,14)

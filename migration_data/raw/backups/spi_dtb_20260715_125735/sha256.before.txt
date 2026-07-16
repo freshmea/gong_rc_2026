@@ -1,0 +1,2 @@
+8b79f3aeaeaa5eaf1b961b6e7e1545c9b9f1c7ae844eb90407aa253985832977  /boot/extlinux/extlinux.conf
+5332279f5c37be0cecd260ee7b4465e094ec32338a0ce834ec183cacabe4a7cc  /boot/dtb/kernel_tegra194-p3668-0000-p3509-0000.dtb

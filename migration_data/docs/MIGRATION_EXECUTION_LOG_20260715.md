@@ -108,3 +108,57 @@
 - OpenCV `cv2.cuda.getCudaEnabledDeviceCount()`는 0을 반환했다. JetPack 제공 OpenCV CUDA 모듈 구성과 별개로 PyTorch GPU 검증을 추가한다.
 - VPI import 시 PVA unavailable 경고가 발생했다. 설치 후 최종 재부팅 뒤 다시 확인한다.
 - 설치 후 rootfs 여유 공간은 약 36 GiB다.
+
+### 3.3 기본 개발환경과 ROS 2 Foxy
+
+- `migration_data/scripts/post_flash_setup.sh`를 추가하고 Jetson에서 실행했다.
+- 설치 항목: build tools, git/rsync/jq/tmux/zsh, I2C/ALSA/V4L2/FFmpeg, Python 개발 도구, ROS 개발 도구.
+- ROS 공식 저장소를 keyring 방식으로 등록하고 Ubuntu 20.04 arm64용 `ros-foxy-desktop`을 설치했다.
+- 첫 스크립트 실행은 ROS 저장소 등록 전 `python3-colcon-common-extensions`를 요청해 중단됐다. colcon 설치를 저장소 등록 뒤로 이동했다.
+- 두 번째 실행 중 Ubuntu 저장소의 구버전 `python3-catkin-pkg`, `python3-rospkg`, `python3-rosdistro`와 ROS 저장소의 `*-modules` 패키지가 동일 파일을 제공해 dpkg 충돌이 발생했다.
+- 구버전 3개 패키지만 dpkg 등록에서 제거하고 `apt-get --fix-broken install`로 736개 미구성 패키지를 정상 구성했다.
+- 재현 스크립트에서는 `python3-rosdep`도 ROS 저장소 등록 후 설치하도록 옮겨 같은 충돌을 방지했다.
+- 최종 설치 버전:
+  - `ros-foxy-desktop 0.9.2-1focal.20230606.054757`
+  - `python3-colcon-common-extensions 0.3.0-100`
+  - `python3-rosdep 0.26.0-1`
+- rosdep Foxy 인덱스 갱신에 성공했다.
+- `soda` 사용자는 `dialout`, `audio`, `video`, `i2c`, `gpio`, `docker` 그룹에 포함됐다.
+- LiDAR udev 규칙은 `0660 root:dialout`과 `/dev/rplidar -> ttyUSB0`를 생성한다.
+- `migration_data/tests/test_ros2_foxy.sh`를 추가했다. 첫 버전은 `set -u`와 Foxy setup 스크립트가 충돌해 테스트가 중단됐고 setup 이후 strict mode를 켜도록 수정했다.
+- 최종 DDS 검사: C++ talker가 발행한 `Hello World`를 Python listener가 수신해 `ROS2_DDS_MESSAGE_TEST=PASS`.
+- 현재 rootfs 여유 공간은 약 33 GiB다.
+
+### 3.4 Python 3.8 가상환경과 JupyterLab
+
+- `/home/soda/venvs/gong-rc`를 `--system-site-packages`로 생성해 JetPack의 TensorRT, VPI, OpenCV Python 모듈을 함께 사용하도록 했다.
+- Python 3.8에서 호환되는 범위의 최신 패키지를 설치했다. 주요 버전은 JupyterLab 4.3.8, Notebook 7.3.3, NumPy 1.23.5, SciPy 1.10.1, Pandas 2.0.3, scikit-learn 1.3.2, ONNX 1.16.2다. NumPy는 TensorFlow 2.12 호환 범위에 맞췄다.
+- ARM64에서 SciPy/scikit-learn 뒤에 OpenCV를 import하면 static TLS 오류가 발생했다. Jupyter systemd 서비스에 `LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libGLdispatch.so.0:/usr/lib/aarch64-linux-gnu/libgomp.so.1`을 설정한 뒤 OpenCV와 YOLO import가 통과했다.
+- 사용자 승인에 따라 Jupyter를 `0.0.0.0:8888`에 공개했다. WSL에서 `http://192.168.0.34:8888/lab` 요청 시 로그인 페이지로 `302` 응답하는 것을 확인했다.
+- 설정 파일 갱신 뒤 `systemctl enable --now`만 실행하면 기존 프로세스가 재시작되지 않는 문제가 있어 설치 스크립트를 `enable` 후 `restart`하도록 수정했다.
+- Jupyter 비밀번호는 Argon2 해시만 설정 파일에 저장하며 원문은 문서와 스크립트에 기록하지 않는다.
+
+### 3.5 POP 소스 패키지화와 설치
+
+- 원본은 `autocar/pop`에만 있고 setup.py, wheel, deb가 없었다. 원본 크기는 약 151MB이며 포함된 `libssd_tensorrt.so`와 `LiDAR/_rplidar.so`는 ARM aarch64 ELF임을 확인했다.
+- 최신 Adafruit Blinka가 `board` import 중 GPIO 모드를 먼저 설정해 구형 POP의 무조건적인 `GPIO.setmode(GPIO.BCM)`이 실패했다. 기존 모드가 BCM이 아니면 `GPIO.cleanup()` 후 BCM을 설정하는 최소 호환 패치를 `autocar/pop/__init__.py`에 적용했다.
+- `migration_data/scripts/build_pop_deb.sh`를 추가해 소스, 모델, 네이티브 라이브러리를 포함한 ARM64 Debian 패키지를 생성한다. 캐시와 pyc는 제외하며 설치 권한은 디렉터리 0755, 파일 0644로 정규화한다.
+- 첫 의존성 스크립트는 Ubuntu 20.04에 없는 `python3-spidev`를 요청해 중단됐다. `python3-smbus`는 apt, `spidev`는 PyPI 빌드로 분리했다.
+- 패키지 0.1.0은 `python3-rpi.gpio`를 의존해 NVIDIA의 `python3-jetson-gpio`와 파일 충돌이 발생했다. 반설치 패키지를 제거하고 `apt-get --fix-broken install`로 dpkg 상태를 복구한 뒤 의존성을 `python3-jetson-gpio`로 교체했다.
+- 이전 시험 버전에서 유지된 0750 디렉터리 권한 때문에 Python이 POP를 namespace 패키지로 해석했다. 0.1.3의 postinst에서 `chmod -R a+rX`를 실행해 신규 설치와 업그레이드 모두 보정하도록 했다.
+- 최종 산출물: `migration_data/packages/gong-rc-pop_0.1.3+20260715_arm64.deb`, SHA-256 `a759902999b248bb0ecbe6d965326d79d98611c0d0d7479b611e4dd2fa55741a`.
+- Jetson 설치 상태는 `install ok installed`, 버전 `0.1.3+20260715`이며 `dpkg --audit` 출력은 없다.
+- 가상환경 검증 결과 `POP_IMPORT=PASS`, 로드 경로 `/usr/lib/python3/dist-packages/pop/__init__.py`, `POP_CATEGORY=6`, Camera/Audio/PixelDisplay/checkI2C 심볼이 모두 존재했다. 테스트는 액추에이터를 구동하지 않았다.
+
+### 3.6 POP AI 의존성과 수업 코드 검증
+
+- `pop.Pilot`의 PyTorch/torchvision/TensorRT, `pop.Util`의 librosa/TensorFlow, `pop.AI.DNN/CNN`의 TensorFlow/Keras, `Pilot.Object_Follow`의 yolov4.tf 의존성을 소스에서 확인했다.
+- NVIDIA PyTorch `2.1.0a0+41361538.nv23.06`, torchvision 0.16.0, NVIDIA TensorFlow 2.12.0, librosa 0.10.2.post1, yolov4 2.1.0, websock 1.0.4를 설치했다.
+- pip의 aarch64 h5py 소스 빌드 실패는 Ubuntu `python3-h5py 2.10.0`으로 해결했다. `Pilot.Data_Collector` import 시 필요한 숨은 websock 의존성도 설치기에 추가했다.
+- PyTorch와 TensorFlow의 GPU 테스트를 같은 Python 프로세스에서 실행하면 cuDNN 메모리 할당 충돌이 발생하므로 독립 프로세스 테스트로 분리했다.
+- 최종 PyTorch CUDA CNN, torchvision AlexNet, TensorFlow GPU matmul, `pop.AI.DNN`, `pop.AI.CNN`, 실제 POP `yolov4-tiny.weights` 추론이 모두 PASS다.
+- YOLOv4-tiny 추론 중 GPU 메모리 allocator 경고가 있어 memory growth, 배치 1, 작은 입력, 불필요한 Jupyter 커널 종료를 운용 원칙으로 기록했다.
+- torchvision의 선택 기능 `torchvision.io.image`는 NVIDIA 사전 릴리스 PyTorch와 ABI 경고가 남지만 수업에서 쓰는 PIL/ImageFolder/models/transforms/AlexNet 경로는 정상이다.
+- AI 설치기를 포함한 새 산출물은 `migration_data/packages/gong-rc-pop_0.2.0+20260715_arm64.deb`, SHA-256 `f44f1de215b75ae9bebf030fedd8daf984ec98353eebd0c04d06c0b4bdfe2f1e`다.
+- Jetson 설치 상태는 `install ok installed`, 버전 `0.2.0+20260715`, Jupyter는 새 preload 설정으로 active, `dpkg --audit` 출력은 없다.
+- 상세 기록: `migration_data/docs/POP_AI_STACK_VALIDATION_20260715.md`.
