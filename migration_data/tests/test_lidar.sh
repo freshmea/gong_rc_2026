@@ -10,7 +10,7 @@ fi
 ls -l "$device"
 udevadm info --query=all --name="$device" 2>/dev/null || true
 
-python3 - "$device" <<'PY'
+"${PYTHON:-python3}" - "$device" <<'PY'
 import sys
 from rplidar import RPLidar
 
@@ -31,4 +31,3 @@ finally:
         pass
     lidar.disconnect()
 PY
-

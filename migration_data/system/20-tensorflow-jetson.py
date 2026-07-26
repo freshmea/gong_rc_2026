@@ -8,5 +8,5 @@ import os
 
 os.environ.setdefault("TF_FORCE_GPU_ALLOW_GROWTH", "true")
 os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
+os.environ.setdefault("XLA_FLAGS", "--xla_gpu_cuda_data_dir=/usr/local/cuda-11.4")
 os.environ.setdefault("MPLBACKEND", "Agg")
-

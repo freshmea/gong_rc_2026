@@ -20,12 +20,13 @@ apt-get install -y \
   python3-pip python3-venv python3-dev python3-setuptools python3-wheel \
   python3-argcomplete \
   portaudio19-dev libsndfile1-dev libopenblas-dev libjpeg-dev libffi-dev \
-  zsh-autosuggestions zsh-syntax-highlighting
+  zsh-autosuggestions zsh-syntax-highlighting \
+  docker.io nvidia-container-runtime nvidia-docker2
 
 locale-gen en_US en_US.UTF-8 ko_KR.UTF-8
 update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
-for group in dialout audio video i2c gpio docker; do
+for group in dialout audio video i2c gpio; do
   if getent group "$group" >/dev/null; then
     usermod -aG "$group" "$TARGET_USER"
   fi
@@ -40,7 +41,8 @@ EOF
 
 apt-get update
 apt-get install -y \
-  ros-foxy-desktop ros-dev-tools python3-colcon-common-extensions python3-rosdep
+  ros-foxy-desktop ros-dev-tools python3-colcon-common-extensions python3-rosdep \
+  ros-foxy-rplidar-ros
 
 if [[ ! -e /etc/ros/rosdep/sources.list.d/20-default.list ]]; then
   rosdep init
@@ -65,15 +67,35 @@ for rc in "$TARGET_HOME/.bashrc" "$TARGET_HOME/.zshrc"; do
 # gong_rc_2026 managed environment
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
-source /opt/ros/foxy/setup.bash
-if [ -f "$HOME/ros2_ws/install/setup.bash" ]; then
-  source "$HOME/ros2_ws/install/setup.bash"
+if [ -n "${ZSH_VERSION:-}" ]; then
+  source /opt/ros/foxy/setup.zsh
+  if [ -f "$HOME/ros2_ws/install/setup.zsh" ]; then
+    source "$HOME/ros2_ws/install/setup.zsh"
+  fi
+else
+  source /opt/ros/foxy/setup.bash
+  if [ -f "$HOME/ros2_ws/install/setup.bash" ]; then
+    source "$HOME/ros2_ws/install/setup.bash"
+  fi
 fi
 EOF
     chown "$TARGET_USER:$TARGET_USER" "$rc"
   fi
 done
 
-systemctl enable --now docker containerd ssh nvfancontrol nvargus-daemon
+for service in docker containerd ssh nvfancontrol nvargus-daemon; do
+  if systemctl list-unit-files "$service.service" --no-legend 2>/dev/null | grep -q .; then
+    systemctl enable --now "$service"
+  else
+    echo "WARN: service not installed: $service" >&2
+  fi
+done
+
+SPI_SETUP="$TARGET_HOME/gong_rc_2026/migration_data/scripts/setup_spi_spidev.sh"
+if [[ -x "$SPI_SETUP" ]]; then
+  "$SPI_SETUP"
+else
+  echo "WARN: SPI setup script not found yet: $SPI_SETUP" >&2
+fi
 
 echo "post_flash_setup complete"

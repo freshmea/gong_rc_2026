@@ -97,6 +97,23 @@ Keep two copies of the image on different physical disks. Never use the only gol
 
 The reference disk contains 122,204,160 sectors (62,568,529,920 bytes). Every target card must expose at least this many bytes. Nominally identical 64GB cards can differ slightly; using the same manufacturer and model is strongly recommended.
 
+### Separate 32 GB golden image
+
+A whole-disk 64 GB image cannot be written to a 32 GB card.  Do not truncate
+the raw image: its backup GPT and partitions are near the end of the source
+disk.  For 32 GB vehicles, use the fully accepted `gong-rc-32gb` system
+described in `XAVIER_NX_32GB_MIGRATION_EXECUTION_20260716.md` as a separate
+golden source.  Power it off cleanly, remove its card, and capture it with the
+same protected backup script.  Keep 64 GB and 32 GB images, size files and
+checksums under distinct names.
+
+The accepted 32 GB root has 11 GiB free after reproducible pip/APT download
+caches are removed.  Its functional baseline includes
+the combined SPI1/PWM8/SGTL5000 DTB, automatic `spidev` loading, ROS2 Foxy
+RPLidar driver, POP/AI stack, camera ISP, Jupyter Zsh environment and the
+latest health-check paths.  Never restore the 32 GB image onto a card whose
+reported byte size is smaller than its `.size` value.
+
 ## C. Match QSPI to JetPack 5.1.6 / L4T R35.6.4
 
 Use a native x86_64 Ubuntu host with the Jetson Linux R35.6.4 BSP. WSL/USB forwarding is not recommended for a 20-unit production process.
@@ -168,10 +185,35 @@ ip -br link
 ip -br address
 systemctl is-active jupyter-gong-rc.service nvargus-daemon.service
 dpkg-query -W gong-rc-pop nvidia-l4t-core nvidia-jetpack
-python3 /home/soda/gong_rc_2026/migration_data/tests/test_pop_import.py
+/home/soda/venvs/gong-rc/bin/python \
+  /home/soda/gong_rc_2026/migration_data/tests/test_pop_import.py
+/home/soda/gong_rc_2026/migration_data/tests/remote_health_check.sh
+PYTHON=/home/soda/venvs/gong-rc/bin/python \
+  /home/soda/gong_rc_2026/migration_data/tests/test_lidar.sh
 ```
 
 From the migration folder, also run the applicable hardware tests for SPI/CDS, I2C, audio recording/playback, camera, buzzer, motors, LiDAR, and the A31 camera/AI integration test. Motor tests require the vehicle to be raised so wheels cannot contact the floor.
+
+Deploy and validate the exact classroom notebook bundle, kernel environment,
+and SGTL5000 playback state on every separately configured image:
+
+```bash
+sudo /home/soda/gong_rc_2026/migration_data/scripts/deploy_notebook_bundle.sh
+/home/soda/venvs/gong-rc/bin/python \
+  /home/soda/gong_rc_2026/migration_data/scripts/configure_jupyter_kernel_env.py
+sudo /home/soda/gong_rc_2026/migration_data/tests/configure_sgtl5000_playback.sh
+sudo systemctl restart jupyter-gong-rc.service
+/home/soda/venvs/gong-rc/bin/python \
+  /home/soda/gong_rc_2026/migration_data/tests/validate_jupyter_notebook_access.py
+```
+
+The accepted source bundle has 44 files and 31 notebooks with manifest
+SHA-256 `f9ef29e8221e9c5bc37d859ca1e790a985b661d691e943866260fa8db599840e`.
+Jupyter checkpoints and lesson-generated model files are preserved but are not
+part of this source manifest.  If a target notebook differs from the golden
+source, the deployment script preserves it under
+`Project/python/notebook/.migration_backups/` before restoring the golden
+checksum.
 
 Acceptance criteria:
 
@@ -180,7 +222,17 @@ Acceptance criteria:
 - Jupyter is reachable at `<vehicle-ip>:8888` with the agreed password.
 - POP reports `0.4.1` and torchvision image extension imports without warning.
 - Camera, CDS/SPI, I2C, buzzer, ALSA input/output, LiDAR, and motor drivers pass.
+- `a04_sound_blocking.ipynb` completes with both `H40-SGTL Headphone` and
+  `H40-SGTL Lineout` unmuted, and the state survives `alsactl restore`.
+- `remote_health_check.sh` reports zero failures; the accepted 32 GB pilot
+  result is 25 PASS, 0 WARN, 0 FAIL.
 - Hostname, machine ID, SSH host fingerprint, MAC addresses, and IP are unique.
+
+After the first cold boot, explicitly require `/dev/spidev0.0`; if absent,
+run `sudo migration_data/scripts/setup_spi_spidev.sh` and verify that the node
+is `root:gpio 0660`.  On I2C bus 8, the accepted SGTL5000 appears as `UU`, with
+the other expected devices at `0x57`, `0x68`, and `0x70`.  The codec controls
+are inside APE card 1 (`H40-SGTL`), not a separate ALSA card.
 
 ## G. NVIDIA full backup/restore alternative
 

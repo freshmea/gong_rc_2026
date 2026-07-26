@@ -2,6 +2,9 @@
 # Non-destructive baseline test for the old image and post-migration comparison.
 set -u
 
+TARGET_HOME="${TARGET_HOME:-/home/soda}"
+PYTHON="${PYTHON:-$TARGET_HOME/venvs/gong-rc/bin/python}"
+
 pass=0
 warn=0
 fail=0
@@ -32,11 +35,15 @@ else
   warning 'no camera or serial/LiDAR device node present'
 fi
 
-[ -f /etc/udev/rules.d/rplidar.rules ] && ok 'RPLidar udev rule present' || warning 'RPLidar udev rule absent'
-[ -d /home/soda/catkin_ws/src/RPLidar_Hector_SLAM ] && ok 'RPLidar/Hector source present' || warning 'RPLidar/Hector source absent'
-[ -d /home/soda/Project/python/notebook/gong_rc_2026 ] && ok '2026 class notebooks present' || bad '2026 class notebooks absent'
+[ -f /etc/udev/rules.d/99-rplidar.rules ] && ok 'RPLidar udev rule present' || warning 'RPLidar udev rule absent'
+if [ -d /opt/ros/foxy/share/rplidar_ros ] || [ -d "$TARGET_HOME/catkin_ws/src/RPLidar_Hector_SLAM" ]; then
+  ok 'RPLidar ROS driver present'
+else
+  warning 'RPLidar ROS driver absent'
+fi
+[ -d "$TARGET_HOME/Project/python/notebook/gong_rc_2026" ] && ok '2026 class notebooks deployed in Jupyter root' || bad '2026 class notebooks absent from Jupyter root'
 
-if python3 - <<'PY'
+if "$PYTHON" - <<'PY'
 import importlib
 import sys
 required = ['numpy', 'cv2', 'pyaudio', 'rplidar', 'RPi.GPIO', 'pop']
@@ -58,4 +65,3 @@ fi
 
 printf '\nSUMMARY pass=%d warn=%d fail=%d\n' "$pass" "$warn" "$fail"
 [ "$fail" -eq 0 ]
-

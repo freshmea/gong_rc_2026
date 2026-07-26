@@ -6,6 +6,7 @@ TARGET_HOME="$(getent passwd "$TARGET_USER" | cut -d: -f6)"
 VENV="${VENV:-$TARGET_HOME/venvs/gong-rc}"
 TORCH_URL="${TORCH_URL:-https://developer.download.nvidia.com/compute/redist/jp/v512/pytorch/torch-2.1.0a0+41361538.nv23.06-cp38-cp38-linux_aarch64.whl}"
 TF_INDEX="${TF_INDEX:-https://developer.download.nvidia.com/compute/redist/jp/v512}"
+TORCHVISION_WHEEL="${TORCHVISION_WHEEL:-$TARGET_HOME/gong_rc_2026/migration_data/packages/torchvision-0.16.0-cp38-cp38-linux_aarch64.whl}"
 
 if [[ $EUID -ne 0 ]]; then
   echo "Run as root" >&2
@@ -19,7 +20,8 @@ fi
 apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install -y \
   libopenblas-dev libopenmpi-dev libjpeg-dev zlib1g-dev libpng-dev \
-  libsndfile1-dev libhdf5-dev liblapack-dev libblas-dev gfortran python3-h5py
+  libsndfile1-dev libhdf5-dev liblapack-dev libblas-dev gfortran python3-h5py \
+  nvidia-jetpack-runtime cuda-nvtx-11-4 cuda-nvcc-11-4 python3-libnvinfer
 
 run_pip() {
   sudo -H -u "$TARGET_USER" "$VENV/bin/python" -m pip "$@"
@@ -32,7 +34,12 @@ run_pip install --upgrade 'numpy==1.23.5'
 # NVIDIA CUDA-enabled Jetson wheels. Do not let torchvision replace this torch
 # build with a generic PyPI torch wheel.
 run_pip install --upgrade "$TORCH_URL"
-run_pip install --upgrade --no-deps 'torchvision==0.16.0'
+if [[ -f "$TORCHVISION_WHEEL" ]]; then
+  run_pip install --upgrade --no-deps "$TORCHVISION_WHEEL"
+else
+  echo "WARN: verified local torchvision wheel not found: $TORCHVISION_WHEEL" >&2
+  run_pip install --upgrade --no-deps 'torchvision==0.16.0'
+fi
 
 # POP Util/AI, Pilot.Data_Collector and Object_Follow dependencies.
 run_pip install --upgrade \
@@ -42,6 +49,8 @@ run_pip install --upgrade --extra-index-url "$TF_INDEX" \
 
 sudo -H -u "$TARGET_USER" env \
   LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libGLdispatch.so.0:/usr/lib/aarch64-linux-gnu/libgomp.so.1 \
+  TF_FORCE_GPU_ALLOW_GROWTH=true \
+  XLA_FLAGS=--xla_gpu_cuda_data_dir=/usr/local/cuda-11.4 \
   "$VENV/bin/python" - <<'PY'
 import librosa
 import tensorflow as tf
